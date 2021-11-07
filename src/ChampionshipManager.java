@@ -1,2 +1,4 @@
-public class ChampionshipManager {
+public interface ChampionshipManager {
+
+
 }
