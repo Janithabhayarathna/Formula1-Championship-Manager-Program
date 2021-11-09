@@ -1,8 +1,12 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Formula1ChampionshipManager implements ChampionshipManager {
 
     private int noOfDrivers;
+    private int noOfCars;
+    public static ArrayList<Formula1Driver> drivers = new ArrayList<Formula1Driver>();
+    public static ArrayList<Formula1Driver> teams = new ArrayList<Formula1Driver>();
 
     public static void main(String[] args) {
 
@@ -65,8 +69,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         String location = input.nextLine();
         System.out.print("Enter the team name of the driver: ");
         String teamName = input.nextLine();
-        System.out.print("Enter the stats of the driver: ");
 
-        Formula1Driver
+        drivers.add(new Formula1Driver(driverName, location, teamName));
     }
 }
