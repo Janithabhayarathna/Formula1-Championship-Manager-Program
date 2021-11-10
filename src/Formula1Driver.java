@@ -1,26 +1,23 @@
 public class Formula1Driver extends Driver {
 
-    private int season;
     private int position1;
     private int position2;
     private int position3;
     private int points;
     private int numOfRaces;
 
-    public Formula1Driver(String driverName, String location, String teamName) {
+
+    public Formula1Driver(String driverName, String location, String teamName, int position1, int position2, int position3, int points, int numOfRaces) {
 
         super(driverName, location, teamName);
+        this.position1 = position1;
+        this.position2 = position2;
+        this.position3 = position3;
+        this.points = points;
+        this.numOfRaces = numOfRaces;
     }
 
     private int[] pointsScheme = {0, 25,18,15,12,10,8,6,4,2,1};
-
-    public int getSeason() {
-        return season;
-    }
-
-    public void setSeason(int season) {
-        this.season = season;
-    }
 
     public int getPosition1() {
         return position1;
