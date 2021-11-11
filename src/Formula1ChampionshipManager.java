@@ -3,8 +3,8 @@ import java.util.Scanner;
 
 public class Formula1ChampionshipManager implements ChampionshipManager {
 
-    private int noOfDrivers;
-    private int noOfCars;
+    private static int noOfDrivers;
+    private static int noOfCars;
     public static ArrayList<Formula1Driver> drivers = new ArrayList<Formula1Driver>();
     public static Scanner input = new Scanner(System.in).useDelimiter("\n");
 
@@ -48,7 +48,8 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
                 case "4":
                 case "DSD":
-                    //.
+                    displayStats();
+                    break;
 
                 case "5":
                 case "DDT":
@@ -89,6 +90,8 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         int numOfRaces = input2.nextInt();
 
         drivers.add(new Formula1Driver(driverName, location, teamName, position1, position2, position3, points, numOfRaces));
+        noOfDrivers++;
+        noOfCars++;
     }
 
     public static String checkDriverUniqueness(String name) {
@@ -115,42 +118,42 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
     public static void deleteDriver() {
 
-        Scanner input3 = new Scanner(System.in);
+        Scanner input3 = new Scanner(System.in).useDelimiter("\n");
         System.out.println("Enter the name of the driver that you want to delete: ");
         String delDriverName = input3.nextLine();
 
         for(Formula1Driver y : drivers) {
-
             if(y.getDriverName().equals(delDriverName)) {
-                System.out.println("Driver " + y.getDriverName() + " successfully removed");
+                System.out.println("Driver " + y.getDriverName() + " successfully removed.");
+                System.out.println("Team " + y.getTeamName() + " successfully removed.");
                 drivers.remove(delDriverName);
             }
             else {
                 System.out.println("Please enter a correct driver name.");
             }
-
         }
+        noOfDrivers--;
     }
 
     public static void changeTeam() {
 
-        Scanner input4 = new Scanner(System.in);
-        System.out.print("Enter the driver's name that who need to change the team: ");
+        Scanner input4 = new Scanner(System.in).useDelimiter("\n");
+        System.out.print("Enter the Team name that need to change the driver : ");
         String changeDriver = input4.next();
 
         for (Formula1Driver z : drivers) {
-            if (z.getDriverName().equals(changeDriver)) {
-                System.out.print("Enter the preferred new team name: ");
-                String newTeam = checkTeamUniqueness(input4.next());
-                System.out.println(z.getDriverName() + "'s team name changed as, " + newTeam);
-                z.setTeamName(newTeam);
+            if (z.getTeamName().equals(changeDriver)) {
+                System.out.print("Enter the preferred new drivers name: ");
+                String newDriver = checkDriverUniqueness(input4.next());
+                System.out.println(z.getTeamName() + "'s team driver changed as, " + newDriver);
+                z.setDriverName(newDriver);
             }
         }
     }
 
-    public void displayStats() {
+    public static void displayStats() {
 
-        Scanner input5 = new Scanner(System.in);
+        Scanner input5 = new Scanner(System.in).useDelimiter("\n");
         System.out.println("Enter the Name of the driver, that need to display statistics: ");
         String statDriver = input5.next();
 
