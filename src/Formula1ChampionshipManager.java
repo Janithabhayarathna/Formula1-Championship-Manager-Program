@@ -7,9 +7,15 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     private static int noOfDrivers;
     private static int noOfCars;
     public static ArrayList<Formula1Driver> drivers = new ArrayList<Formula1Driver>();
-
     public static Scanner input = new Scanner(System.in).useDelimiter("\n");
-
+    String driverName;
+    String location;
+    String teamName;
+    int position1;
+    int position2;
+    int position3;
+    int points;
+    int numOfRaces;
     public static void main(String[] args) {
 
         Formula1ChampionshipManager random = new Formula1ChampionshipManager();
@@ -79,21 +85,61 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
         Scanner input2 = new Scanner(System.in).useDelimiter("\n");
         System.out.print("Enter the name of the driver: ");
-        String driverName = checkDriverUniqueness(input2.next().toLowerCase(Locale.ROOT));
+        if (input2.hasNext()) {
+             driverName = checkDriverUniqueness(input2.next().toLowerCase(Locale.ROOT));
+        }
+        else {
+            System.out.println("Please enter a valid driver name!");
+        }
         System.out.print("Enter the driver's location: ");
-        String location = input2.next();
+        if (input2.hasNext()) {
+            String location = input2.next().toLowerCase();
+        }
+        else {
+            System.out.println("Please enter a valid driver location!");
+        }
         System.out.print("Enter the team name of the driver: ");
-        String teamName = checkTeamUniqueness(input2.next().toLowerCase(Locale.ROOT));
+        if (input2.hasNext()) {
+            String teamName = checkTeamUniqueness(input2.next().toLowerCase(Locale.ROOT));
+        }
+        else {
+            System.out.println("Please enter a valid team name!");
+        }
         System.out.print("Enter the number of 1st positions of the driver: ");
-        int position1 = input2.nextInt();
+        if (input2.hasNextInt()) {
+            int position1 = input2.nextInt();
+        }
+        else {
+            System.out.println("Please give a valid input!");
+        }
         System.out.print("Enter the number of 2nd positions of the driver: ");
-        int position2 = input2.nextInt();
+        if (input2.hasNextInt()) {
+            int position2 = input2.nextInt();
+        }
+        else {
+            System.out.println("Please give a valid input!");
+        }
         System.out.print("Enter the number of 3rd positions of the driver: ");
-        int position3 = input2.nextInt();
+        if (input2.hasNextInt()) {
+            int position3 = input2.nextInt();
+        }
+        else {
+            System.out.println("Please give a valid input!");
+        }
         System.out.print("Enter number of points of the driver: ");
-        int points = input2.nextInt();
+        if (input2.hasNextInt()) {
+            int points = input2.nextInt();
+        }
+        else {
+            System.out.println("Please enter a valid input!");
+        }
         System.out.print("Enter the number of races that have been participated by the driver: ");
-        int numOfRaces = input2.nextInt();
+        if (input2.hasNextInt()) {
+            int numOfRaces = input2.nextInt();
+        }
+        else {
+            System.out.println("Please enter a valid input!");
+        }
 
         drivers.add(new Formula1Driver(driverName, location, teamName, position1, position2, position3, points, numOfRaces));
         noOfDrivers++;
