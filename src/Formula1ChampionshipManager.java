@@ -95,49 +95,49 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         }
         System.out.print("Enter the driver's location: ");
         if (input.hasNext()) {
-            String location = input.next().toLowerCase();
+            location = input.next().toLowerCase();
         }
         else {
             System.out.println("Please enter a valid driver location!");
         }
         System.out.print("Enter the team name of the driver: ");
         if ((input.hasNext()) && (checkTeamUniqueness(input.next()))) {
-            String teamName = (input.next().toLowerCase(Locale.ROOT);
+            teamName = input.next().toLowerCase(Locale.ROOT);
         }
         else {
-            System.out.println("Please enter a valid team name!");
+            System.out.println("Team is already exist.");
         }
         System.out.print("Enter the number of 1st positions of the driver: ");
         if (input.hasNextInt() && input.nextInt() >0) {
-            int position1 = input.nextInt();
+            position1 = input.nextInt();
         }
         else {
             System.out.println("Please give a valid input!");
         }
         System.out.print("Enter the number of 2nd positions of the driver: ");
         if (input.hasNextInt() && input.nextInt() >0) {
-            int position2 = input.nextInt();
+            position2 = input.nextInt();
         }
         else {
             System.out.println("Please give a valid input!");
         }
         System.out.print("Enter the number of 3rd positions of the driver: ");
         if (input.hasNextInt() && input.nextInt() >0) {
-            int position3 = input.nextInt();
+            position3 = input.nextInt();
         }
         else {
             System.out.println("Please give a valid input!");
         }
         System.out.print("Enter number of points of the driver: ");
         if (input.hasNextInt()) {
-            int points = input.nextInt();
+            points = input.nextInt();
         }
         else {
             System.out.println("Please enter a valid input!");
         }
         System.out.print("Enter the number of races that have been participated by the driver: ");
         if (input.hasNextInt() && input.nextInt() >0) {
-            int numOfRaces = input.nextInt();
+            numOfRaces = input.nextInt();
         }
         else {
             System.out.println("Please enter a valid input!");
@@ -150,7 +150,6 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
     public boolean checkDriverUniqueness(String name) {
 
-        String duplicate = "Driver name already exist";
         for (Formula1Driver x : drivers) {
             if (x.getDriverName().equals(name)) {
                 return false;
@@ -161,7 +160,6 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
     public boolean checkTeamUniqueness(String team) {
 
-        String duplicate = "Team name already exist";
         for (Formula1Driver y : drivers) {
             if (y.getTeamName().equals(team)) {
                 return false;
@@ -197,10 +195,14 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         for (Formula1Driver z : drivers) {
             if (z.getTeamName().equals(changeDriver)) {
                 System.out.print("Enter the preferred new drivers name: ");
-                String newDriver = checkDriverUniqueness(input.next());
-                System.out.println(z.getTeamName() + "'s team driver changed as, " + newDriver);
-                z.setDriverName(newDriver);
-                drivers.remove(changeDriver);
+                if ((checkTeamUniqueness(input.next())) && (input.hasNext())) {
+                    String newDriver = input.next();
+                    System.out.println(z.getTeamName() + "'s team driver changed as, " + newDriver);
+                    z.setDriverName(newDriver);
+                    drivers.remove(changeDriver);
+                }else {
+                    System.out.println("Driver is already exist.");
+                }
             }
         }
     }
