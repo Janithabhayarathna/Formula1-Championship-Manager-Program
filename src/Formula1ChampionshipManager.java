@@ -202,7 +202,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             }
         }
         else {
-            System.out.println("Please enter a valid driver name.");
+            System.out.println("Driver name not found! Please enter a valid driver name.");
         }
         noOfDrivers--;
         noOfCars--;
