@@ -188,6 +188,16 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         return true;
     }
 
+    public boolean checkTeamAvailability(String team) {
+
+        for (Formula1Driver y : drivers) {
+            if (y.getTeamName().equals(team)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void deleteDriver() {
 
         System.out.println("Enter the name of the driver that you want to delete: ");
