@@ -87,8 +87,8 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     public void createDriver() {
 
         System.out.print("Enter the name of the driver: ");
-        if (input.hasNext()) {
-             driverName = checkDriverUniqueness(input.next().toLowerCase(Locale.ROOT));
+        if ((input.hasNext()) && (checkDriverUniqueness(input.next()))) {
+             driverName = input.next().toLowerCase(Locale.ROOT);
         }
         else {
             System.out.println("Please enter a valid driver name!");
@@ -101,8 +101,8 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             System.out.println("Please enter a valid driver location!");
         }
         System.out.print("Enter the team name of the driver: ");
-        if (input.hasNext()) {
-            String teamName = checkTeamUniqueness(input.next().toLowerCase(Locale.ROOT));
+        if ((input.hasNext()) && (checkTeamUniqueness(input.next()))) {
+            String teamName = (input.next().toLowerCase(Locale.ROOT);
         }
         else {
             System.out.println("Please enter a valid team name!");
@@ -148,26 +148,26 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         noOfCars++;
     }
 
-    public String checkDriverUniqueness(String name) {
+    public boolean checkDriverUniqueness(String name) {
 
         String duplicate = "Driver name already exist";
         for (Formula1Driver x : drivers) {
             if (x.getDriverName().equals(name)) {
-                return duplicate;
+                return false;
             }
         }
-        return input.next();
+        return true;
     }
 
-    public String checkTeamUniqueness(String team) {
+    public boolean checkTeamUniqueness(String team) {
 
         String duplicate = "Team name already exist";
         for (Formula1Driver y : drivers) {
             if (y.getTeamName().equals(team)) {
-                return duplicate;
+                return false;
             }
         }
-        return input.next();
+        return true;
     }
 
     public void deleteDriver() {
