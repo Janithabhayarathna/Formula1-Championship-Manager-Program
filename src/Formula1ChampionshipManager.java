@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class Formula1ChampionshipManager implements ChampionshipManager {
 
-    private static int noOfDrivers;
-    private static int noOfCars;
-    public static ArrayList<Formula1Driver> drivers = new ArrayList<Formula1Driver>();
-    public static Scanner input = new Scanner(System.in).useDelimiter("\n");
+    private int noOfDrivers;
+    private int noOfCars;
+    public ArrayList<Formula1Driver> drivers = new ArrayList<Formula1Driver>();
+    public Scanner input = new Scanner(System.in).useDelimiter("\n");
     String driverName;
     String location;
     String teamName;
@@ -16,6 +16,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     int position3;
     int points;
     int numOfRaces;
+
     public static void main(String[] args) {
 
         Formula1ChampionshipManager random = new Formula1ChampionshipManager();
@@ -26,16 +27,16 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
         while (true) {
             System.out.println(" ");
-            System.out.println("*************** Option Menu *****************");
-            System.out.println("---------------------------------------------");
-            System.out.println(" 1 or CND: Create a New Driver.");
-            System.out.println(" 2 or DAD: Delete a Driver.");
-            System.out.println(" 3 or CTD: Change the Team of a Driver.");
-            System.out.println(" 4 or DSD: Display the Stats of the Driver.");
-            System.out.println(" 5 or DDT: Display the Driver Table.");
-            System.out.println(" 6 or ASR: Add Stats of a completed Race.");
-            System.out.println(" 7 or EXT: Exit from the program.");
-            System.out.println("---------------------------------------------");
+            System.out.println("****************** Option Menu ********************");
+            System.out.println("---------------------------------------------------");
+            System.out.println("   1 or CND: Create a New Driver.");
+            System.out.println("   2 or DAD: Delete a Driver.");
+            System.out.println("   3 or CDT: Change the Driver of a Team.");
+            System.out.println("   4 or DSD: Display the Statistics of a Driver.");
+            System.out.println("   5 or DDT: Display the Driver Table.");
+            System.out.println("   6 or ASR: Add Statistics of a completed Race.");
+            System.out.println("   7 or EXT: Exit from the program.");
+            System.out.println("---------------------------------------------------");
 
             System.out.println(" ");
             System.out.print("Enter the option you want: ");
@@ -45,35 +46,55 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
                 case "1":
                 case "CND":
+                    System.out.println(" ");
+                    System.out.println("_ Create a new driver method _");
+                    System.out.println(" ");
                     createDriver();
                     break;
 
                 case "2":
                 case "DAD":
+                    System.out.println(" ");
+                    System.out.println("_ Delete a driver option _");
+                    System.out.println(" ");
                     deleteDriver();
                     break;
 
                 case "3":
-                case "CTD":
+                case "CDT":
+                    System.out.println(" ");
+                    System.out.println("_ Change the driver of a team option _");
+                    System.out.println(" ");
                     changeTeam();
                     break;
 
                 case "4":
                 case "DSD":
+                    System.out.println(" ");
+                    System.out.println("_ Display statistics of a driver option _");
+                    System.out.println(" ");
                     displayStats();
                     break;
 
                 case "5":
                 case "DDT":
-                    //.
+                    System.out.println(" ");
+                    System.out.println("_ Display the driver table option _");
+                    System.out.println(" ");
+                    driverTable();
+                    break;
 
                 case "6":
                 case "ASR":
+                    System.out.println(" ");
+                    System.out.println("_ Add Statistics of a completed race option _");
+                    System.out.println(" ");
                     addRace();
                     break;
 
                 case "7":
                 case "EXT":
+                    System.out.println(" ");
                     exit();
                     break;
 
@@ -158,6 +179,16 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         return true;
     }
 
+    public boolean checkDriverAvailability(String name) {
+
+        for (Formula1Driver x : drivers) {
+            if (x.getDriverName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean checkTeamUniqueness(String team) {
 
         for (Formula1Driver y : drivers) {
@@ -171,7 +202,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     public void deleteDriver() {
 
         System.out.println("Enter the name of the driver that you want to delete: ");
-        if(input.hasNext()) {
+        if((input.hasNext()) && (checkDriverAvailability(input.next()))) {
             String delDriverName = input.next();
             for(Formula1Driver y : drivers) {
                 if(y.getDriverName().equals(delDriverName)) {
@@ -234,8 +265,8 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
         if (drivers.size() > 1) {
             for (int i = 0; i < drivers.size(); i++) {
-                System.out.println("Enter the drivers name who got the" + i + 1 + " place of the race: ");
-                
+                System.out.print("Enter the drivers name who got the" + i + 1 + " place of the race: ");
+                String place = input.next();
 
                 //            System.out.println("Enter the drivers name who got the 1st place of the race: ");
                 //            String driver1 = input.next();
