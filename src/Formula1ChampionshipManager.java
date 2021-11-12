@@ -172,16 +172,21 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
         Scanner input3 = new Scanner(System.in).useDelimiter("\n");
         System.out.println("Enter the name of the driver that you want to delete: ");
-        String delDriverName = input3.nextLine().toLowerCase();
-        for(Formula1Driver y : drivers) {
-            if(y.getDriverName().equals(delDriverName)) {
-                System.out.println("Driver " + y.getDriverName() + " successfully removed.");
-                System.out.println("Team " + y.getTeamName() + " successfully removed.");
-                drivers.remove(delDriverName);
+        if(input3.hasNext()) {
+            String delDriverName = input3.next();
+            for(Formula1Driver y : drivers) {
+                if(y.getDriverName().equals(delDriverName)) {
+                    System.out.println("Driver " + y.getDriverName() + " successfully removed.");
+                    System.out.println("Team " + y.getTeamName() + " successfully removed.");
+                    drivers.remove(delDriverName);
+                }
+                else {
+                    System.out.println("Please enter a correct driver name.");
+                }
             }
-            else {
-                System.out.println("Please enter a correct driver name.");
-            }
+        }
+        else {
+            System.out.println("Please enter a valid driver name.");
         }
         noOfDrivers--;
         noOfCars--;
@@ -233,6 +238,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     }
 
     public void addRace() {
+
 
         System.out.println("Enter the drivers name who got the 1st place of the race: ");
         String driver1 = input.next();
