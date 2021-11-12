@@ -245,18 +245,22 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     public void displayStats() {
 
         System.out.println("Enter the Name of the driver, that need to display statistics: ");
-        String statDriver = input.next();
-        for(Formula1Driver y : drivers) {
-            if (y.getDriverName().equals(statDriver)) {
-                System.out.println("Mr. " + y.getDriverName());
-                System.out.println("Mr. " + y.getDriverName() + "'s location - " + y.getLocation());
-                System.out.println("Mr. " + y.getDriverName() + "'s team name - " + y.getTeamName());
-                System.out.println("Mr. " + y.getDriverName() + "'s no of 1st places - " + y.getPosition1());
-                System.out.println("Mr. " + y.getDriverName() + "'s no of 2nd places - " + y.getPosition2());
-                System.out.println("Mr. " + y.getDriverName() + "'s no of 3rd places - " + y.getPosition3());
-                System.out.println("Mr. " + y.getDriverName() + "'s no of points - " + y.getPoints());
-                System.out.println("Mr. " + y.getDriverName() + "'s no of races - " + y.getNumOfRaces());
+        if ((input.hasNext()) && (checkDriverAvailability(input.next()))) {
+            String statDriver = input.next();
+            for (Formula1Driver y : drivers) {
+                if (y.getDriverName().equals(statDriver)) {
+                    System.out.println("Mr. " + y.getDriverName());
+                    System.out.println("Mr. " + y.getDriverName() + "'s location - " + y.getLocation());
+                    System.out.println("Mr. " + y.getDriverName() + "'s team name - " + y.getTeamName());
+                    System.out.println("Mr. " + y.getDriverName() + "'s no of 1st places - " + y.getPosition1());
+                    System.out.println("Mr. " + y.getDriverName() + "'s no of 2nd places - " + y.getPosition2());
+                    System.out.println("Mr. " + y.getDriverName() + "'s no of 3rd places - " + y.getPosition3());
+                    System.out.println("Mr. " + y.getDriverName() + "'s no of points - " + y.getPoints());
+                    System.out.println("Mr. " + y.getDriverName() + "'s no of races - " + y.getNumOfRaces());
+                }
             }
+        }else {
+            System.out.println("Driver not found! Please check the driver name and try again.");
         }
     }
 
