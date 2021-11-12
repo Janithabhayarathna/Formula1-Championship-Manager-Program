@@ -221,19 +221,24 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     public void changeTeam() {
 
         System.out.print("Enter the Team name that need to change the driver : ");
-        String changeDriver = input.next();
-        for (Formula1Driver z : drivers) {
-            if (z.getTeamName().equals(changeDriver)) {
-                System.out.print("Enter the preferred new drivers name: ");
-                if ((checkTeamUniqueness(input.next())) && (input.hasNext())) {
-                    String newDriver = input.next();
-                    System.out.println(z.getTeamName() + "'s team driver changed as, " + newDriver);
-                    z.setDriverName(newDriver);
-                    drivers.remove(changeDriver);
-                }else {
-                    System.out.println("Driver is already exist.");
+        if ((input.hasNext()) && (checkTeamAvailability(input.next()))){
+            String changeDriver = input.next();
+            for (Formula1Driver z : drivers) {
+                if (z.getTeamName().equals(changeDriver)) {
+                    System.out.print("Enter the preferred new drivers name: ");
+                    if ((checkTeamUniqueness(input.next())) && (input.hasNext())) {
+                        String newDriver = input.next();
+                        System.out.println(z.getTeamName() + "'s team driver changed as, " + newDriver);
+                        z.setDriverName(newDriver);
+                        drivers.remove(changeDriver);
+                    } else {
+                        System.out.println("Driver already exist.");
+                    }
                 }
             }
+        }
+        else {
+            System.out.println("Team name not found! Please check the team name and try again.");
         }
     }
 
