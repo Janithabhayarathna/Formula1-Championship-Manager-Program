@@ -7,6 +7,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     public int noOfDrivers;
     public int noOfCars;
     public ArrayList<Formula1Driver> drivers = new ArrayList<Formula1Driver>();
+    public int[] pointsScheme = {25,18,15,12,10,8,6,4,2,1};
     public Scanner input = new Scanner(System.in).useDelimiter("\n");
     String driverName; String location; String teamName; int position1; int position2; int position3; int points; int numOfRaces;
 
@@ -274,28 +275,24 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         if (drivers.size() > 1) {
             for (int i = 0; i < drivers.size(); i++) {
                 System.out.print("Enter the drivers name who got the" + i + 1 + " place of the race: ");
-                String place = input.next();
-
-                //            System.out.println("Enter the drivers name who got the 1st place of the race: ");
-                //            String driver1 = input.next();
-                //            System.out.println("Enter the drivers name who got the 2nd place of the race: ");
-                //            String driver2 = input.next();
-                //            System.out.println("Enter the drivers name who got the 3rd place of the race: ");
-                //            String driver3 = input.next();
-                //            System.out.println("Enter the drivers name who got the 4th place of the race: ");
-                //            String driver4 = input.next();
-                //            System.out.println("Enter the drivers name who got the 5th place of the race: ");
-                //            String driver5 = input.next();
-                //            System.out.println("Enter the drivers name who got the 6th place of the race: ");
-                //            String driver6 = input.next();
-                //            System.out.println("Enter the drivers name who got the 7th place of the race: ");
-                //            String driver7 = input.next();
-                //            System.out.println("Enter the drivers name who got the 8th place of the race: ");
-                //            String driver8 = input.next();
-                //            System.out.println("Enter the drivers name who got the 9th place of the race: ");
-                //            String driver9 = input.next();
-                //            System.out.println("Enter the drivers name who got the 10st place of the race: ");
-                //            String driver10 = input.next();
+                if ((input.hasNext()) && (checkDriverAvailability(input.next()))) {
+                    String place = input.next();
+                    for (Formula1Driver r : drivers) {
+                        if (r.getDriverName().equals(place)) {
+                            r.setNumOfRaces(+1);
+                            r.setPoints(+pointsScheme[i+1]);
+                            if (i == 0) {
+                                r.setPosition1(+1);
+                            }else if(i == 1) {
+                                r.setPosition2(+1);
+                            } else if (i == 2) {
+                                r.setPosition3(+1);
+                            }
+                        }
+                    }
+                }else {
+                    System.out.println("Driver not found! Please check the driver name and try again.");
+                }
             }
         }else {
             System.out.println("Invalid number of drivers/cars/constructors. (Only " + drivers.size() + "teams are added.) Please add at least 2 drivers to use this function.");
