@@ -4,18 +4,12 @@ import java.util.Scanner;
 
 public class Formula1ChampionshipManager implements ChampionshipManager {
 
-    private int noOfDrivers;
-    private int noOfCars;
+    public int noOfDrivers;
+    public int noOfCars;
     public ArrayList<Formula1Driver> drivers = new ArrayList<Formula1Driver>();
     public Scanner input = new Scanner(System.in).useDelimiter("\n");
-    String driverName;
-    String location;
-    String teamName;
-    int position1;
-    int position2;
-    int position3;
-    int points;
-    int numOfRaces;
+    String driverName; String location; String teamName; int position1; int position2; int position3; int points; int numOfRaces;
+
 
     public static void main(String[] args) {
 
@@ -27,8 +21,8 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
         while (true) {
             System.out.println(" ");
-            System.out.println("****************** Option Menu ********************");
-            System.out.println("---------------------------------------------------");
+            System.out.println("******************* Option Menu ********************");
+            System.out.println("----------------------------------------------------");
             System.out.println("   1 or CND: Create a New Driver.");
             System.out.println("   2 or DAD: Delete a Driver.");
             System.out.println("   3 or CDT: Change the Driver of a Team.");
@@ -112,21 +106,16 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
              driverName = input.next().toLowerCase(Locale.ROOT);
         }
         else {
-            System.out.println("Please enter a valid driver name!");
+            System.out.println("Please check the driver table. Driver already exist!");
         }
         System.out.print("Enter the driver's location: ");
-        if (input.hasNext()) {
-            location = input.next().toLowerCase();
-        }
-        else {
-            System.out.println("Please enter a valid driver location!");
-        }
+        location = input.next().toLowerCase();
         System.out.print("Enter the team name of the driver: ");
         if ((input.hasNext()) && (checkTeamUniqueness(input.next()))) {
             teamName = input.next().toLowerCase(Locale.ROOT);
         }
         else {
-            System.out.println("Team is already exist.");
+            System.out.println("Team already exist.");
         }
         System.out.print("Enter the number of 1st positions of the driver: ");
         if (input.hasNextInt() && input.nextInt() >0) {
