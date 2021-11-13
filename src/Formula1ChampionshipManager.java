@@ -8,7 +8,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     public int noOfDrivers;
     public int noOfCars;
     public ArrayList<Formula1Driver> drivers = new ArrayList<Formula1Driver>();
-    public int[] pointsScheme = {25,18,15,12,10,8,6,4,2,1};
+    public int[] pointsScheme = {25,18,15,12,10,8,6,4,2,1,0,0,0,0,0,0,0,0,0,0};
     public Scanner input = new Scanner(System.in).useDelimiter("\n");
     String driverName; String location; String teamName; int position1; int position2; int position3; int points; int numOfRaces;
 
@@ -32,7 +32,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             System.out.println("   5 or DDT: Display the Driver Table.");
             System.out.println("   6 or ASR: Add Statistics of a completed Race.");
             System.out.println("   7 or EXT: Exit from the program.");
-            System.out.println("---------------------------------------------------");
+            System.out.println("----------------------------------------------------");
 
             System.out.println(" ");
             System.out.print("Enter the option you want: ");
@@ -43,7 +43,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 case "1":
                 case "CND":
                     System.out.println(" ");
-                    System.out.println("_ Create a new driver method _");
+                    System.out.println("   _ Create a new driver option _");
                     System.out.println(" ");
                     createDriver();
                     break;
@@ -51,7 +51,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 case "2":
                 case "DAD":
                     System.out.println(" ");
-                    System.out.println("_ Delete a driver option _");
+                    System.out.println("   _ Delete a driver option _");
                     System.out.println(" ");
                     deleteDriver();
                     break;
@@ -59,7 +59,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 case "3":
                 case "CDT":
                     System.out.println(" ");
-                    System.out.println("_ Change the driver of a team option _");
+                    System.out.println("   _ Change the driver of a team option _");
                     System.out.println(" ");
                     changeTeam();
                     break;
@@ -67,7 +67,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 case "4":
                 case "DSD":
                     System.out.println(" ");
-                    System.out.println("_ Display statistics of a driver option _");
+                    System.out.println("   _ Display statistics of a driver option _");
                     System.out.println(" ");
                     displayStats();
                     break;
@@ -75,7 +75,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 case "5":
                 case "DDT":
                     System.out.println(" ");
-                    System.out.println("_ Display the driver table option _");
+                    System.out.println("   _ Display the driver table option _");
                     System.out.println(" ");
                     driverTable();
                     break;
@@ -83,7 +83,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 case "6":
                 case "ASR":
                     System.out.println(" ");
-                    System.out.println("_ Add Statistics of a completed race option _");
+                    System.out.println("   _ Add Statistics of a completed race option _");
                     System.out.println(" ");
                     addRace();
                     break;
@@ -95,7 +95,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                     break;
 
                 default:
-                    System.out.println("Please check the input and try again!");
+                    System.out.println(" Please check the input and try again!");
                     System.out.println(" ");
             }
         }
@@ -303,7 +303,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 }
             }
         }else {
-            System.out.println("Invalid number of drivers/cars/constructors. (Only " + drivers.size() + "teams are added.) Please add at least 2 drivers to use this function.");
+            System.out.println("Invalid number of drivers/cars/constructors. (Only " + drivers.size() + " teams are added.) Please add at least 2 drivers to use this function.");
         }
     }
 
