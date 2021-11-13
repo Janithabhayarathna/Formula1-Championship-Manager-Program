@@ -24,7 +24,7 @@ public class Formula1Driver extends Driver implements Serializable, Comparable<F
     }
 
     public void setPosition1(int position1) {
-        this.position1 = position1;
+        this.position1 += position1;
     }
 
     public int getPosition2() {
@@ -32,7 +32,7 @@ public class Formula1Driver extends Driver implements Serializable, Comparable<F
     }
 
     public void setPosition2(int position2) {
-        this.position2 = position2;
+        this.position2 += position2;
     }
 
     public int getPosition3() {
@@ -40,7 +40,7 @@ public class Formula1Driver extends Driver implements Serializable, Comparable<F
     }
 
     public void setPosition3(int position3) {
-        this.position3 = position3;
+        this.position3 += position3;
     }
 
     public int getPoints() {
@@ -48,7 +48,7 @@ public class Formula1Driver extends Driver implements Serializable, Comparable<F
     }
 
     public void setPoints(int points) {
-        this.points = points;
+        this.points += points;
     }
 
     public int getNumOfRaces() {
@@ -56,7 +56,7 @@ public class Formula1Driver extends Driver implements Serializable, Comparable<F
     }
 
     public void setNumOfRaces(int numOfRaces) {
-        this.numOfRaces = numOfRaces;
+        this.numOfRaces += numOfRaces;
     }
 
     @Override

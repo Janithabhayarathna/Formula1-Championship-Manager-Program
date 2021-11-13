@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.*;
 
 public class Formula1ChampionshipManager implements ChampionshipManager {
 
@@ -267,7 +265,14 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
     public void driverTable() {
 
+        Collections.sort(drivers);
+        System.out.println("---------------------------------------------------------------------------------------------------------------");
+        System.out.println("|  Drivers  |  Team Name  | Location  |  No. of Races  |  Points  |  1st places |  2nd places  |  3rd places  |");
+        System.out.println("---------------------------------------------------------------------------------------------------------------");
 
+        for (Formula1Driver l : drivers) {
+            System.out.printf("| %10s | %10s | %10s | %5d | %5d | %5d | %5d | %5d |", l.getDriverName(), l.getTeamName(), l.getNumOfRaces(), l.getPoints(), l.getPosition1(), l.getPosition2(), l.getPosition3());
+        }
     }
 
     public void addRace() {
