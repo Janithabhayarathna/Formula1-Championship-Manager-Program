@@ -1,4 +1,6 @@
-public class Formula1Driver extends Driver {
+import java.io.Serializable;
+
+public class Formula1Driver extends Driver implements Serializable, Comparable<Formula1Driver> {
 
     private int position1;
     private int position2;
@@ -55,6 +57,16 @@ public class Formula1Driver extends Driver {
 
     public void setNumOfRaces(int numOfRaces) {
         this.numOfRaces = numOfRaces;
+    }
+
+    @Override
+    public int compareTo(Formula1Driver com) {
+        if (com.getPoints() == this.points) {
+            return com.position1 - this.position1;
+        }
+        else {
+            return com.getPoints() - this.points;
+        }
     }
 
 }
