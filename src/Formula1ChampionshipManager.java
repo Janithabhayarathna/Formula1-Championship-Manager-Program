@@ -10,6 +10,10 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     public ArrayList<Formula1Driver> drivers = new ArrayList<Formula1Driver>();
     public int[] pointsScheme = {25,18,15,12,10,8,6,4,2,1,0,0,0,0,0,0,0,0,0,0};
     public Scanner input = new Scanner(System.in).useDelimiter("\n");
+    public boolean validateDriver = true;
+    public boolean validateTeam = true;
+    public boolean validatePosition = true;
+    public boolean flag3 = true;
     String driverName; String location; String teamName; int position1; int position2; int position3; int points; int numOfRaces;
 
 
@@ -44,7 +48,6 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 case "CND":
                     System.out.println(" ");
                     System.out.println("   _ Create a new driver option _");
-                    System.out.println(" ");
                     createDriver();
                     break;
 
@@ -52,7 +55,6 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 case "DAD":
                     System.out.println(" ");
                     System.out.println("   _ Delete a driver option _");
-                    System.out.println(" ");
                     deleteDriver();
                     break;
 
@@ -60,7 +62,6 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 case "CDT":
                     System.out.println(" ");
                     System.out.println("   _ Change the driver of a team option _");
-                    System.out.println(" ");
                     changeTeam();
                     break;
 
@@ -68,7 +69,6 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 case "DSD":
                     System.out.println(" ");
                     System.out.println("   _ Display statistics of a driver option _");
-                    System.out.println(" ");
                     displayStats();
                     break;
 
@@ -76,7 +76,6 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 case "DDT":
                     System.out.println(" ");
                     System.out.println("   _ Display the driver table option _");
-                    System.out.println(" ");
                     driverTable();
                     break;
 
@@ -84,7 +83,6 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 case "ASR":
                     System.out.println(" ");
                     System.out.println("   _ Add Statistics of a completed race option _");
-                    System.out.println(" ");
                     addRace();
                     break;
 
@@ -103,91 +101,111 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
     public void createDriver() {
 
-        System.out.print("Enter the name of the driver: ");
-        if ((input.hasNext()) && (checkDriverUniqueness(input.next()))) {
-             driverName = input.next().toLowerCase(Locale.ROOT);
-        }
-        else {
-            System.out.println("Please check the driver table. Driver already exist!");
-        }
-        System.out.print("Enter the driver's location: ");
-        location = input.next().toLowerCase();
-        System.out.print("Enter the team name of the driver: ");
-        if ((input.hasNext()) && (checkTeamUniqueness(input.next()))) {
-            teamName = input.next().toLowerCase(Locale.ROOT);
-        }
-        else {
-            System.out.println("Team already exist.");
-        }
-        System.out.print("Enter the number of 1st positions of the driver: ");
-        if ((input.hasNextInt()) && (input.nextInt() >0)) {
-            position1 = input.nextInt();
-        }
-        else {
-            System.out.println("Please give a valid input!");
-        }
-        System.out.print("Enter the number of 2nd positions of the driver: ");
-        if ((input.hasNextInt()) && (input.nextInt() >0)) {
-            position2 = input.nextInt();
-        }
-        else {
-            System.out.println("Please give a valid input!");
-        }
-        System.out.print("Enter the number of 3rd positions of the driver: ");
-        if ((input.hasNextInt()) && (input.nextInt() >0)) {
-            position3 = input.nextInt();
-        }
-        else {
-            System.out.println("Please give a valid input!");
-        }
-        System.out.print("Enter number of points of the driver: ");
-        if (input.hasNextInt()) {
-            points = input.nextInt();
-        }
-        else {
-            System.out.println("Please enter a valid input!");
-        }
-        System.out.print("Enter the number of races that have been participated by the driver: ");
-        if ((input.hasNextInt()) && (input.nextInt() >0)) {
-            numOfRaces = input.nextInt();
-        }
-        else {
-            System.out.println("Please enter a valid input!");
-        }
+        while(true) {
 
+            System.out.print("Enter the name of the driver: ");
+            driverName = input.next().toLowerCase();
+            checkDriverUniqueness(driverName);
+            if (validateDriver) {
+                System.out.print("Enter the team name of the driver: ");
+                teamName = input.next().toLowerCase();
+                checkTeamUniqueness(teamName);
+                if (validateTeam) {
+                    System.out.print("Enter the driver's location: ");
+                    location = input.next();
+                    System.out.print("Enter the number of 1st positions achieved by the driver: ");
+                    if (input.hasNextInt()) {
+                        position1 = input.nextInt();
+                        positionValidator(position1);
+                        if (validatePosition) {
+                            System.out.print("Enter the number of 2nd positions achieved by the driver: ");
+                            if (input.hasNextInt()) {
+                                position2 = input.nextInt();
+                                positionValidator(position2);
+                                if (validatePosition) {
+                                    System.out.print("Enter the number of 3rd positions achieved by the driver: ");
+                                    if (input.hasNextInt()) {
+                                        position3 = input.nextInt();
+                                        positionValidator(position3);
+                                        if (validatePosition) {
+                                            System.out.print("Enter number of points of the driver: ");
+                                            if (input.hasNextInt()) {
+                                                points = input.nextInt();
+                                                System.out.print("Enter the number of races that have been participated by the driver: ");
+                                                if (input.hasNextInt()) {
+                                                    numOfRaces = input.nextInt();
+                                                    break;
+                                                } else {
+                                                    System.out.println("Invalid input! Please enter a correct input and try again.");
+                                                    input.next();
+                                                }
+                                            } else {
+                                                System.out.println("Invalid input! Please enter a correct input and try again.");
+                                                input.next();
+                                            }
+                                        } else {
+                                            System.out.println("Invalid input! Please enter a correct input and try again.");
+                                            input.next();
+                                        }
+                                    } else {
+                                        System.out.println("Invalid input! Please enter a correct input and try again.");
+                                        input.next();
+                                    }
+                                } else {
+                                    System.out.println("Invalid input! Please enter a correct input and try again.");
+                                    input.next();
+                                }
+                            } else {
+                                System.out.println("Invalid input! Please enter a correct input and try again.");
+                                input.next();
+                            }
+                        } else {
+                            System.out.println("Invalid input! Please enter a correct input and try again.");
+                            input.next();
+                        }
+                    } else {
+                        System.out.println("Invalid input! Please enter a correct input and try again.");
+                        input.next();
+                    }
+                } else {
+                    System.out.println("Team already exists! Please check the input and try again.");
+                }
+            } else {
+                System.out.println("Driver already exist! Please check the input and try again.");
+            }
+        }
+        System.out.println("Driver " + driverName + " successfully added.");
         drivers.add(new Formula1Driver(driverName, location, teamName, position1, position2, position3, points, numOfRaces));
         noOfDrivers++;
         noOfCars++;
     }
 
-    public boolean checkDriverUniqueness(String name) {
+    public void checkDriverUniqueness(String name) {
 
         for (Formula1Driver x : drivers) {
             if (x.getDriverName().equals(name)) {
-                return false;
+                validateDriver = false;
             }
         }
-        return true;
     }
 
     public boolean checkDriverAvailability(String name) {
 
         for (Formula1Driver x : drivers) {
-            if (x.getDriverName().equals(name)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean checkTeamUniqueness(String team) {
-
-        for (Formula1Driver y : drivers) {
-            if (y.getTeamName().equals(team)) {
+            if (x.getTeamName().equals(name)) {
                 return false;
             }
         }
         return true;
+    }
+
+    public void checkTeamUniqueness(String team) {
+
+        for (Formula1Driver y : drivers) {
+            if (y.getTeamName().equals(team)) {
+                validateTeam = false;
+            }
+        }
     }
 
     public boolean checkTeamAvailability(String team) {
@@ -198,6 +216,13 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             }
         }
         return false;
+    }
+
+    public void positionValidator(int position) {
+
+        if (position>0) {
+            validatePosition = true;
+        }
     }
 
     public void deleteDriver() {
@@ -228,14 +253,12 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             for (Formula1Driver z : drivers) {
                 if (z.getTeamName().equals(changeDriver)) {
                     System.out.print("Enter the preferred new drivers name: ");
-                    if ((checkTeamUniqueness(input.next())) && (input.hasNext())) {
+
                         String newDriver = input.next();
                         System.out.println(z.getTeamName() + "'s team driver changed as, " + newDriver);
                         z.setDriverName(newDriver);
                         drivers.remove(changeDriver);
-                    } else {
-                        System.out.println("Driver already exist.");
-                    }
+
                 }
             }
         }
@@ -269,12 +292,12 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     public void driverTable() {
 
         Collections.sort(drivers);
-        System.out.println("---------------------------------------------------------------------------------------------------------------");
-        System.out.println("|  Drivers  |  Team Name  | Location  |  No. of Races  |  Points  |  1st places |  2nd places  |  3rd places  |");
-        System.out.println("---------------------------------------------------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------------------------------------------------------");
+        System.out.println("|    Drivers   |   Team Name  | Location  |  No. of Races  |  Points  |  1st places |  2nd places  |  3rd places  |");
+        System.out.println("-------------------------------------------------------------------------------------------------------------------");
 
         for (Formula1Driver l : drivers) {
-            System.out.printf("| %10d | %10d | %10d | %5d | %5d | %5d | %5d | %5d |", l.getDriverName(), l.getTeamName(), l.getNumOfRaces(), l.getPoints(), l.getPosition1(), l.getPosition2(), l.getPosition3());
+            System.out.printf("|  %10s  |  %10s  |  %10s  |  %5d    |  %5d  |  %5d  |  %5d  |  %5d  |", l.getDriverName(), l.getTeamName(), l.getLocation(), l.getNumOfRaces(), l.getPoints(), l.getPosition1(), l.getPosition2(), l.getPosition3());
         }
     }
 
@@ -282,19 +305,19 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
         if (drivers.size() > 1) {
             for (int i = 0; i < drivers.size(); i++) {
-                System.out.print("Enter the drivers name who got the" + i + 1 + " place of the race: ");
+                System.out.print("Enter the drivers name who got the " + (i + 1) + " place of the race: ");
                 if ((input.hasNext()) && (checkDriverAvailability(input.next()))) {
                     String place = input.next();
                     for (Formula1Driver r : drivers) {
                         if (r.getDriverName().equals(place)) {
-                            r.setNumOfRaces(+1);
-                            r.setPoints(+pointsScheme[i+1]);
+                            r.setNumOfRaces(1);
+                            r.setPoints(pointsScheme[i]);
                             if (i == 0) {
-                                r.setPosition1(+1);
+                                r.setPosition1(1);
                             }else if(i == 1) {
-                                r.setPosition2(+1);
+                                r.setPosition2(1);
                             } else if (i == 2) {
-                                r.setPosition3(+1);
+                                r.setPosition3(1);
                             }
                         }
                     }
@@ -305,6 +328,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         }else {
             System.out.println("Invalid number of drivers/cars/constructors. (Only " + drivers.size() + " teams are added.) Please add at least 2 drivers to use this function.");
         }
+        numOfRaces++;
     }
 
     public void saveData() {
