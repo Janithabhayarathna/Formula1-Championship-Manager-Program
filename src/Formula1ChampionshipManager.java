@@ -137,44 +137,67 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                                                     break;
                                                 } else {
                                                     System.out.println("Invalid input! Please enter a correct input and try again.");
+                                                    System.out.println(" ");
                                                     input.next();
+                                                    menu();
                                                 }
                                             } else {
                                                 System.out.println("Invalid input! Please enter a correct input and try again.");
+                                                System.out.println(" ");
                                                 input.next();
+                                                menu();
                                             }
                                         } else {
                                             System.out.println("Invalid input! Please enter a correct input and try again.");
+                                            System.out.println(" ");
                                             input.next();
+                                            menu();
                                         }
                                     } else {
                                         System.out.println("Invalid input! Please enter a correct input and try again.");
+                                        System.out.println(" ");
                                         input.next();
+                                        menu();
                                     }
                                 } else {
                                     System.out.println("Invalid input! Please enter a correct input and try again.");
+                                    System.out.println(" ");
                                     input.next();
+                                    menu();
                                 }
                             } else {
                                 System.out.println("Invalid input! Please enter a correct input and try again.");
+                                System.out.println(" ");
                                 input.next();
+                                menu();
                             }
                         } else {
                             System.out.println("Invalid input! Please enter a correct input and try again.");
+                            System.out.println(" ");
                             input.next();
+                            menu();
                         }
                     } else {
                         System.out.println("Invalid input! Please enter a correct input and try again.");
+                        System.out.println(" ");
                         input.next();
+                        menu();
                     }
                 } else {
                     System.out.println("Team already exists! Please check the input and try again.");
+                    System.out.println(" ");
+                    input.next();
+                    menu();
                 }
             } else {
                 System.out.println("Driver already exist! Please check the input and try again.");
+                System.out.println(" ");
+                input.next();
+                menu();
             }
         }
         System.out.println("Driver " + driverName + " successfully added.");
+        System.out.println("-----------------------------------------------------------------------------------");
         drivers.add(new Formula1Driver(driverName, location, teamName, position1, position2, position3, points, numOfRaces));
         noOfDrivers++;
         noOfCars++;
