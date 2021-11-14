@@ -277,7 +277,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                     }
                 }
             } else {
-                System.out.println("Driver name not found! Please enter a valid driver name.");
+                System.out.println("Driver name not found! Please check the input and try again.");
             }
         }
         else {
@@ -319,7 +319,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
     public void displayStats() {
 
-        System.out.println("Enter the Name of the driver, that need to display statistics: ");
+        System.out.print("Enter the Name of the driver, that need to display statistics: ");
         if (input.hasNext()) {
             String statDriver = input.next();
             checkDriverAvailability(statDriver);
@@ -347,16 +347,22 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     public void driverTable() {
 
         Collections.sort(drivers);
-        System.out.println("-------------------------------------------------------------------------------------------------------------------");
-        System.out.println("|    Drivers   |   Team Name  |    Location    |  No. of Races  |  Points  |  1st places |  2nd places  |  3rd places  |");
-        System.out.println("-------------------------------------------------------------------------------------------------------------------");
+        System.out.println(" ----------------------------------------------------------------------------------------------------------------------");
+        System.out.println("|    Drivers   |   Team Name  |    Location    |  No. of Races  |  Points  |  1st places  |  2nd places  |  3rd places  |");
+        System.out.println(" ----------------------------------------------------------------------------------------------------------------------");
 
         for (Formula1Driver l : drivers) {
-            System.out.printf("|  %10s  |  %10s  |  %10s    |  %10d |  %5d      |    %5d       |     %5d    |     %n    ", l.getDriverName(), l.getTeamName(), l.getLocation(), l.getNumOfRaces(), l.getPoints(), l.getPosition1(), l.getPosition2(), l.getPosition3());
+            System.out.printf("|  %-10s  |  %-10s  |  %-10s    |  %-10s    |%-10d|   %-5d      |    %-5d     |     %-5d    |\n", l.getDriverName(), l.getTeamName(), l.getLocation(), l.getNumOfRaces(), l.getPoints(), l.getPosition1(), l.getPosition2(), l.getPosition3());
         }
     }
 
     public void addRace() {
+
+        System.out.println(" ");
+        System.out.println("* List of drivers that has been already added *");
+        for (Formula1Driver d : drivers) {
+            System.out.println("- " + d.getDriverName());
+        }
 
         if (drivers.size() > 1) {
             for (int i = 0; i < drivers.size(); i++) {
@@ -378,6 +384,8 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                                 }
                             }
                         }
+                    } else {
+                        System.out.println("Driver not found! Please check the input and try again.");
                     }
                 }else {
                     System.out.println("Driver not found! Please check the driver name and try again.");
@@ -408,15 +416,21 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
     public void loadData() {
 
-        try{
+//      Referenced from - https://samderlust.com/dev-blog/java/write-read-arraylist-object-file-java
+
+        try {
             FileInputStream read = new FileInputStream("Championship_Info.ser");
             ObjectInputStream stream = new ObjectInputStream(read);
 
             ArrayList<Formula1Driver> d = (ArrayList<Formula1Driver>) stream.readObject();
             stream.close();
             System.out.println(d.toString());
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("");
+
         }catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("");
         }
     }
 
