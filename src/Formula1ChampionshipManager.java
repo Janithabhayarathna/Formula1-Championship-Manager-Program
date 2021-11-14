@@ -252,8 +252,11 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
     public void positionValidator(int position) {
 
-        if (position>0) {
+        if (position>=0) {
             validatePosition = true;
+        }
+        else {
+            validatePosition = false;
         }
     }
 
