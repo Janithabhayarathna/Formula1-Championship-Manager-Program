@@ -305,7 +305,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             if (checkDriverAvailability(statDriver)) {
                 for (Formula1Driver y : drivers) {
                     if (y.getDriverName().equals(statDriver)) {
-                        System.out.println("Mr. " + y.getDriverName());
+                        System.out.println("______________ Mr. " + y.getDriverName() + " ___________________");
                         System.out.println("Mr. " + y.getDriverName() + "'s location - " + y.getLocation());
                         System.out.println("Mr. " + y.getDriverName() + "'s team name - " + y.getTeamName());
                         System.out.println("Mr. " + y.getDriverName() + "'s no of 1st places - " + y.getPosition1());
@@ -348,6 +348,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             System.out.println("Enter the date of race: (dd/mm/yyyy)");
             String date = input.next();
             if(checkDate(date)) {
+                dates.add(date);
                 for (int i = 0; i < drivers.size(); i++) {
                     System.out.print("Enter the driver's name who got the " + (i + 1) + " place of the race: ");
                     if (input.hasNext()) {
@@ -408,9 +409,10 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             write.writeObject(drivers);
             write.flush();
             write.close();
+            System.out.println("Data saved successfully.");
 
         }catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error while saving data to the file.");
         }
     }
 
@@ -422,15 +424,16 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             FileInputStream read = new FileInputStream("Championship_Info.ser");
             ObjectInputStream stream = new ObjectInputStream(read);
 
-            ArrayList<Formula1Driver> d = (ArrayList<Formula1Driver>) stream.readObject();
+            drivers = (ArrayList<Formula1Driver>) stream.readObject();
             stream.close();
-            System.out.println(d.toString());
+            System.out.println("File loaded...");
         }
         catch (FileNotFoundException e) {
-            System.out.println("");
+            System.out.println("File not found.");
 
-        }catch (Exception e) {
-            System.out.println("");
+        }catch (IOException | ClassNotFoundException e) {
+            System.out.println("Error!");
+            e.printStackTrace();
         }
     }
 
@@ -438,7 +441,6 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
         System.out.println("Thank you for using Formula 1 Championship Manager Program'. \n                  Stay safe!");
         saveData();
-        System.out.println("Data saved...");
         System.exit(0);
     }
 }

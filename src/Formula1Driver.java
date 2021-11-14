@@ -1,6 +1,4 @@
-import java.io.Serializable;
-
-public class Formula1Driver extends Driver implements Serializable, Comparable<Formula1Driver> {
+public class Formula1Driver extends Driver implements Comparable<Formula1Driver> {
 
     private int position1;
     private int position2;
