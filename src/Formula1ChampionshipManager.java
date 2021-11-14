@@ -93,7 +93,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                     break;
 
                 default:
-                    System.out.println(" Please check the input and try again!");
+                    System.out.println(" Please check the input and try again! Refer the option menu.");
                     System.out.println(" ");
             }
         }
@@ -102,7 +102,6 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     public void createDriver() {
 
         while(true) {
-
             System.out.print("Enter the name of the driver: ");
             driverName = input.next().toLowerCase();
             checkDriverUniqueness(driverName);
@@ -135,11 +134,13 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                                                 if (input.hasNextInt()) {
                                                     numOfRaces = input.nextInt();
                                                     break;
+
                                                 } else {
                                                     System.out.println("Invalid input! Please enter a correct input and try again.");
                                                     System.out.println(" ");
                                                     input.next();
                                                     menu();
+                                                    break;
                                                 }
                                             } else {
                                                 System.out.println("Invalid input! Please enter a correct input and try again.");
@@ -194,13 +195,15 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 System.out.println(" ");
                 input.next();
                 menu();
+                break;
             }
         }
-        System.out.println("Driver " + driverName + " successfully added.");
-        System.out.println("-----------------------------------------------------------------------------------");
-        drivers.add(new Formula1Driver(driverName, location, teamName, position1, position2, position3, points, numOfRaces));
-        noOfDrivers++;
-        noOfCars++;
+            System.out.println("Driver " + driverName + " successfully added.");
+            System.out.println("-----------------------------------------------------------------------------------");
+            drivers.add(new Formula1Driver(driverName, location, teamName, position1, position2, position3, points, numOfRaces));
+            noOfDrivers++;
+            noOfCars++;
+
     }
 
     public void checkDriverUniqueness(String name) {
@@ -208,6 +211,9 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         for (Formula1Driver x : drivers) {
             if (x.getDriverName().equals(name)) {
                 validateDriver = false;
+            }
+            else {
+                validateDriver = true;
             }
         }
     }
@@ -227,6 +233,9 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         for (Formula1Driver y : drivers) {
             if (y.getTeamName().equals(team)) {
                 validateTeam = false;
+            }
+            else {
+                validateTeam = true;
             }
         }
     }
