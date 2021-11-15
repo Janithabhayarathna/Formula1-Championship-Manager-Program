@@ -36,7 +36,8 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             System.out.println("\t|   4 or DSD: Display the Statistics of a Driver.     |");
             System.out.println("\t|   5 or DDT: Display the Driver Table.               |");
             System.out.println("\t|   6 or ASR: Add Statistics of a completed Race.     |");
-            System.out.println("\t|   7 or EXT: Exit from the program.                  |");
+            System.out.println("\t|   7 or GUI: open the GUI.                           |");
+            System.out.println("\t|   8 or EXT: Exit from the program.                  |");
             System.out.println("\t -----------------------------------------------------");
             System.out.println("\t 🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️");
 
@@ -88,7 +89,13 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                     addRace();
                     break;
 
-                case "7":
+//                case "7":
+//                case "GUI":
+//                    System.out.println(" ");
+//                    GUI();
+//                    break;
+
+                case "8":
                 case "EXT":
                     System.out.println(" ");
                     exit();
