@@ -18,7 +18,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         Formula1ChampionshipManager random = new Formula1ChampionshipManager();
         random.loadData();
         System.out.println(" ");
-        System.out.println("\t 🎇 Welcome to the Formula 1 Championship Manager Program. 🎇");
+        System.out.println("\t🎇 Welcome to the Formula 1 Championship Manager Program©. 🎇");
         random.menu();
     }
 
@@ -41,7 +41,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             System.out.println("\t 🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️");
 
             System.out.println(" ");
-            System.out.print("Enter the option you want: ");
+            System.out.print("️Enter the option you want: ");
             String option = input.next().toUpperCase();
 
             switch (option) {
@@ -77,7 +77,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 case "5":
                 case "DDT":
                     System.out.println(" ");
-                    System.out.println("\t\t\t\t\t\t 🏎️ _ Display the driver table option _ 🏎️");
+                    System.out.println("\t\t\t\t\t\t\t\t\t 🏎️ _ Display the driver table option _ 🏎️");
                     driverTable();
                     break;
 
@@ -95,7 +95,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                     break;
 
                 default:
-                    System.out.println(" Please check the input and try again! Refer the option menu.");
+                    System.out.println("⚠️Please check the input and try again! Refer the option menu.");
                     System.out.println(" ");
             }
         }
@@ -137,63 +137,63 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                                                     break;
 
                                                 } else {
-                                                    System.out.println("Invalid input! Please enter a correct input and try again.");
+                                                    System.out.println("⚠️Invalid input! Please enter an integer.");
                                                     System.out.println(" ");
                                                     input.next();
                                                     menu();
                                                     break;
                                                 }
                                             } else {
-                                                System.out.println("Invalid input! Please enter a correct input and try again.");
+                                                System.out.println("⚠️Invalid type of input! Please enter an integer.");
                                                 System.out.println(" ");
                                                 input.next();
                                                 menu();
                                             }
                                         } else {
-                                            System.out.println("Invalid input! Please enter a correct input and try again.");
+                                            System.out.println("⚠️Invalid input! Please enter a positive integer.");
                                             System.out.println(" ");
                                             input.next();
                                             menu();
                                         }
                                     } else {
-                                        System.out.println("Invalid input! Please enter a correct input and try again.");
+                                        System.out.println("⚠️Invalid type of input! Please enter an integer.");
                                         System.out.println(" ");
                                         input.next();
                                         menu();
                                     }
                                 } else {
-                                    System.out.println("Invalid input! Please enter a correct input and try again.");
+                                    System.out.println("⚠️Invalid input! Please enter a positive integer.");
                                     System.out.println(" ");
                                     input.next();
                                     menu();
                                 }
                             } else {
-                                System.out.println("Invalid input! Please enter a correct input and try again.");
+                                System.out.println("⚠️Invalid type of input! Please enter an integer and try again.");
                                 System.out.println(" ");
                                 input.next();
                                 menu();
                             }
                         } else {
-                            System.out.println("Invalid input! Please enter a correct input and try again.");
+                            System.out.println("⚠️Invalid input! Input should be a positive integer");
                             System.out.println(" ");
                             input.next();
                             menu();
                         }
                     } else {
-                        System.out.println("Invalid input! Please enter a correct input and try again.");
+                        System.out.println("⚠️Invalid type of input! Please enter an integer and try again.");
                         System.out.println(" ");
                         input.next();
                         menu();
                     }
                 } else {
-                    System.out.println("Team already exists! Please check the input and try again.");
+                    System.out.println("⚠️Team already exists! Please Please refer the instructions and try again.");
                     instructions();
                     System.out.println(" ");
                     input.next();
                     menu();
                 }
             } else {
-                System.out.println("Driver already exist! Please check the input and try again.");
+                System.out.println("⚠️Driver already exist! Please refer the instructions and try again.");
                 instructions();
                 System.out.println(" ");
                 input.next();
@@ -266,17 +266,17 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             if (checkDriverAvailability(delDriverName)) {
                 for (int i =0; i<drivers.size(); i++) {
                     if(drivers.get(i).getDriverName().equals(delDriverName)) {
-                        System.out.println("Driver " + drivers.get(i).getDriverName() + " successfully removed.");
-                        System.out.println("Team " + drivers.get(i).getTeamName() + " also successfully removed.");
+                        System.out.println("✔ Driver " + drivers.get(i).getDriverName() + " successfully removed.");
+                        System.out.println("✔ Team " + drivers.get(i).getTeamName() + " also successfully removed.");
                         drivers.remove(i);
                     }
                 }
             } else {
-                System.out.println("Driver name not found! Please check the input and try again.");
+                System.out.println("⚠️Driver name not found! Please refer to the added drivers and try again.");
             }
         }
         else {
-            System.out.println("Please enter a valid driver name.");
+            System.out.println("⚠️Please enter a valid driver name.");
         }
         noOfDrivers--;
         noOfCars--;
@@ -296,19 +296,19 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                         System.out.print("Enter the preferred new driver's name: ");
                         String newDriver = input.next();
                         if (checkDriverUniqueness(newDriver)) {
-                            System.out.println(z.getTeamName() + "'s team driver changed as, " + newDriver);
+                            System.out.println("✔ Team " + z.getTeamName() + "'s driver changed as, " + z.getDriverName() + "to, " + newDriver);
                             z.setDriverName(newDriver);
                         } else{
-                            System.out.println("Driver already exist! Please check the input and try again.");
+                            System.out.println("⚠️Driver already exist! Please check the input and try again.");
                         }
                     }
                 }
             } else {
-                System.out.println("Team not found! Please check the input and try again.");
+                System.out.println("⚠️Team not found! Please check the input and try again.");
             }
         }
         else {
-            System.out.println("Invalid input!");
+            System.out.println("⚠️Invalid input!");
         }
     }
 
@@ -321,21 +321,21 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             if (checkDriverAvailability(statDriver)) {
                 for (Formula1Driver y : drivers) {
                     if (y.getDriverName().equals(statDriver)) {
-                        System.out.println("______________ Mr. " + y.getDriverName() + " ___________________");
-                        System.out.println("Mr. " + y.getDriverName() + "'s location - " + y.getLocation());
-                        System.out.println("Mr. " + y.getDriverName() + "'s team name - " + y.getTeamName());
-                        System.out.println("Mr. " + y.getDriverName() + "'s no of 1st places - " + y.getPosition1());
-                        System.out.println("Mr. " + y.getDriverName() + "'s no of 2nd places - " + y.getPosition2());
-                        System.out.println("Mr. " + y.getDriverName() + "'s no of 3rd places - " + y.getPosition3());
-                        System.out.println("Mr. " + y.getDriverName() + "'s no of points - " + y.getPoints());
-                        System.out.println("Mr. " + y.getDriverName() + "'s no of races - " + y.getNumOfRaces());
+                        System.out.println("🧘______________ Mr. " + y.getDriverName() + " ___________________🧘");
+                        System.out.println("⛔ Mr. " + y.getDriverName() + "'s location - " + y.getLocation());
+                        System.out.println("⛔ Mr. " + y.getDriverName() + "'s team name - " + y.getTeamName());
+                        System.out.println("⛔ Mr. " + y.getDriverName() + "'s no of 1st places - " + y.getPosition1());
+                        System.out.println("⛔ Mr. " + y.getDriverName() + "'s no of 2nd places - " + y.getPosition2());
+                        System.out.println("⛔ Mr. " + y.getDriverName() + "'s no of 3rd places - " + y.getPosition3());
+                        System.out.println("⛔ Mr. " + y.getDriverName() + "'s no of points - " + y.getPoints());
+                        System.out.println("⛔ Mr. " + y.getDriverName() + "'s no of races - " + y.getNumOfRaces());
                     }
                 }
             } else {
-                System.out.println("Driver not found! Please check the driver name and try again.");
+                System.out.println("⚠️Driver not found! Please check the driver name and try again.");
             }
         }else {
-            System.out.println("Invalid input! Please check the driver name and try again.");
+            System.out.println("⚠️Invalid input! Please check the driver name and try again.");
         }
     }
 
@@ -379,20 +379,21 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                                 }
                             }
                         } else {
-                            System.out.println("Driver not found! Please check the input and try again.");
+                            System.out.println("⚠️Driver not found! Please check the input and try again.");
                             menu();
                             break;
                         }
                     } else {
-                        System.out.println("Invalid input! Please check the driver name and try again.");
+                        System.out.println("⚠️Invalid input! Please check the driver name and try again.");
                         break;
                     }
                 }
+                System.out.println("✔ Race statistics successfully added.");
             } else {
-                System.out.println("Invalid date or date format! Please enter a valid input and try again.");
+                System.out.println("⚠️Invalid date or date format! Please enter a valid input and try again.");
             }
         }else {
-            System.out.println("Invalid number of drivers/cars/constructors. (Only " + drivers.size() + " teams are added.) Please add at least 2 drivers to use this function.");
+            System.out.println("⚠️Invalid number of drivers/cars/constructors. (Only " + drivers.size() + " teams are added.) Please add at least 2 drivers to use this function.");
         }
         numOfRaces++;
     }
@@ -448,10 +449,10 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             write.writeObject(drivers);
             write.flush();
             write.close();
-            System.out.println("📂 Data saved to the file successfully...");
+            System.out.println("📂 Data saved to the file(Championship_Info.ser) successfully...");
 
         }catch (IOException e) {
-            System.out.println("Error while saving data to the file.");
+            System.out.println("⚠️Error while saving data to the file.");
         }
     }
 
@@ -466,13 +467,13 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             drivers = (ArrayList<Formula1Driver>) stream.readObject();
             stream.close();
             System.out.println(" ");
-            System.out.println("\uD83D\uDCC2 File loaded...");
+            System.out.println("📂 File loaded...");
         }
         catch (FileNotFoundException e) {
-            System.out.println("File not found.");
+            System.out.println("❌ File not found.");
 
         }catch (IOException | ClassNotFoundException e) {
-            System.out.println("Error!");
+            System.out.println("❗ Error!");
             e.printStackTrace();
         }
     }
@@ -480,6 +481,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     public void exit() {
 
         System.out.println("🎇 Thank you for using 'Formula 1 Championship Manager Program 🎇'. \n \t\t\t\t\t Stay safe!");
+        System.out.println("🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟");
         saveData();
         System.exit(0);
     }
