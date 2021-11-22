@@ -7,7 +7,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     public int noOfDrivers;
     public int noOfCars;
     public static ArrayList<Formula1Driver> drivers = new ArrayList<Formula1Driver>();
-    public ArrayList<String> dates = new ArrayList<String>();
+    public static ArrayList<String> dates = new ArrayList<String>();
     public int[] pointsScheme = {25,18,15,12,10,8,6,4,2,1,0,0,0,0,0,0,0,0,0,0};
     public Scanner input = new Scanner(System.in).useDelimiter("\n");
     String driverName; String location; String teamName; int position1; int position2; int position3; int points; int numOfRaces;
@@ -89,11 +89,12 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                     addRace();
                     break;
 
-//                case "7":
-//                case "GUI":
-//                    System.out.println(" ");
-//                    GUI();
-//                    break;
+                case "7":
+                case "GUI":
+                    System.out.println(" ");
+                    System.out.println("\t 🖥️ Graphical User Interface opened...");
+                    new GUI();
+                    break;
 
                 case "8":
                 case "EXT":
