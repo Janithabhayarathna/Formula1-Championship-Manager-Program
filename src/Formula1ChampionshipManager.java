@@ -6,7 +6,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
     public int noOfDrivers;
     public int noOfCars;
-    public ArrayList<Formula1Driver> drivers = new ArrayList<Formula1Driver>();
+    public static ArrayList<Formula1Driver> drivers = new ArrayList<Formula1Driver>();
     public ArrayList<String> dates = new ArrayList<String>();
     public int[] pointsScheme = {25,18,15,12,10,8,6,4,2,1,0,0,0,0,0,0,0,0,0,0};
     public Scanner input = new Scanner(System.in).useDelimiter("\n");
@@ -50,7 +50,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 case "1":
                 case "CND":
                     System.out.println(" ");
-                    System.out.println("\t\t 🏎️ _ Create a new driver option _ 🏎️");
+                    System.out.println("\t\t\t 🏎️ _ Create a new driver option _ 🏎️");
                     createDriver();
                     break;
 
@@ -114,10 +114,12 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
             instructions();
             availableDrivers();
+            System.out.println(" ");
             System.out.print("Enter the name of the driver: ");
             driverName = input.next().toLowerCase();
             if (checkDriverUniqueness(driverName)) {
                 availableTeams();
+                System.out.println(" ");
                 System.out.print("Enter the team name of the driver: ");
                 teamName = input.next().toLowerCase();
                 if (checkTeamUniqueness(teamName)) {
@@ -269,7 +271,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         availableDrivers();
         System.out.print("Enter the name of the driver that you want to delete: ");
         if (input.hasNext()) {
-            String delDriverName = input.next();
+            String delDriverName = input.next().toLowerCase();
             if (checkDriverAvailability(delDriverName)) {
                 for (int i =0; i<drivers.size(); i++) {
                     if(drivers.get(i).getDriverName().equals(delDriverName)) {
@@ -294,14 +296,14 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         availableTeams();
         System.out.print("Enter the Team name that need to change the driver : ");
         if (input.hasNext()) {
-            String changeDriver = input.next();
+            String changeDriver = input.next().toLowerCase();
             if (checkTeamAvailability(changeDriver)) {
                 for (Formula1Driver z : drivers) {
                     if (z.getTeamName().equals(changeDriver)) {
                         instructions();
                         availableDrivers();
                         System.out.print("Enter the preferred new driver's name: ");
-                        String newDriver = input.next();
+                        String newDriver = input.next().toLowerCase();
                         if (checkDriverUniqueness(newDriver)) {
                             System.out.println("✔ Team " + z.getTeamName() + "'s driver changed as, " + z.getDriverName() + "to, " + newDriver);
                             z.setDriverName(newDriver);
@@ -324,7 +326,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         availableDrivers();
         System.out.print("Enter the Name of the driver, that need to display statistics: ");
         if (input.hasNext()) {
-            String statDriver = input.next();
+            String statDriver = input.next().toLowerCase();
             if (checkDriverAvailability(statDriver)) {
                 for (Formula1Driver y : drivers) {
                     if (y.getDriverName().equals(statDriver)) {
@@ -370,7 +372,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 for (int i = 0; i < drivers.size(); i++) {
                     System.out.print("Enter the driver's name who got the " + (i + 1) + " place of the race: ");
                     if (input.hasNext()) {
-                        String place = input.next();
+                        String place = input.next().toLowerCase();
                         if (checkDriverAvailability(place)) {
                             for (Formula1Driver r : drivers) {
                                 if (r.getDriverName().equals(place)) {
@@ -420,9 +422,9 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     public void availableDrivers() {
 
         System.out.println(" ");
-        System.out.println("* List of drivers that has been already added *");
+        System.out.println("* List of drivers that has been already added.");
         for (Formula1Driver d : drivers) {
-            System.out.println("\t 🏎️ " + d.getDriverName());
+            System.out.print(" \t 🏎️ " + d.getDriverName());
         }
         System.out.println(" ");
     }
@@ -430,9 +432,9 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     public void availableTeams() {
 
         System.out.println(" ");
-        System.out.println("* List of teams that has been already added *");
+        System.out.println("* List of teams that has been already added.");
         for (Formula1Driver d : drivers) {
-            System.out.println("\t 🏎️ " + d.getTeamName());
+            System.out.print("\t 🏎️ " + d.getTeamName());
         }
         System.out.println(" ");
     }
@@ -440,9 +442,8 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     public void instructions() {
 
         System.out.println(" ");
-        System.out.println("             ⚠️Instructions   ⚠️");
+        System.out.println("\t\t\t\t\t⚠️Instructions   ⚠️");
         System.out.println("* Driver's should be unique to teams.\n (One driver can be in a one team. One team should have only one driver.)");
-        System.out.println(" ");
     }
 
     public void saveData() {
