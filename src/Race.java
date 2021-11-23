@@ -5,6 +5,14 @@ public class Race {
     private String dateOfRace;
     private String[] place;
 
+    public String[] getPlace() {
+        return place;
+    }
+
+    public void setPlace(String[] place) {
+        this.place = place;
+    }
+
     public Race(String dateOfRace, String[] place) {
 
         this.dateOfRace = dateOfRace;
