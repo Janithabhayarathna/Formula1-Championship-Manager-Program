@@ -7,7 +7,8 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     public int noOfDrivers;
     public int noOfCars;
     public static ArrayList<Formula1Driver> drivers = new ArrayList<Formula1Driver>();
-    public static ArrayList<String> dates = new ArrayList<String>();
+    public static String[] positions = new String[20];
+    public static ArrayList<Race> races = new ArrayList<Race>();
     public int[] pointsScheme = {25,18,15,12,10,8,6,4,2,1,0,0,0,0,0,0,0,0,0,0};
     public Scanner input = new Scanner(System.in).useDelimiter("\n");
     String driverName; String location; String teamName; int position1; int position2; int position3; int points; int numOfRaces;
@@ -370,48 +371,50 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     @Override
     public void addRace() {
 
-        if (drivers.size() > 1) {
-            System.out.println("Enter the date of race: (dd/mm/yyyy)");
-            String date = input.next();
-            if(checkDate(date)) {
-                dates.add(date);
-                availableDrivers();
-                for (int i = 0; i < drivers.size(); i++) {
-                    System.out.print("Enter the driver's name who got the " + (i + 1) + " place of the race: ");
-                    if (input.hasNext()) {
-                        String place = input.next().toLowerCase();
-                        if (checkDriverAvailability(place)) {
-                            for (Formula1Driver r : drivers) {
-                                if (r.getDriverName().equals(place)) {
-                                    r.setNumOfRaces(1);
-                                    r.setPoints(pointsScheme[i]);
-                                    if (i == 0) {
-                                        r.setPosition1(1);
-                                    } else if (i == 1) {
-                                        r.setPosition2(1);
-                                    } else if (i == 2) {
-                                        r.setPosition3(1);
+            if (drivers.size() > 1) {
+                System.out.println("Enter the date of race: (dd/mm/yyyy)");
+                String date = input.next();
+                if (checkDate(date)) {
+                    availableDrivers();
+                    for (int i = 0; i < drivers.size(); i++) {
+                        System.out.print("Enter the driver's name who got the " + (i + 1) + " place of the race: ");
+                        if (input.hasNext()) {
+                            String place = input.next().toLowerCase();
+                            if (checkDriverAvailability(place)) {
+                                positions[i] = place;
+                                for (Formula1Driver r : drivers) {
+                                    if (r.getDriverName().equals(place)) {
+                                        r.setNumOfRaces(1);
+                                        r.setPoints(pointsScheme[i]);
+                                        if (i == 0) {
+                                            r.setPosition1(1);
+                                        } else if (i == 1) {
+                                            r.setPosition2(1);
+                                        } else if (i == 2) {
+                                            r.setPosition3(1);
+                                        }
                                     }
                                 }
+                            } else {
+                                System.out.println("⚠️Driver not found! Please check the input and try again.");
+                                menu();
+                                break;
                             }
                         } else {
-                            System.out.println("⚠️Driver not found! Please check the input and try again.");
-                            menu();
+                            System.out.println("⚠️Invalid input! Please check the driver name and try again.");
                             break;
                         }
-                    } else {
-                        System.out.println("⚠️Invalid input! Please check the driver name and try again.");
-                        break;
                     }
+                    races.add(new Race(date, positions));
+                    System.out.println("✔ Race statistics successfully added.");
+                } else {
+                    System.out.println("⚠️Invalid date or date format! Please enter a valid input and try again.");
                 }
-                System.out.println("✔ Race statistics successfully added.");
             } else {
-                System.out.println("⚠️Invalid date or date format! Please enter a valid input and try again.");
+                System.out.println("⚠️Invalid number of drivers/cars/constructors. (Only " + drivers.size() + " teams are added.) Please add at least 2 drivers to use this function.");
             }
-        }else {
-            System.out.println("⚠️Invalid number of drivers/cars/constructors. (Only " + drivers.size() + " teams are added.) Please add at least 2 drivers to use this function.");
-        }
-        numOfRaces++;
+            numOfRaces++;
+
     }
 
     public boolean checkDate(String date) {
@@ -490,7 +493,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             System.out.println("❌ File not found.");
 
         }catch (IOException | ClassNotFoundException e) {
-            System.out.println("❗ Error!");
+            System.out.println("Error❗");
             e.printStackTrace();
         }
     }

@@ -54,7 +54,7 @@ public class GUI implements ActionListener{
         frame.getContentPane().add(button3);
         button3.addActionListener(this);
 
-        button4 = new JButton("Sort on points");
+        button4 = new JButton("Random race");
         button4.setBounds(590,410,150,50);
         frame.getContentPane().add(button4);
 
@@ -69,9 +69,6 @@ public class GUI implements ActionListener{
         button7 = new JButton("Sort on points");
         button7.setBounds(505,485,150,50);
         frame.getContentPane().add(button7);
-
-
-
 
         JScrollPane pane = new JScrollPane(table);
         pane.setForeground(Color.RED);
