@@ -8,8 +8,8 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     public int noOfCars;
     public static ArrayList<Formula1Driver> drivers = new ArrayList<Formula1Driver>();
     public static String[] positions = new String[20];
-    public static ArrayList<Race> races = new ArrayList<Race>();
-    public int[] pointsScheme = {25,18,15,12,10,8,6,4,2,1,0,0,0,0,0,0,0,0,0,0};
+    public static ArrayList<RaceData> races = new ArrayList<RaceData>();
+    public static int[] pointsScheme = {25,18,15,12,10,8,6,4,2,1,0,0,0,0,0,0,0,0,0,0};
     public Scanner input = new Scanner(System.in).useDelimiter("\n");
     String driverName; String location; String teamName; int position1; int position2; int position3; int points; int numOfRaces;
 
@@ -405,7 +405,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                             break;
                         }
                     }
-                    races.add(new Race(date, positions));
+                    races.add(new RaceData(date, positions));
                     System.out.println("✔ Race statistics successfully added.");
                 } else {
                     System.out.println("⚠️Invalid date or date format! Please enter a valid input and try again.");
