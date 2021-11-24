@@ -57,6 +57,7 @@ public class GUI implements ActionListener{
         button4 = new JButton("Random race");
         button4.setBounds(590,410,150,50);
         frame.getContentPane().add(button4);
+        button4.addActionListener(this);
 
         button5 = new JButton("Sort on points");
         button5.setBounds(165,485,150,50);
@@ -110,6 +111,9 @@ public class GUI implements ActionListener{
             removeContent();
             Collections.sort(Formula1ChampionshipManager.drivers, Formula1Driver.descendingOnPosition1);
             fillTable(Formula1ChampionshipManager.drivers, table);
+        }
+        else if (e.getSource().equals(button4)) {
+            new RandomRace();
         }
     }
 }
