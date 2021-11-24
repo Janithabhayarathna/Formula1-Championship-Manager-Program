@@ -8,7 +8,8 @@ public class RandomRace {
 
     private String[] newPositions = new String[20];
     public JTable randomTable = new JTable();
-    ArrayList<RandomRace> rRace = new ArrayList<RandomRace>();
+    public static ArrayList<RandomRace> rRace = new ArrayList<RandomRace>();
+
     private String randomDate;
 
     public void positionInitializing(String[] positions) {
@@ -28,12 +29,12 @@ public class RandomRace {
     public RandomRace() {
 
         positionInitializing(newPositions);
-        double randomDate = (Math.random()*(28 - 1 + 1) + 1);
-        String dd = Double.toString(randomDate);
-        double randomMonth = (Math.random()*(12 - 1 + 1) + 1);
-        String MM = Double.toString(randomMonth);
-        double randomYear = (Math.random()*(2021 - 2000 + 1) + 2000);
-        String yyyy = Double.toString(randomYear);
+        int randomDate = (int)(Math.random()*(28 - 1 + 1) + 1);
+        String dd = Integer.toString(randomDate);
+        int randomMonth = (int)(Math.random()*(12 - 1 + 1) + 1);
+        String MM = Integer.toString(randomMonth);
+        int randomYear = (int)(Math.random()*(2021 - 2000 + 1) + 2000);
+        String yyyy = Integer.toString(randomYear);
         String date = dd + "/" + MM + "/" + yyyy;
 
         for (int i = 0; i < Formula1ChampionshipManager.drivers.size(); i++) {
@@ -51,7 +52,6 @@ public class RandomRace {
         }
 
         Formula1ChampionshipManager.races.add(new RaceData(date, newPositions));
-        rRace.add(new RandomRace(date, newPositions));
 
 
         JFrame frame = new JFrame(" Formula 1 Championship Manager Program.");
@@ -65,7 +65,7 @@ public class RandomRace {
         frame.setResizable(false);
 
         randomTable.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"Race date", "1st place", "2nd place", "3rd place"}));
-        fillRandomRaceTable(rRace, randomTable);
+        ((DefaultTableModel) randomTable.getModel()).addRow(new Object[]{date, newPositions[0], newPositions[1], newPositions[2]});
         randomTable.setBackground(Color.white);
         randomTable.setForeground(Color.black);
         randomTable.setGridColor(Color.blue);
@@ -74,12 +74,12 @@ public class RandomRace {
         randomTable.setFont(new Font("Serif", Font.PLAIN, 16));
         randomTable.setRowHeight(25);
 
-        public void fillRandomRaceTable (ArrayList<RandomRace> Race, JTable table){
+        JScrollPane pane = new JScrollPane(randomTable);
+        pane.setForeground(Color.RED);
+        pane.setBackground(Color.white);
+        pane.setBounds(5, 5, 780, 570);
+        frame.getContentPane().add(pane);
 
-            for (RandomRace drive : rRace) {
-                ((DefaultTableModel) randomTable.getModel()).addRow(new Object[]{drive.getRandomDate(), newPositions[0], newPositions[1], newPositions[2]});
-            }
-        }
     }
 
     public String[] getNewPositions() {
