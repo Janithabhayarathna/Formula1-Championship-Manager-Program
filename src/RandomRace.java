@@ -29,13 +29,13 @@ public class RandomRace {
     public RandomRace() {
 
         positionInitializing(newPositions);
-        int randomDate = (int)(Math.random()*(28 - 1 + 1) + 1);
+        int randomDate = (int)(Math.random()*(27 - 1 + 1) + 1);
         String dd = Integer.toString(randomDate);
-        int randomMonth = (int)(Math.random()*(12 - 1 + 1) + 1);
+        int randomMonth = (int)(Math.random()*(11 - 1 + 1) + 1);
         String MM = Integer.toString(randomMonth);
-        int randomYear = (int)(Math.random()*(2021 - 2000 + 1) + 2000);
+        int randomYear = (int)(Math.random()*(2020 - 2000 + 1) + 2000);
         String yyyy = Integer.toString(randomYear);
-        String date = dd + "/" + MM + "/" + yyyy;
+        String date = dd + " / " + MM + " / " + yyyy;
 
         for (int i = 0; i < Formula1ChampionshipManager.drivers.size(); i++) {
             Collections.shuffle(Formula1ChampionshipManager.drivers);
