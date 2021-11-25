@@ -1,9 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Collections;
 
-public class SearchRaces {
+public class SearchRaces implements ActionListener {
 
     JTable table = new JTable();
+    JButton button;
+    JTextField textBox;
 
     public SearchRaces() {
         JFrame frame = new JFrame(" Formula 1 Championship Manager Program.");
@@ -15,6 +20,16 @@ public class SearchRaces {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setResizable(false);
+
+        button = new JButton("Search");
+        button.setBounds(340,10,100,30);
+        frame.getContentPane().add(button);
+        button.addActionListener(this);
+
+        textBox = new JTextField(20);
+        textBox.setBounds(20,10,300,30);
+        textBox.setText("Enter driver name");
+        frame.getContentPane().add(textBox);
 
         table.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"Driver's Name", "Team Name", "Location", "No. of Races", "Points", "1st places", "2nd places", "3rd places"}));
 
@@ -29,8 +44,16 @@ public class SearchRaces {
         JScrollPane pane = new JScrollPane(table);
         pane.setForeground(Color.RED);
         pane.setBackground(Color.white);
-        pane.setBounds(5, 5, 780, 570);
+        pane.setBounds(5, 50, 780, 570);
         frame.getContentPane().add(pane);
 
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        if (e.getSource().equals(button)) {
+
+        }
     }
 }

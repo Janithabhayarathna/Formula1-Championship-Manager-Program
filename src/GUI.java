@@ -70,6 +70,7 @@ public class GUI implements ActionListener{
         button7 = new JButton("Driver races");
         button7.setBounds(505,485,150,50);
         frame.getContentPane().add(button7);
+        button7.addActionListener(this);
 
         JScrollPane pane = new JScrollPane(table);
         pane.setForeground(Color.RED);
@@ -114,6 +115,9 @@ public class GUI implements ActionListener{
         }
         else if (e.getSource().equals(button4)) {
             new RandomRace();
+        }
+        else if (e.getSource().equals(button7)) {
+            new SearchRaces();
         }
     }
 }
