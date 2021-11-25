@@ -15,6 +15,7 @@ public class GUI implements ActionListener{
     JButton button5;
     JButton button6;
     JButton button7;
+    static JLabel label = new JLabel("🎇 Welcome to the GUI 🎇");
     JTable table = new JTable();
 
     public GUI() {
@@ -28,6 +29,11 @@ public class GUI implements ActionListener{
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setResizable(false);
+
+        frame.getContentPane().add(label);
+        label.setBounds(20,0,700,50);
+        label.setForeground(Color.white);
+        label.setFont(new Font("Calibre",Font.BOLD,22));
 
         table.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"Driver's Name", "Team Name", "Location", "No. of Races", "Points", "1st places", "2nd places", "3rd places"}));
         fillTable(Formula1ChampionshipManager.drivers, table);
@@ -75,8 +81,9 @@ public class GUI implements ActionListener{
         JScrollPane pane = new JScrollPane(table);
         pane.setForeground(Color.RED);
         pane.setBackground(Color.white);
-        pane.setBounds(5, 5, 780, 570);
+        pane.setBounds(5, 60, 780, 570);
         frame.getContentPane().add(pane);
+
     }
 
     public static void fillTable (ArrayList < Formula1Driver > driver, JTable table){
@@ -102,16 +109,19 @@ public class GUI implements ActionListener{
             removeContent();
             Collections.sort(Formula1ChampionshipManager.drivers);
             fillTable(Formula1ChampionshipManager.drivers, table);
+            label.setText(" Stats of all drivers in descending order of points.");
         }
         else if (e.getSource().equals(button2)) {
             removeContent();
             Collections.sort(Formula1ChampionshipManager.drivers, Formula1Driver.ascendingOnPoint);
             fillTable(Formula1ChampionshipManager.drivers, table);
+            label.setText(" Stats of all drivers in ascending order of points.");
         }
         else if (e.getSource().equals(button3)) {
             removeContent();
             Collections.sort(Formula1ChampionshipManager.drivers, Formula1Driver.descendingOnPosition1);
             fillTable(Formula1ChampionshipManager.drivers, table);
+            label.setText(" Stats of all drivers in descending order of no. of 1st places.");
         }
         else if (e.getSource().equals(button4)) {
             new RandomRace();

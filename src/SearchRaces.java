@@ -11,6 +11,8 @@ public class SearchRaces implements ActionListener {
     JTextField textBox;
 
     public SearchRaces() {
+
+        JLabel label1 = new JLabel("  Driver's races.");
         JFrame frame = new JFrame(" Formula 1 Championship Manager Program.");
         frame.getContentPane().setBackground(Color.black);
         frame.getContentPane().setForeground(Color.white);
@@ -21,15 +23,15 @@ public class SearchRaces implements ActionListener {
         frame.setVisible(true);
         frame.setResizable(false);
 
-        button = new JButton("Search");
-        button.setBounds(340,10,100,30);
-        frame.getContentPane().add(button);
-        button.addActionListener(this);
-
         textBox = new JTextField(20);
-        textBox.setBounds(20,10,300,30);
+        textBox.setBounds(20,10,350,30);
         textBox.setText("Enter driver name");
         frame.getContentPane().add(textBox);
+
+        button = new JButton("Search");
+        button.setBounds(390,10,100,30);
+        frame.getContentPane().add(button);
+        button.addActionListener(this);
 
         table.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"Driver's Name", "Team Name", "Location", "No. of Races", "Points", "1st places", "2nd places", "3rd places"}));
 

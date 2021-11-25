@@ -6,6 +6,7 @@ import java.util.Collections;
 
 public class RandomRace {
 
+    JLabel label1 = new JLabel(" ");
     private String[] newPositions = new String[Formula1ChampionshipManager.drivers.size()];
     public JTable randomTable = new JTable();
     public static ArrayList<RandomRace> rRace = new ArrayList<RandomRace>();
@@ -27,6 +28,7 @@ public class RandomRace {
 
     public RandomRace() {
 
+        label1.setText(" Random race details.");
         positionInitializing(newPositions);
         int randomDate = (int)(Math.random()*(27 - 1 + 1) + 1);
         String dd = Integer.toString(randomDate);
@@ -63,6 +65,11 @@ public class RandomRace {
         frame.setVisible(true);
         frame.setResizable(false);
 
+        frame.getContentPane().add(label1);
+        label1.setBounds(20,0,700,50);
+        label1.setForeground(Color.white);
+        label1.setFont(new Font("Calibre",Font.BOLD,22));
+
         randomTable.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"Race date", "1st place", "2nd place", "3rd place"}));
         ((DefaultTableModel) randomTable.getModel()).addRow(new Object[]{date, newPositions[0], newPositions[1], newPositions[2]});
         randomTable.setBackground(Color.white);
@@ -76,7 +83,7 @@ public class RandomRace {
         JScrollPane pane = new JScrollPane(randomTable);
         pane.setForeground(Color.RED);
         pane.setBackground(Color.white);
-        pane.setBounds(5, 5, 780, 570);
+        pane.setBounds(5, 60, 780, 570);
         frame.getContentPane().add(pane);
 
     }
