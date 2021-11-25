@@ -6,7 +6,7 @@ import java.util.Collections;
 
 public class RandomRace {
 
-    private String[] newPositions = new String[Formula1ChampionshipManager.drivers.size()];
+    private String[] newPositions = new String[3];
     public JTable randomTable = new JTable();
     public static ArrayList<RandomRace> rRace = new ArrayList<RandomRace>();
 
@@ -14,7 +14,7 @@ public class RandomRace {
 
     public void positionInitializing(String[] positions) {
 
-        for (int l=0; l< newPositions.length; l++) {
+        for (int l=0; l< 3; l++) {
 
             newPositions[l] = "No Driver";
         }
@@ -37,9 +37,10 @@ public class RandomRace {
         String yyyy = Integer.toString(randomYear);
         String date = dd + " / " + MM + " / " + yyyy;
 
-        for (int i = 0; i < Formula1ChampionshipManager.drivers.size(); i++) {
-            Collections.shuffle(Formula1ChampionshipManager.drivers);
-            if (randomPositionValidate(newPositions)) {
+        Collections.shuffle(Formula1ChampionshipManager.drivers);
+        for (int i = 0; i < 3; i++) {
+
+//            if (randomPositionValidate(newPositions)) {
                 newPositions[i] = Formula1ChampionshipManager.drivers.get(i).getDriverName();
                 Formula1ChampionshipManager.drivers.get(i).setNumOfRaces(1);
                 Formula1ChampionshipManager.drivers.get(i).setPoints(Formula1ChampionshipManager.pointsScheme[i]);
@@ -50,7 +51,7 @@ public class RandomRace {
                 } else if (i == 2) {
                     Formula1ChampionshipManager.drivers.get(i).setPosition3(1);
                 }
-            }
+//            }
         }
 
         Formula1ChampionshipManager.races.add(new RaceData(date, newPositions));
@@ -99,19 +100,20 @@ public class RandomRace {
         this.randomDate = randomDate;
     }
 
-    public boolean randomPositionValidate(String[] newPositions) {
-
-        if (newPositions.length > 0) {
-            for (int i = 0; i < Formula1ChampionshipManager.drivers.size(); i++) {
-                for (int f = 0; f < newPositions.length; f++) {
-                    if (Formula1ChampionshipManager.drivers.get(i).getDriverName().equals(newPositions[f])) {
-                        return false;
-                    }
-                }
-            }
-            return true;
-        }
-        return true;
-    }
+//    public boolean randomPositionValidate(String[] newPosition) {
+//
+//        if (newPosition.length > 0) {
+//            for (int i = 0; i < Formula1ChampionshipManager.drivers.size(); i++) {
+//                for (int f = 0; f < 3; f++) {
+//                    if (Formula1ChampionshipManager.drivers.get(i).getDriverName().equals(newPosition[f])) {
+//                        return false;
+//                    }
+//                    return true;
+//                }
+//            }
+//            return true;
+//        }
+//        return true;
+//    }
 
 }
