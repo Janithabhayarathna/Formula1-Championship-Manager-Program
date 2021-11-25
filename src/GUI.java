@@ -33,7 +33,7 @@ public class GUI implements ActionListener{
         fillTable(Formula1ChampionshipManager.drivers, table);
         table.setBackground(Color.white);
         table.setForeground(Color.black);
-        table.setGridColor(Color.blue);
+//        table.setGridColor(Color.blue);
         table.setSelectionBackground(Color.LIGHT_GRAY);
         table.setSelectionForeground(Color.BLUE);
         table.setFont(new Font("Serif", Font.PLAIN, 16));
@@ -59,15 +59,15 @@ public class GUI implements ActionListener{
         frame.getContentPane().add(button4);
         button4.addActionListener(this);
 
-        button5 = new JButton("Sort on points");
+        button5 = new JButton("Random race on position");
         button5.setBounds(165,485,150,50);
         frame.getContentPane().add(button5);
 
-        button6 = new JButton("Sort on points");
+        button6 = new JButton("Display races");
         button6.setBounds(335,485,150,50);
         frame.getContentPane().add(button6);
 
-        button7 = new JButton("Sort on points");
+        button7 = new JButton("Driver races");
         button7.setBounds(505,485,150,50);
         frame.getContentPane().add(button7);
 

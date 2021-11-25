@@ -6,14 +6,14 @@ import java.util.Collections;
 
 public class RandomRace {
 
-    private String[] newPositions = new String[3];
+    private String[] newPositions = new String[Formula1ChampionshipManager.drivers.size()];
     public JTable randomTable = new JTable();
     public static ArrayList<RandomRace> rRace = new ArrayList<RandomRace>();
     private String randomDate;
 
     public void positionInitializing(String[] positions) {
 
-        for (int l=0; l< 3; l++) {
+        for (int l=0; l< Formula1ChampionshipManager.drivers.size(); l++) {
 
             newPositions[l] = "No Driver";
         }
@@ -38,7 +38,7 @@ public class RandomRace {
 
         Collections.shuffle(Formula1ChampionshipManager.drivers);
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Formula1ChampionshipManager.drivers.size(); i++) {
             newPositions[i] = Formula1ChampionshipManager.drivers.get(i).getDriverName();
             Formula1ChampionshipManager.drivers.get(i).setNumOfRaces(1);
             Formula1ChampionshipManager.drivers.get(i).setPoints(Formula1ChampionshipManager.pointsScheme[i]);
