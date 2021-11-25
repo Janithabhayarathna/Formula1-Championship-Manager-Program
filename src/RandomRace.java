@@ -58,7 +58,7 @@ public class RandomRace {
         JFrame frame = new JFrame(" Formula 1 Championship Manager Program.");
         frame.getContentPane().setBackground(Color.black);
         frame.getContentPane().setForeground(Color.white);
-        frame.setBounds(100, 100, 810, 600);
+        frame.setBounds(100, 100, 810, 400);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().setLayout(null);
         frame.setLocationRelativeTo(null);

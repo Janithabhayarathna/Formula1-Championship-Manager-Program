@@ -23,7 +23,7 @@ public class GUI implements ActionListener{
         JFrame frame = new JFrame(" Formula 1 Championship Manager Program.");
         frame.getContentPane().setBackground(Color.black);
         frame.getContentPane().setForeground(Color.white);
-        frame.setBounds(100, 100, 810, 600);
+        frame.setBounds(100, 100, 810, 500);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().setLayout(null);
         frame.setLocationRelativeTo(null);
@@ -35,54 +35,55 @@ public class GUI implements ActionListener{
         label.setForeground(Color.white);
         label.setFont(new Font("Calibre",Font.BOLD,22));
 
-        table.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"Driver's Name", "Team Name", "Location", "No. of Races", "Points", "1st places", "2nd places", "3rd places"}));
-        fillTable(Formula1ChampionshipManager.drivers, table);
-        table.setBackground(Color.white);
-        table.setForeground(Color.black);
-//        table.setGridColor(Color.blue);
-        table.setSelectionBackground(Color.LIGHT_GRAY);
-        table.setSelectionForeground(Color.BLUE);
-        table.setFont(new Font("Serif", Font.PLAIN, 16));
-        table.setRowHeight(25);
-
         button1 = new JButton("Points on desc");
-        button1.setBounds(80,410,150,50);
+        button1.setBounds(80,60,120,40);
         frame.getContentPane().add(button1);
         button1.addActionListener(this);
 
         button2 = new JButton("Points on asc");
-        button2.setBounds(250,410,150,50);
+        button2.setBounds(250,60,120,40);
         frame.getContentPane().add(button2);
         button2.addActionListener(this);
 
         button3 = new JButton("1st positions desc");
-        button3.setBounds(420,410,150,50);
+        button3.setBounds(420,60,120,40);
         frame.getContentPane().add(button3);
         button3.addActionListener(this);
 
         button4 = new JButton("Random race");
-        button4.setBounds(590,410,150,50);
+        button4.setBounds(590,60,120,40);
         frame.getContentPane().add(button4);
         button4.addActionListener(this);
 
         button5 = new JButton("Random race on position");
-        button5.setBounds(165,485,150,50);
+        button5.setBounds(165,120,120,40);
         frame.getContentPane().add(button5);
 
         button6 = new JButton("Display races");
-        button6.setBounds(335,485,150,50);
+        button6.setBounds(335,120,120,40);
         frame.getContentPane().add(button6);
 
         button7 = new JButton("Driver races");
-        button7.setBounds(505,485,150,50);
+        button7.setBounds(505,120,120,40);
         frame.getContentPane().add(button7);
         button7.addActionListener(this);
 
+        table.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"Driver's Name", "Team Name", "Location", "No. of Races", "Points", "1st places", "2nd places", "3rd places"}));
+        fillTable(Formula1ChampionshipManager.drivers, table);
+        table.setBackground(Color.white);
+        table.setForeground(Color.black);
+        table.setGridColor(Color.blue);
+        table.setSelectionBackground(Color.blue);
+        table.setSelectionForeground(Color.white);
+        table.setFont(new Font("Serif", Font.PLAIN, 16));
+        table.setRowHeight(25);
+
         JScrollPane pane = new JScrollPane(table);
         pane.setForeground(Color.RED);
-        pane.setBackground(Color.white);
-        pane.setBounds(5, 60, 780, 570);
+        pane.setBackground(Color.blue);
+        pane.setBounds(5, 190, 780, 570);
         frame.getContentPane().add(pane);
+
 
     }
 

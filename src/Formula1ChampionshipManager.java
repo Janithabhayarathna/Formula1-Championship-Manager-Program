@@ -154,65 +154,65 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
                                                 } else {
                                                     System.out.println("⚠️Invalid input! Please enter an integer.");
-                                                    System.out.println(" ");
                                                     input.next();
+                                                    System.out.println(" ");
                                                     menu();
                                                     break;
                                                 }
                                             } else {
                                                 System.out.println("⚠️Invalid type of input! Please enter an integer.");
-                                                System.out.println(" ");
                                                 input.next();
+                                                System.out.println(" ");
                                                 menu();
                                             }
                                         } else {
                                             System.out.println("⚠️Invalid input! Please enter a positive integer.");
-                                            System.out.println(" ");
                                             input.next();
+                                            System.out.println(" ");
                                             menu();
                                         }
                                     } else {
                                         System.out.println("⚠️Invalid type of input! Please enter an integer.");
-                                        System.out.println(" ");
                                         input.next();
+                                        System.out.println(" ");
                                         menu();
                                     }
                                 } else {
                                     System.out.println("⚠️Invalid input! Please enter a positive integer.");
-                                    System.out.println(" ");
                                     input.next();
+                                    System.out.println(" ");
                                     menu();
                                 }
                             } else {
                                 System.out.println("⚠️Invalid type of input! Please enter an integer and try again.");
-                                System.out.println(" ");
                                 input.next();
+                                System.out.println(" ");
                                 menu();
                             }
                         } else {
                             System.out.println("⚠️Invalid input! Input should be a positive integer");
-                            System.out.println(" ");
                             input.next();
+                            System.out.println(" ");
                             menu();
                         }
                     } else {
                         System.out.println("⚠️Invalid type of input! Please enter an integer and try again.");
-                        System.out.println(" ");
                         input.next();
+                        System.out.println(" ");
                         menu();
                     }
                 } else {
                     System.out.println("⚠️Team already exists! Please Please refer the instructions and try again.");
                     instructions();
-                    System.out.println(" ");
                     input.next();
+                    System.out.println(" ");
                     menu();
                 }
             } else {
                 System.out.println("⚠️Driver already exist! Please refer the instructions and try again.");
                 instructions();
-                System.out.println(" ");
                 input.next();
+                System.out.println(" ");
                 menu();
                 break;
             }
@@ -316,7 +316,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                         System.out.print(" >> Enter the preferred new driver's name: ");
                         String newDriver = input.next().toLowerCase();
                         if (checkDriverUniqueness(newDriver)) {
-                            System.out.println("✔ Team " + z.getTeamName() + "'s driver changed as, " + z.getDriverName() + "to, " + newDriver);
+                            System.out.println("✔ Team " + z.getTeamName() + "'s driver changed as, " + z.getDriverName() + " to, " + newDriver);
                             z.setDriverName(newDriver);
                         } else{
                             System.out.println("⚠️Driver already exist! Please check the input and try again.");
