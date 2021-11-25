@@ -116,17 +116,21 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         while(true) {
 
             instructions();
-            availableDrivers();
+            if (drivers.size() > 0) {
+                availableDrivers();
+            }
             System.out.println(" ");
             System.out.print(" >> Enter the name of the driver: ");
             driverName = input.next().toLowerCase();
             if (checkDriverUniqueness(driverName)) {
-                availableTeams();
+                if (drivers.size() > 0) {
+                    availableTeams();
+                }
                 System.out.println(" ");
                 System.out.print(" >> Enter the team name of the driver: ");
                 teamName = input.next().toLowerCase();
                 if (checkTeamUniqueness(teamName)) {
-                    System.out.print(" >>Enter the driver's location: ");
+                    System.out.print(" >> Enter the driver's location: ");
                     location = input.next();
                     System.out.print(" >> Enter the number of 1st positions achieved by the driver: ");
                     if (input.hasNextInt()) {
@@ -213,12 +217,13 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 break;
             }
         }
-            System.out.println("✔ Driver " + driverName + " successfully added.");
-            System.out.println("-----------------------------------------------------------------------------------");
-            drivers.add(new Formula1Driver(driverName, location, teamName, position1, position2, position3, points, numOfRaces));
-            noOfDrivers++;
-            noOfCars++;
 
+        System.out.println(" ");
+        System.out.println("✔ Driver " + driverName + " of team " + teamName + " successfully added.");
+        System.out.println("-----------------------------------------------------------------------------------");
+        drivers.add(new Formula1Driver(driverName, location, teamName, position1, position2, position3, points, numOfRaces));
+        noOfDrivers++;
+        noOfCars++;
     }
 
     public boolean checkDriverUniqueness(String name) {
@@ -293,6 +298,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         }
         noOfDrivers--;
         noOfCars--;
+        System.out.println("-----------------------------------------------------------------------------------");
     }
 
     @Override
@@ -324,6 +330,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         else {
             System.out.println("⚠️Invalid input!");
         }
+        System.out.println("-----------------------------------------------------------------------------------");
     }
 
     @Override
@@ -352,6 +359,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         }else {
             System.out.println("⚠️Invalid input! Please check the driver name and try again.");
         }
+        System.out.println("-----------------------------------------------------------------------------------");
     }
 
     @Override
@@ -371,55 +379,55 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     @Override
     public void addRace() {
 
-            if (drivers.size() > 1) {
-                System.out.println(" >> Enter the date of race: (dd/mm/yyyy)");
-                String date = input.next();
-                if (checkDate(date)) {
-                    availableDrivers();
-                    for (int i = 0; i < drivers.size(); i++) {
-                        System.out.print(" >> Enter the driver's name who got the " + (i + 1) + " place of the race: ");
-                        if (input.hasNext()) {
-                            String place = input.next().toLowerCase();
-                            if (checkDriverAvailability(place)) {
-                                if (placeAvailability(place, positions)) {
-                                    positions[i] = place;
-                                    for (Formula1Driver r : drivers) {
-                                        if (r.getDriverName().equals(place)) {
-                                            r.setNumOfRaces(1);
-                                            r.setPoints(pointsScheme[i]);
-                                            if (i == 0) {
-                                                r.setPosition1(1);
-                                            } else if (i == 1) {
-                                                r.setPosition2(1);
-                                            } else if (i == 2) {
-                                                r.setPosition3(1);
-                                            }
+        if (drivers.size() > 1) {
+            System.out.println(" >> Enter the date of race: (dd/mm/yyyy)");
+            String date = input.next();
+            if (checkDate(date)) {
+                availableDrivers();
+                for (int i = 0; i < drivers.size(); i++) {
+                    System.out.print(" >> Enter the driver's name who got the " + (i + 1) + " place of the race: ");
+                    if (input.hasNext()) {
+                        String place = input.next().toLowerCase();
+                        if (checkDriverAvailability(place)) {
+                            if (placeAvailability(place, positions)) {
+                                positions[i] = place;
+                                for (Formula1Driver r : drivers) {
+                                    if (r.getDriverName().equals(place)) {
+                                        r.setNumOfRaces(1);
+                                        r.setPoints(pointsScheme[i]);
+                                        if (i == 0) {
+                                            r.setPosition1(1);
+                                        } else if (i == 1) {
+                                            r.setPosition2(1);
+                                        } else if (i == 2) {
+                                            r.setPosition3(1);
                                         }
                                     }
-                                } else {
-                                    System.out.println("⚠️Driver " + place + " already has an place in the race.");
-                                    break;
                                 }
                             } else {
-                                System.out.println("⚠️Driver not found! Please check the input and try again.");
-                                menu();
+                                System.out.println("⚠️Driver " + place + " already has an place in the race.");
                                 break;
                             }
                         } else {
-                            System.out.println("⚠️Invalid input! Please check the driver name and try again.");
+                            System.out.println("⚠️Driver not found! Please check the input and try again.");
+                            menu();
                             break;
                         }
+                    } else {
+                        System.out.println("⚠️Invalid input! Please check the driver name and try again.");
+                        break;
                     }
-                    races.add(new RaceData(date, positions));
-                    System.out.println("✔ Race statistics successfully added.");
-                } else {
-                    System.out.println("⚠️Invalid date or date format! Please enter a valid input and try again.");
                 }
+                races.add(new RaceData(date, positions));
+                System.out.println("✔ Race statistics successfully added.");
             } else {
-                System.out.println("⚠️Invalid number of drivers/cars/constructors. (Only " + drivers.size() + " teams are added.) Please add at least 2 drivers to use this function.");
+                System.out.println("⚠️Invalid date or date format! Please enter a valid input and try again.");
             }
-            numOfRaces++;
-
+        } else {
+            System.out.println("⚠️Invalid number of drivers/cars/constructors. (Only " + drivers.size() + " teams are added.) Please add at least 2 drivers to use this function.");
+        }
+        numOfRaces++;
+        System.out.println("-----------------------------------------------------------------------------------");
     }
 
     public boolean checkDate(String date) {
@@ -468,7 +476,9 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
         System.out.println(" ");
         System.out.println("\t\t\t\t\t⚠️Instructions   ⚠️");
-        System.out.println("* Driver's should be unique to teams.\n (One driver can be in a one team. One team should have only one driver.)");
+        System.out.println(" ");
+        System.out.println("* Driver's should be unique to teams. (One driver can only be in a one team. One team can only have a one driver.)");
+        System.out.println("* Enter a name which not in the below list.");
     }
 
 

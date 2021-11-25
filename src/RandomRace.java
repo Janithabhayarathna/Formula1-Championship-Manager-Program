@@ -9,7 +9,6 @@ public class RandomRace {
     private String[] newPositions = new String[3];
     public JTable randomTable = new JTable();
     public static ArrayList<RandomRace> rRace = new ArrayList<RandomRace>();
-
     private String randomDate;
 
     public void positionInitializing(String[] positions) {
@@ -35,23 +34,21 @@ public class RandomRace {
         String MM = Integer.toString(randomMonth);
         int randomYear = (int)(Math.random()*(2020 - 2000 + 1) + 2000);
         String yyyy = Integer.toString(randomYear);
-        String date = dd + " / " + MM + " / " + yyyy;
+        String date = " " + dd + " / " + MM + " / " + yyyy;
 
         Collections.shuffle(Formula1ChampionshipManager.drivers);
-        for (int i = 0; i < 3; i++) {
 
-//            if (randomPositionValidate(newPositions)) {
-                newPositions[i] = Formula1ChampionshipManager.drivers.get(i).getDriverName();
-                Formula1ChampionshipManager.drivers.get(i).setNumOfRaces(1);
-                Formula1ChampionshipManager.drivers.get(i).setPoints(Formula1ChampionshipManager.pointsScheme[i]);
-                if (i == 0) {
-                    Formula1ChampionshipManager.drivers.get(i).setPosition1(1);
-                } else if (i == 1) {
-                    Formula1ChampionshipManager.drivers.get(i).setPosition2(1);
-                } else if (i == 2) {
-                    Formula1ChampionshipManager.drivers.get(i).setPosition3(1);
-                }
-//            }
+        for (int i = 0; i < 3; i++) {
+            newPositions[i] = Formula1ChampionshipManager.drivers.get(i).getDriverName();
+            Formula1ChampionshipManager.drivers.get(i).setNumOfRaces(1);
+            Formula1ChampionshipManager.drivers.get(i).setPoints(Formula1ChampionshipManager.pointsScheme[i]);
+            if (i == 0) {
+                Formula1ChampionshipManager.drivers.get(i).setPosition1(1);
+            } else if (i == 1) {
+                Formula1ChampionshipManager.drivers.get(i).setPosition2(1);
+            } else if (i == 2) {
+                Formula1ChampionshipManager.drivers.get(i).setPosition3(1);
+            }
         }
 
         Formula1ChampionshipManager.races.add(new RaceData(date, newPositions));
@@ -99,21 +96,5 @@ public class RandomRace {
     public void setRandomDate(String randomDate) {
         this.randomDate = randomDate;
     }
-
-//    public boolean randomPositionValidate(String[] newPosition) {
-//
-//        if (newPosition.length > 0) {
-//            for (int i = 0; i < Formula1ChampionshipManager.drivers.size(); i++) {
-//                for (int f = 0; f < 3; f++) {
-//                    if (Formula1ChampionshipManager.drivers.get(i).getDriverName().equals(newPosition[f])) {
-//                        return false;
-//                    }
-//                    return true;
-//                }
-//            }
-//            return true;
-//        }
-//        return true;
-//    }
 
 }
