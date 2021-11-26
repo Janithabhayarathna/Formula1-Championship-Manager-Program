@@ -10,28 +10,42 @@ public class SearchRaces implements ActionListener {
     JTable table = new JTable();
     JButton button;
     JTextField textBox;
+    JLabel label2;
+    JLabel label3;
 
     public SearchRaces() {
 
-        JLabel label1 = new JLabel("  Driver's races.");
         JFrame frame = new JFrame(" Formula 1 Championship Manager Program.");
         frame.getContentPane().setBackground(Color.black);
         frame.getContentPane().setForeground(Color.white);
-        frame.setBounds(100, 100, 810, 600);
+        frame.setBounds(100, 100, 810, 400);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().setLayout(null);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setResizable(false);
 
+        label2 = new JLabel("  Driver participated race details.");
+        frame.getContentPane().add(label2);
+        label2.setBounds(20,0,700,50);
+        label2.setForeground(Color.white);
+        label2.setFont(new Font("Calibre",Font.BOLD,22));
+
+        label3 = new JLabel(" ");
+        frame.getContentPane().add(label3);
+        label3.setBounds(560,10,300,50);
+        label3.setForeground(Color.red);
+        label3.setBackground(Color.black);
+        label3.setFont(new Font("Calibre",Font.BOLD,20));
+
         textBox = new JTextField(20);
-        textBox.setBounds(20,10,350,30);
+        textBox.setBounds(20,50,350,30);
         textBox.setText("Enter driver name");
         textBox.setToolTipText("Enter the driver's name here.");
         frame.getContentPane().add(textBox);
 
         button = new JButton("🔍 Search");
-        button.setBounds(390,10,100,30);
+        button.setBounds(390,50,100,30);
         frame.getContentPane().add(button);
         button.addActionListener(this);
 
@@ -47,7 +61,7 @@ public class SearchRaces implements ActionListener {
         JScrollPane pane = new JScrollPane(table);
         pane.setForeground(Color.RED);
         pane.setBackground(Color.white);
-        pane.setBounds(5, 50, 780, 570);
+        pane.setBounds(5, 100, 780, 570);
         frame.getContentPane().add(pane);
 
     }
@@ -57,21 +71,24 @@ public class SearchRaces implements ActionListener {
 
         if (e.getSource().equals(button)) {
             String name = textBox.getText().toLowerCase();
-//            if (Formula1ChampionshipManager.checkDriverAvailability(name)) {
-                for (int k = 0; k<Formula1ChampionshipManager.races.size(); k++) {
-                    RaceData temp = Formula1ChampionshipManager.races.get(k);
-                    for (int y = 0; y < Formula1ChampionshipManager.positions.length; y++) {
-                        if(temp.getPlace()[y].equals(name)) {
-                            ((DefaultTableModel) table.getModel()).addRow(new Object[]{Formula1ChampionshipManager.races.get(k).getDateOfRace(),y});
+            if (Formula1ChampionshipManager.races.size() > 0) {
+                if (Formula1ChampionshipManager.checkDriverAvailability(name)) {
+                    for (int k = 0; k<Formula1ChampionshipManager.races.size(); k++) {
+                        RaceData temp = Formula1ChampionshipManager.races.get(k);
+                        for (int y = 0; y < Formula1ChampionshipManager.positions.length; y++) {
+                            if(temp.getPlace()[y].equals(name)) {
+                                ((DefaultTableModel) table.getModel()).addRow(new Object[]{Formula1ChampionshipManager.races.get(k).getDateOfRace(),y+1});
+                            }
                         }
                     }
                 }
-//            }
-//            else {
-//                System.out.println("hriyanne na appa");
-//                new SearchRaces();
-//
-//            }
+                else {
+                    label3.setText("Driver not found❗");
+                    new SearchRaces();
+                }
+            } else {
+                label3.setText("No race data available❗");
+            }
         }
     }
 }

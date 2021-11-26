@@ -405,16 +405,21 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                                     }
                                 }
                             } else {
+                                System.out.println(" ");
                                 System.out.println("⚠️Driver " + place + " already has an place in the race.");
+                                menu();
                                 break;
                             }
                         } else {
+                            System.out.println(" ");
                             System.out.println("⚠️Driver not found! Please check the input and try again.");
                             menu();
                             break;
                         }
                     } else {
+                        System.out.println(" ");
                         System.out.println("⚠️Invalid input! Please check the driver name and try again.");
+                        menu();
                         break;
                     }
                 }
@@ -491,6 +496,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             ObjectOutputStream write = new ObjectOutputStream(data);
 
             write.writeObject(drivers);
+            write.writeObject(races);
             write.flush();
             write.close();
             System.out.println("📂 Data saved to the file(Championship_Info.ser) successfully...");
