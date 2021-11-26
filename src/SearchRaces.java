@@ -44,7 +44,7 @@ public class SearchRaces implements ActionListener {
         textBox.setToolTipText("Enter the driver's name here.");
         frame.getContentPane().add(textBox);
 
-        button = new JButton("🔍 Search");
+        button = new JButton("🔎 Search");
         button.setBounds(390,50,100,30);
         frame.getContentPane().add(button);
         button.addActionListener(this);
@@ -69,11 +69,6 @@ public class SearchRaces implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        for (int i = 0; i <Formula1ChampionshipManager.positions.length; i++) {
-
-            System.out.println(Formula1ChampionshipManager.positions[i]);
-        }
-
         if (e.getSource().equals(button)) {
             String name = textBox.getText().toLowerCase();
             if (Formula1ChampionshipManager.races.size() > 0) {
@@ -88,11 +83,11 @@ public class SearchRaces implements ActionListener {
                     }
                 }
                 else {
-                    label3.setText("⛔ Driver not found❗");
+                    label3.setText("Driver not found❗");
                     new SearchRaces();
                 }
             } else {
-                label3.setText("⛔ No race data available❗");
+                label3.setText("No race data available❗");
             }
         }
     }

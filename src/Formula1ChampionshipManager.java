@@ -320,15 +320,18 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                             z.setDriverName(newDriver);
                         } else{
                             System.out.println("⚠️Driver already exist! Please check the input and try again.");
+                            menu();
                         }
                     }
                 }
             } else {
                 System.out.println("⚠️Team not found! Please check the input and try again.");
+                menu();
             }
         }
         else {
             System.out.println("⚠️Invalid input!");
+            menu();
         }
         System.out.println("-----------------------------------------------------------------------------------");
     }
@@ -355,9 +358,11 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 }
             } else {
                 System.out.println("⚠️Driver not found! Please check the driver name and try again.");
+                menu();
             }
         }else {
             System.out.println("⚠️Invalid input! Please check the driver name and try again.");
+            menu();
         }
         System.out.println("-----------------------------------------------------------------------------------");
     }
@@ -425,7 +430,6 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                     }
                 }
                 races.add(new RaceData(date, positions));
-
                 System.out.println(" ");
                 System.out.println("✔ Race statistics successfully added.");
                 numOfRaces++;
@@ -438,16 +442,6 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             System.out.println("⚠️Invalid number of drivers/cars/constructors. (Only " + drivers.size() + " teams are added.) Please add at least 2 drivers to use this function.");
         }
 
-    }
-
-    public void p() {
-
-        System.out.println(races.size());
-        for (RaceData r : races) {
-            System.out.println("in the for");
-            System.out.println(Arrays.toString(r.getPlace()));
-        }
-        System.out.println("out the for");
     }
 
     public void positionInitializing() {
