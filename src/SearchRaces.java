@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,7 +36,6 @@ public class SearchRaces implements ActionListener {
         button.addActionListener(this);
 
         table.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"Date", "Position"}));
-
         table.setBackground(Color.white);
         table.setForeground(Color.black);
         table.setGridColor(Color.blue);
@@ -56,7 +56,22 @@ public class SearchRaces implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource().equals(button)) {
-
+            String name = textBox.getText().toLowerCase();
+//            if (Formula1ChampionshipManager.checkDriverAvailability(name)) {
+                for (int k = 0; k<Formula1ChampionshipManager.races.size(); k++) {
+                    RaceData temp = Formula1ChampionshipManager.races.get(k);
+                    for (int y = 0; y < Formula1ChampionshipManager.positions.length; y++) {
+                        if(temp.getPlace()[y].equals(name)) {
+                            ((DefaultTableModel) table.getModel()).addRow(new Object[]{Formula1ChampionshipManager.races.get(k).getDateOfRace(),y});
+                        }
+                    }
+                }
+//            }
+//            else {
+//                System.out.println("hriyanne na appa");
+//                new SearchRaces();
+//
+//            }
         }
     }
 }

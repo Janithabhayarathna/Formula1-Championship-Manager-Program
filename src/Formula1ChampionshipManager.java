@@ -236,7 +236,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         return true;
     }
 
-    public boolean checkDriverAvailability(String name) {
+    public static boolean checkDriverAvailability(String name) {
 
         for (Formula1Driver x : drivers) {
             if (x.getDriverName().equals(name)) {
