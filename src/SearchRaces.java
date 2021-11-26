@@ -69,25 +69,30 @@ public class SearchRaces implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        for (int i = 0; i <Formula1ChampionshipManager.positions.length; i++) {
+
+            System.out.println(Formula1ChampionshipManager.positions[i]);
+        }
+
         if (e.getSource().equals(button)) {
             String name = textBox.getText().toLowerCase();
             if (Formula1ChampionshipManager.races.size() > 0) {
                 if (Formula1ChampionshipManager.checkDriverAvailability(name)) {
-                    for (int k = 0; k<Formula1ChampionshipManager.races.size(); k++) {
+                    for (int k = 0; k < Formula1ChampionshipManager.races.size(); k++) {
                         RaceData temp = Formula1ChampionshipManager.races.get(k);
                         for (int y = 0; y < Formula1ChampionshipManager.positions.length; y++) {
-                            if(temp.getPlace()[y].equals(name)) {
+                            if((temp.getPlace())[y].equals(name)) {
                                 ((DefaultTableModel) table.getModel()).addRow(new Object[]{Formula1ChampionshipManager.races.get(k).getDateOfRace(),y+1});
                             }
                         }
                     }
                 }
                 else {
-                    label3.setText("Driver not found❗");
+                    label3.setText("⛔ Driver not found❗");
                     new SearchRaces();
                 }
             } else {
-                label3.setText("No race data available❗");
+                label3.setText("⛔ No race data available❗");
             }
         }
     }

@@ -7,8 +7,8 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     public int noOfDrivers;
     public int noOfCars;
     public static ArrayList<Formula1Driver> drivers = new ArrayList<Formula1Driver>();
-    public static String[] positions = new String[20];
     public static ArrayList<RaceData> races = new ArrayList<RaceData>();
+    public static String[] positions = new String[20];
     public static int[] pointsScheme = {25,18,15,12,10,8,6,4,2,1,0,0,0,0,0,0,0,0,0,0};
     public Scanner input = new Scanner(System.in).useDelimiter("\n");
     String driverName; String location; String teamName; int position1; int position2; int position3; int points; int numOfRaces;
@@ -379,8 +379,9 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     @Override
     public void addRace() {
 
+        positionInitializing();
         if (drivers.size() > 1) {
-            System.out.println(" >> Enter the date of race: (dd/mm/yyyy)");
+            System.out.print(" >> Enter the date of race: (dd/mm/yyyy): ");
             String date = input.next();
             if (checkDate(date)) {
                 availableDrivers();
@@ -424,15 +425,36 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                     }
                 }
                 races.add(new RaceData(date, positions));
+
+                System.out.println(" ");
                 System.out.println("✔ Race statistics successfully added.");
+                numOfRaces++;
+                System.out.println("-----------------------------------------------------------------------------------");
+                menu();
             } else {
                 System.out.println("⚠️Invalid date or date format! Please enter a valid input and try again.");
             }
         } else {
             System.out.println("⚠️Invalid number of drivers/cars/constructors. (Only " + drivers.size() + " teams are added.) Please add at least 2 drivers to use this function.");
         }
-        numOfRaces++;
-        System.out.println("-----------------------------------------------------------------------------------");
+
+    }
+
+    public void p() {
+
+        System.out.println(races.size());
+        for (RaceData r : races) {
+            System.out.println("in the for");
+            System.out.println(Arrays.toString(r.getPlace()));
+        }
+        System.out.println("out the for");
+    }
+
+    public void positionInitializing() {
+
+        for (int l=0; l< 20; l++) {
+            positions[l] = "No Driver";
+        }
     }
 
     public boolean checkDate(String date) {
@@ -496,7 +518,6 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             ObjectOutputStream write = new ObjectOutputStream(data);
 
             write.writeObject(drivers);
-            write.writeObject(races);
             write.flush();
             write.close();
             System.out.println("📂 Data saved to the file(Championship_Info.ser) successfully...");
