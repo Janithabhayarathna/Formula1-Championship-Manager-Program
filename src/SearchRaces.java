@@ -26,18 +26,19 @@ public class SearchRaces implements ActionListener {
         textBox = new JTextField(20);
         textBox.setBounds(20,10,350,30);
         textBox.setText("Enter driver name");
+        textBox.setToolTipText("Enter the driver's name here.");
         frame.getContentPane().add(textBox);
 
-        button = new JButton("Search");
+        button = new JButton("🔍 Search");
         button.setBounds(390,10,100,30);
         frame.getContentPane().add(button);
         button.addActionListener(this);
 
-        table.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"Driver's Name", "Team Name", "Location", "No. of Races", "Points", "1st places", "2nd places", "3rd places"}));
+        table.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"Date", "Position"}));
 
         table.setBackground(Color.white);
         table.setForeground(Color.black);
-//        table.setGridColor(Color.blue);
+        table.setGridColor(Color.blue);
         table.setSelectionBackground(Color.LIGHT_GRAY);
         table.setSelectionForeground(Color.BLUE);
         table.setFont(new Font("Serif", Font.PLAIN, 16));
