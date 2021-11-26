@@ -83,8 +83,6 @@ public class GUI implements ActionListener{
         pane.setBackground(Color.blue);
         pane.setBounds(5, 190, 780, 570);
         frame.getContentPane().add(pane);
-
-
     }
 
 
