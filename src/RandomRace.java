@@ -10,26 +10,19 @@ public class RandomRace {
     private String[] newPositions = new String[Formula1ChampionshipManager.drivers.size()];
     public JTable randomTable = new JTable();
     public static ArrayList<RandomRace> rRace = new ArrayList<RandomRace>();
-    private String randomDate;
 
     public void positionInitializing(String[] positions) {
 
         for (int l=0; l< Formula1ChampionshipManager.drivers.size(); l++) {
-
             newPositions[l] = "No Driver";
         }
     }
 
-    public RandomRace(String randomDate, String[] newPositions) {
-
-        this.randomDate = randomDate;
-        this.newPositions = newPositions;
-    }
 
     public RandomRace() {
 
-        label1.setText(" Random race details.");
         positionInitializing(newPositions);
+
         int randomDate = (int)(Math.random()*(27 - 1 + 1) + 1);
         String dd = Integer.toString(randomDate);
         int randomMonth = (int)(Math.random()*(11 - 1 + 1) + 1);
@@ -39,7 +32,6 @@ public class RandomRace {
         String date = " " + dd + " / " + MM + " / " + yyyy;
 
         Collections.shuffle(Formula1ChampionshipManager.drivers);
-
         for (int i = 0; i < Formula1ChampionshipManager.drivers.size(); i++) {
             newPositions[i] = Formula1ChampionshipManager.drivers.get(i).getDriverName();
             Formula1ChampionshipManager.drivers.get(i).setNumOfRaces(1);
@@ -65,6 +57,7 @@ public class RandomRace {
         frame.setVisible(true);
         frame.setResizable(false);
 
+        label1.setText(" Random race details.");
         frame.getContentPane().add(label1);
         label1.setBounds(20,0,700,50);
         label1.setForeground(Color.white);
@@ -85,23 +78,6 @@ public class RandomRace {
         pane.setBackground(Color.white);
         pane.setBounds(5, 60, 780, 570);
         frame.getContentPane().add(pane);
-
-    }
-
-    public String[] getNewPositions() {
-        return newPositions;
-    }
-
-    public void setNewPositions(String[] newPositions) {
-        this.newPositions = newPositions;
-    }
-
-    public String getRandomDate() {
-        return randomDate;
-    }
-
-    public void setRandomDate(String randomDate) {
-        this.randomDate = randomDate;
     }
 
 }

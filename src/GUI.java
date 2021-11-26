@@ -87,12 +87,14 @@ public class GUI implements ActionListener{
 
     }
 
+
     public static void fillTable (ArrayList < Formula1Driver > driver, JTable table){
 
         for (Formula1Driver drive : driver) {
             ((DefaultTableModel) table.getModel()).addRow(new Object[]{drive.getDriverName(), drive.getTeamName(), drive.getLocation(), drive.getNumOfRaces(), drive.getPoints(), drive.getPosition1(), drive.getPosition2(), drive.getPosition3()});
         }
     }
+
 
     public void removeContent () {
 
@@ -102,6 +104,7 @@ public class GUI implements ActionListener{
             mode.removeRow(i);
         }
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {

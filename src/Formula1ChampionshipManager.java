@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.*;
 import java.text.SimpleDateFormat;
 
+
 public class Formula1ChampionshipManager implements ChampionshipManager {
 
     public int noOfDrivers;
@@ -22,6 +23,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         System.out.println("\t🎇 Welcome to the Formula 1 Championship Manager Program©. 🎇");
         random.menu();
     }
+
 
     public void menu() {
 
@@ -109,6 +111,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             }
         }
     }
+
 
     @Override
     public void createDriver() {
@@ -226,6 +229,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         noOfCars++;
     }
 
+
     public boolean checkDriverUniqueness(String name) {
 
         for (Formula1Driver x : drivers) {
@@ -235,6 +239,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         }
         return true;
     }
+
 
     public static boolean checkDriverAvailability(String name) {
 
@@ -246,6 +251,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         return false;
     }
 
+
     public boolean checkTeamUniqueness(String team) {
 
         for (Formula1Driver y : drivers) {
@@ -255,6 +261,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         }
         return true;
     }
+
 
     public boolean checkTeamAvailability(String team) {
 
@@ -266,6 +273,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         return false;
     }
 
+
     public boolean positionValidator(int position) {
 
         if (position>=0) {
@@ -273,6 +281,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         }
         return false;
     }
+
 
     @Override
     public void deleteDriver() {
@@ -300,6 +309,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         noOfCars--;
         System.out.println("-----------------------------------------------------------------------------------");
     }
+
 
     @Override
     public void changeTeam() {
@@ -336,6 +346,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         System.out.println("-----------------------------------------------------------------------------------");
     }
 
+
     @Override
     public void displayStats() {
 
@@ -367,6 +378,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         System.out.println("-----------------------------------------------------------------------------------");
     }
 
+
     @Override
     public void driverTable() {
 
@@ -380,6 +392,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         }
         System.out.println(" ---------------------------------------------------------------------------------------------------------------------------------");
     }
+
 
     @Override
     public void addRace() {
@@ -444,12 +457,14 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
     }
 
+
     public void positionInitializing() {
 
         for (int l=0; l< 20; l++) {
             positions[l] = "No Driver";
         }
     }
+
 
     public boolean checkDate(String date) {
 
@@ -463,6 +478,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         }
     }
 
+
     public boolean placeAvailability(String driver, String[] position) {
 
         for (int n=0; n<position.length; n++){
@@ -472,6 +488,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         }
         return true;
     }
+
 
     public void availableDrivers() {
 
@@ -483,6 +500,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         System.out.println(" ");
     }
 
+
     public void availableTeams() {
 
         System.out.println(" ");
@@ -492,6 +510,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         }
         System.out.println(" ");
     }
+
 
     public void instructions() {
 
@@ -543,6 +562,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             e.printStackTrace();
         }
     }
+
 
     @Override
     public void exit() {
