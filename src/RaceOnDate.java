@@ -1,13 +1,36 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class RaceOnDate {
 
     JLabel label;
     JTable table = new JTable();
+    ArrayList<String> allDates = new ArrayList<String>();
 
     public RaceOnDate() {
+
+        for (int m=0; m < Formula1ChampionshipManager.races.size(); m++) {
+            allDates.add(Formula1ChampionshipManager.races.get(m).getDateOfRace());
+        }
+
+        Collections.sort(allDates, new Comparator<String>() {
+            DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+            @Override
+            public int compare(String d1, String d2) {
+                try {
+                    return format.parse(d1).compareTo(format.parse(d2));
+                } catch (ParseException e) {
+                    throw new IllegalArgumentException(e);
+                }
+            }
+        });
 
         JFrame frame = new JFrame(" Formula 1 Championship Manager Program.");
         frame.getContentPane().setBackground(Color.black);
@@ -17,7 +40,6 @@ public class RaceOnDate {
         frame.getContentPane().setLayout(null);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-        frame.setResizable(false);
 
         label = new JLabel("Race details sorted on date.");
         frame.getContentPane().add(label);
@@ -26,7 +48,14 @@ public class RaceOnDate {
         label.setFont(new Font("Calibre",Font.BOLD,22));
 
         table.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"Race date", "1st place", "2nd place", "3rd place"}));
-        ((DefaultTableModel) table.getModel()).addRow(new Object[]{});
+        for (int h = 0; h < allDates.size(); h++) {
+            RaceData temp = Formula1ChampionshipManager.races.get(h);
+            for (int s = 0; s < allDates.size(); s++) {
+                if (temp.getPlace()[s].equals(allDates.get(h))) {
+                    ((DefaultTableModel) table.getModel()).addRow(new Object[]{allDates.get(h), temp.getPlace()[0], temp.getPlace()[1], temp.getPlace()[2]});
+                }
+            }
+        }
         table.setBackground(Color.white);
         table.setForeground(Color.black);
         table.setGridColor(Color.blue);

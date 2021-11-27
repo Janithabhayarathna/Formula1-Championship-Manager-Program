@@ -55,7 +55,6 @@ public class RandomRace {
         frame.getContentPane().setLayout(null);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-        frame.setResizable(false);
 
         label1.setText(" Random race details.");
         frame.getContentPane().add(label1);

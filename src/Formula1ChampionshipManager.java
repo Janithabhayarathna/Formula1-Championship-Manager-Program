@@ -41,7 +41,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             System.out.println("\t|   5 or DDT: Display the Driver Table.               |");
             System.out.println("\t|   6 or ASR: Add Statistics of a completed Race.     |");
             System.out.println("\t|   7 or GUI: open the GUI.                           |");
-            System.out.println("\t|   8 or EXT: Exit from the program.                  |");
+            System.out.println("\t|   8 or EXT: EXiT from the program.                  |");
             System.out.println("\t -----------------------------------------------------");
             System.out.println("\t 🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️");
 
@@ -569,10 +569,10 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             drivers = (ArrayList<Formula1Driver>) stream.readObject();
             stream.close();
             System.out.println(" ");
-            System.out.println("📂 File loaded...");
+            System.out.println("📂 'Championship_Info' file loaded...");
         }
         catch (FileNotFoundException e) {
-            System.out.println("❌ File not found.");
+            System.out.println("❌ 'Championship_Info' file not found.");
 
         }catch (IOException | ClassNotFoundException e) {
             System.out.println("Error❗");
@@ -589,11 +589,10 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
             races = (ArrayList<RaceData>) stream.readObject();
             stream.close();
-            System.out.println(" ");
-            System.out.println("📂 File loaded...");
+            System.out.println("📂 'Race_Info' file loaded...");
         }
         catch (FileNotFoundException e) {
-            System.out.println("❌ File not found.");
+            System.out.println("❌ 'Race_Info' file not found.");
 
         }catch (IOException | ClassNotFoundException e) {
             System.out.println("Error❗");

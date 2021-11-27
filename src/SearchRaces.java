@@ -23,7 +23,6 @@ public class SearchRaces implements ActionListener {
         frame.getContentPane().setLayout(null);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-        frame.setResizable(false);
 
         label2 = new JLabel("  Driver participated race details.");
         frame.getContentPane().add(label2);
