@@ -17,11 +17,12 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
     public static void main(String[] args) {
 
-        Formula1ChampionshipManager random = new Formula1ChampionshipManager();
-        random.loadData();
+        Formula1ChampionshipManager obj = new Formula1ChampionshipManager();
+        obj.loadData();
+        obj.loadRaceData();
         System.out.println(" ");
         System.out.println("\t🎇 Welcome to the Formula 1 Championship Manager Program©. 🎇");
-        random.menu();
+        obj.menu();
     }
 
 
@@ -540,9 +541,25 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         }
     }
 
+    public void saveRaceData() {
+//      Referenced from - https://samderlust.com/dev-blog/java/write-read-arraylist-object-file-java
+
+        try{
+            FileOutputStream data = new FileOutputStream("Race_Info.ser");
+            ObjectOutputStream write = new ObjectOutputStream(data);
+
+            write.writeObject(races);
+            write.flush();
+            write.close();
+            System.out.println("📂 Race data saved to the file(Race_Info.ser) successfully...");
+
+        }catch (IOException e) {
+            System.out.println("⚠️Error while saving race data to the file.");
+        }
+    }
+
 
     public void loadData() {
-
 //      Referenced from - https://samderlust.com/dev-blog/java/write-read-arraylist-object-file-java
 
         try {
@@ -550,6 +567,27 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             ObjectInputStream stream = new ObjectInputStream(read);
 
             drivers = (ArrayList<Formula1Driver>) stream.readObject();
+            stream.close();
+            System.out.println(" ");
+            System.out.println("📂 File loaded...");
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("❌ File not found.");
+
+        }catch (IOException | ClassNotFoundException e) {
+            System.out.println("Error❗");
+        }
+    }
+
+
+    public void loadRaceData() {
+//      Referenced from - https://samderlust.com/dev-blog/java/write-read-arraylist-object-file-java
+
+        try {
+            FileInputStream read = new FileInputStream("Race_Info.ser");
+            ObjectInputStream stream = new ObjectInputStream(read);
+
+            races = (ArrayList<RaceData>) stream.readObject();
             stream.close();
             System.out.println(" ");
             System.out.println("📂 File loaded...");
@@ -570,6 +608,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         System.out.println("🎇 Thank you for using 'Formula 1 Championship Manager Program 🎇'. \n \t\t\t\t\t Stay safe!");
         System.out.println("🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟");
         saveData();
+        saveRaceData();
         System.exit(0);
     }
 }

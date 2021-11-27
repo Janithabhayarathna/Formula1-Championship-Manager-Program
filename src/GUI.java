@@ -15,7 +15,7 @@ public class GUI implements ActionListener{
     JButton button5;
     JButton button6;
     JButton button7;
-    static JLabel label = new JLabel("🎇 Welcome to the GUI 🎇");
+    JLabel label = new JLabel("🎇 Welcome to the GUI 🎇");
     JTable table = new JTable();
 
     public GUI() {
@@ -58,10 +58,12 @@ public class GUI implements ActionListener{
         button5 = new JButton("Random race on position");
         button5.setBounds(165,120,120,40);
         frame.getContentPane().add(button5);
+//        button5.addActionListener(this);
 
         button6 = new JButton("Display races");
         button6.setBounds(335,120,120,40);
         frame.getContentPane().add(button6);
+        button6.addActionListener(this);
 
         button7 = new JButton("Driver races");
         button7.setBounds(505,120,120,40);
@@ -127,6 +129,12 @@ public class GUI implements ActionListener{
         }
         else if (e.getSource().equals(button4)) {
             new RandomRace();
+        }
+//        else if (e.getSource().equals(button5)) {
+//            new RandomRace();
+//        }
+        else if (e.getSource().equals(button6)) {
+            new RaceOnDate();
         }
         else if (e.getSource().equals(button7)) {
             new SearchRaces();
