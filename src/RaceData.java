@@ -1,4 +1,6 @@
-public class RaceData {
+import java.io.Serializable;
+
+public class RaceData implements Serializable{
 
     private String dateOfRace;
     private String[] place;

@@ -524,7 +524,6 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
 
     public void saveData() {
-
 //      Referenced from - https://samderlust.com/dev-blog/java/write-read-arraylist-object-file-java
 
         try{
@@ -545,8 +544,8 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 //      Referenced from - https://samderlust.com/dev-blog/java/write-read-arraylist-object-file-java
 
         try{
-            FileOutputStream data = new FileOutputStream("Race_Info.ser");
-            ObjectOutputStream write = new ObjectOutputStream(data);
+            FileOutputStream rdata = new FileOutputStream("Race_Info.ser");
+            ObjectOutputStream write = new ObjectOutputStream(rdata);
 
             write.writeObject(races);
             write.flush();

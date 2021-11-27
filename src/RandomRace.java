@@ -29,7 +29,7 @@ public class RandomRace {
         String MM = Integer.toString(randomMonth);
         int randomYear = (int)(Math.random()*(2020 - 2000 + 1) + 2000);
         String yyyy = Integer.toString(randomYear);
-        String date = " " + dd + " / " + MM + " / " + yyyy;
+        String date = dd + MM + yyyy;
 
         Collections.shuffle(Formula1ChampionshipManager.drivers);
         for (int i = 0; i < Formula1ChampionshipManager.drivers.size(); i++) {

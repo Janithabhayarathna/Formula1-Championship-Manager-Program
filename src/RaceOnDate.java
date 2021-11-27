@@ -20,17 +20,17 @@ public class RaceOnDate {
             allDates.add(Formula1ChampionshipManager.races.get(m).getDateOfRace());
         }
 
-        Collections.sort(allDates, new Comparator<String>() {
-            DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-            @Override
-            public int compare(String d1, String d2) {
-                try {
-                    return format.parse(d1).compareTo(format.parse(d2));
-                } catch (ParseException e) {
-                    throw new IllegalArgumentException(e);
-                }
-            }
-        });
+//        Collections.sort(allDates, new Comparator<String>() {
+//            DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+//            @Override
+//            public int compare(String d1, String d2) {
+//                try {
+//                    return format.parse(d1).compareTo(format.parse(d2));
+//                } catch (ParseException e) {
+//                    throw new IllegalArgumentException(e);
+//                }
+//            }
+//        });
 
         JFrame frame = new JFrame(" Formula 1 Championship Manager Program.");
         frame.getContentPane().setBackground(Color.black);

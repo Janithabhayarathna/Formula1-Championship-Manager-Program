@@ -60,7 +60,7 @@ public class GUI implements ActionListener{
         frame.getContentPane().add(button5);
 //        button5.addActionListener(this);
 
-        button6 = new JButton("Display races");
+        button6 = new JButton("Display races on date");
         button6.setBounds(335,120,120,40);
         frame.getContentPane().add(button6);
         button6.addActionListener(this);
