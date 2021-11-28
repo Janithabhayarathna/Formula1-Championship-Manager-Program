@@ -1,6 +1,7 @@
 import java.io.Serializable;
 
 public abstract class Driver implements Serializable {
+// Abstract class
 
     private String driverName;
     private String location;

@@ -113,19 +113,19 @@ public class GUI implements ActionListener{
             removeContent();
             Collections.sort(Formula1ChampionshipManager.drivers);
             fillTable(Formula1ChampionshipManager.drivers, table);
-            label.setText(" Stats of all drivers in descending order of points.");
+            label.setText("🖥️ Stats of all drivers in descending order of points.");
         }
         else if (e.getSource().equals(button2)) {
             removeContent();
             Collections.sort(Formula1ChampionshipManager.drivers, Formula1Driver.ascendingOnPoint);
             fillTable(Formula1ChampionshipManager.drivers, table);
-            label.setText(" Stats of all drivers in ascending order of points.");
+            label.setText("🖥️ Stats of all drivers in ascending order of points.");
         }
         else if (e.getSource().equals(button3)) {
             removeContent();
             Collections.sort(Formula1ChampionshipManager.drivers, Formula1Driver.descendingOnPosition1);
             fillTable(Formula1ChampionshipManager.drivers, table);
-            label.setText(" Stats of all drivers in descending order of no. of 1st places.");
+            label.setText("🖥️ Stats of all drivers in descending order of no. of 1st places.");
         }
         else if (e.getSource().equals(button4)) {
             new RandomRace();

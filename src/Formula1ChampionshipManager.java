@@ -7,22 +7,22 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
     public int noOfDrivers;
     public int noOfCars;
-    public static ArrayList<Formula1Driver> drivers = new ArrayList<Formula1Driver>();
-    public static ArrayList<RaceData> races = new ArrayList<RaceData>();
-    public static String[] positions = new String[20];
-    public static int[] pointsScheme = {25,18,15,12,10,8,6,4,2,1,0,0,0,0,0,0,0,0,0,0};
-    public Scanner input = new Scanner(System.in).useDelimiter("\n");
+    public static ArrayList<Formula1Driver> drivers = new ArrayList<Formula1Driver>();      // Array list to store driver details as objects.
+    public static ArrayList<RaceData> races = new ArrayList<RaceData>();        // Array list to store race details as objects.
+    public static String[] positions = new String[20];      // Array to store positions of each race.
+    public static int[] pointsScheme = {25,18,15,12,10,8,6,4,2,1,0,0,0,0,0,0,0,0,0,0};      // Point scheme of the race according to position.
+    public Scanner input = new Scanner(System.in).useDelimiter("\n");       //Created an object for Scanner class. Used 'useDelimiter' to ignore spaces between user inputs.
     String driverName; String location; String teamName; int position1; int position2; int position3; int points; int numOfRaces;
 
 
     public static void main(String[] args) {
 
-        Formula1ChampionshipManager obj = new Formula1ChampionshipManager();
-        obj.loadData();
-        obj.loadRaceData();
+        Formula1ChampionshipManager obj = new Formula1ChampionshipManager();  // Created an object for Formula1Championship manager.
+        obj.loadData();     // Calling the loadData method to load data at the beginning of the program.
+        obj.loadRaceData();     // Calling the loadRaceData method to load race data at the beginning of the program.
         System.out.println(" ");
         System.out.println("\t🎇 Welcome to the Formula 1 Championship Manager Program©. 🎇");
-        obj.menu();
+        obj.menu(); // Calling the menu of the program.
     }
 
 
@@ -30,6 +30,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
         while (true) {
 
+            //Option menu.
             System.out.println(" ");
             System.out.println("\t -----------------------------------------------------");
             System.out.println("\t|******************** Option Menu ********************|");
@@ -47,66 +48,67 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
             System.out.println(" ");
             System.out.print(" >> Enter the option you want: ");
-            String option = input.next().toUpperCase();
+            String option = input.next().toUpperCase();     // Getting the required option from the user and converting the input to upper case.
 
             switch (option) {
+                // Switch case for directing to the relevant method according to the user input.
 
                 case "1":
                 case "CND":
                     System.out.println(" ");
                     System.out.println("\t\t\t 🏎️ _ Create a new driver option _ 🏎️");
-                    createDriver();
+                    createDriver();     // Calling the createDriver method.
                     break;
 
                 case "2":
                 case "DAD":
                     System.out.println(" ");
                     System.out.println("\t\t 🏎️ _ Delete a driver option _ 🏎️");
-                    deleteDriver();
+                    deleteDriver();     // Calling the deleteDriver method.
                     break;
 
                 case "3":
                 case "CDT":
                     System.out.println(" ");
                     System.out.println("\t\t 🏎️ _ Change the driver of a team option _ 🏎️");
-                    changeTeam();
+                    changeTeam();       // Calling the changeTeam method.
                     break;
 
                 case "4":
                 case "DSD":
                     System.out.println(" ");
                     System.out.println("\t\t 🏎️ _ Display statistics of a driver option _ 🏎️");
-                    displayStats();
+                    displayStats();     // Calling the displayStats method.
                     break;
 
                 case "5":
                 case "DDT":
                     System.out.println(" ");
                     System.out.println("\t\t\t\t\t\t\t\t\t 🏎️ _ Display the driver table option _ 🏎️");
-                    driverTable();
+                    driverTable();      // Calling the driverTable method.
                     break;
 
                 case "6":
                 case "ASR":
                     System.out.println(" ");
                     System.out.println("\t\t 🏎️ _ Add Statistics of a completed race option _ 🏎️");
-                    addRace();
+                    addRace();      // Calling the addRace method.
                     break;
 
                 case "7":
                 case "GUI":
                     System.out.println(" ");
                     System.out.println("\t 🖥️ Graphical User Interface opened...");
-                    new GUI();
+                    new GUI();      // Calling the GUI constructor.
                     break;
 
                 case "8":
                 case "EXT":
                     System.out.println(" ");
-                    exit();
+                    exit();     // Calling the changeTeam method.
                     break;
 
-                default:
+                default:        // Running this part if user enters a wrong input.
                     System.out.println("⚠️Please check the input and try again! Refer the option menu.");
                     System.out.println(" ");
             }
@@ -116,43 +118,44 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
     @Override
     public void createDriver() {
+        // Method to add a driver.
 
         while(true) {
 
-            instructions();
+            instructions();     // Calling the instructions method to display the instructions that user need to follow.
             if (drivers.size() > 0) {
-                availableDrivers();
+                availableDrivers();     // If there are existing drivers this method will be called and display the existing drivers.
             }
             System.out.println(" ");
             System.out.print(" >> Enter the name of the driver: ");
             driverName = input.next().toLowerCase();
-            if (checkDriverUniqueness(driverName)) {
+            if (checkDriverUniqueness(driverName)) {    // Check whether the given driver name is unique or not.
                 if (drivers.size() > 0) {
-                    availableTeams();
+                    availableTeams();   // If there are existing drivers this method will be called and display the existing drivers.
                 }
                 System.out.println(" ");
                 System.out.print(" >> Enter the team name of the driver: ");
                 teamName = input.next().toLowerCase();
-                if (checkTeamUniqueness(teamName)) {
+                if (checkTeamUniqueness(teamName)) {    // Check whether the given driver name is unique or not.
                     System.out.print(" >> Enter the driver's location: ");
                     location = input.next();
                     System.out.print(" >> Enter the number of 1st positions achieved by the driver: ");
-                    if (input.hasNextInt()) {
+                    if (input.hasNextInt()) {   // Checking whether the user has input an integer as the input
                         position1 = input.nextInt();
-                        if (positionValidator(position1)) {
+                        if (positionValidator(position1)) {    // Validating the position whether it's a positive integer
                             System.out.print(" >> Enter the number of 2nd positions achieved by the driver: ");
-                            if (input.hasNextInt()) {
+                            if (input.hasNextInt()) {   // Checking whether the user has input an integer as the input
                                 position2 = input.nextInt();
-                                if (positionValidator(position2)) {
+                                if (positionValidator(position2)) {     // Validating the position whether it's a positive integer
                                     System.out.print(" >> Enter the number of 3rd positions achieved by the driver: ");
-                                    if (input.hasNextInt()) {
+                                    if (input.hasNextInt()) {   // Checking whether the user has input an integer as the input
                                         position3 = input.nextInt();
-                                        if (positionValidator(position3)) {
+                                        if (positionValidator(position3)) {     // Validating the position whether it's a positive integer
                                             System.out.print(" >> Enter number of points of the driver: ");
-                                            if (input.hasNextInt()) {
+                                            if (input.hasNextInt()) {   // Checking whether the user has input an integer as the input
                                                 points = input.nextInt();
                                                 System.out.print(" >> Enter the number of races that have been participated by the driver: ");
-                                                if (input.hasNextInt()) {
+                                                if (input.hasNextInt()) {   // Checking whether the user has input an integer as the input
                                                     numOfRaces = input.nextInt();
                                                     break;
 
@@ -220,21 +223,23 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 menu();
                 break;
             }
+            // If driver entered an invalid input it displays the warning message and going to the menu(calling the menu method).
         }
 
         System.out.println(" ");
         System.out.println("✔ Driver " + driverName + " of team " + teamName + " successfully added.");
         System.out.println("-----------------------------------------------------------------------------------");
-        drivers.add(new Formula1Driver(driverName, location, teamName, position1, position2, position3, points, numOfRaces));
+        drivers.add(new Formula1Driver(driverName, location, teamName, position1, position2, position3, points, numOfRaces)); // Passing the driver details to the drivers array list as objects.
         noOfDrivers++;
         noOfCars++;
     }
 
 
     public boolean checkDriverUniqueness(String name) {
+        // Method used to check the driver name uniqueness.
 
         for (Formula1Driver x : drivers) {
-            if (x.getDriverName().equals(name)) {
+            if (x.getDriverName().equals(name)) { // If there is a driver which has the same name with entered name this method returns false.
                 return false;
             }
         }
@@ -243,6 +248,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
 
     public static boolean checkDriverAvailability(String name) {
+        // Method used to check the availability of the entered driver name.
 
         for (Formula1Driver x : drivers) {
             if (x.getDriverName().equals(name)) {
@@ -254,6 +260,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
 
     public boolean checkTeamUniqueness(String team) {
+        // Method used to check the driver name uniqueness.
 
         for (Formula1Driver y : drivers) {
             if (y.getTeamName().equals(team)) {
@@ -265,6 +272,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
 
     public boolean checkTeamAvailability(String team) {
+        // Method used to check the availability of the entered team name.
 
         for (Formula1Driver y : drivers) {
             if (y.getTeamName().equals(team)) {
@@ -276,6 +284,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
 
     public boolean positionValidator(int position) {
+        // Method used to validate the entered position(Whether it is positive(return true) integer or not(return false)).
 
         if (position>=0) {
             return true;
@@ -286,12 +295,13 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
     @Override
     public void deleteDriver() {
+        // Method used to delete an existing driver.
 
-        availableDrivers();
+        availableDrivers();     // Displaying the existing drivers.
         System.out.print(" >> Enter the name of the driver that you want to delete: ");
         if (input.hasNext()) {
             String delDriverName = input.next().toLowerCase();
-            if (checkDriverAvailability(delDriverName)) {
+            if (checkDriverAvailability(delDriverName)) {   // Checking the availability of the given driver name.
                 for (int i =0; i<drivers.size(); i++) {
                     if(drivers.get(i).getDriverName().equals(delDriverName)) {
                         System.out.println("✔ Driver " + drivers.get(i).getDriverName() + " successfully removed.");
@@ -314,21 +324,22 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
     @Override
     public void changeTeam() {
+        // Method used to change the driver of a team.
 
-        availableTeams();
+        availableTeams();   // Displaying the existing teams.
         System.out.print(" >> Enter the Team name that need to change the driver : ");
         if (input.hasNext()) {
             String changeDriver = input.next().toLowerCase();
-            if (checkTeamAvailability(changeDriver)) {
-                for (Formula1Driver z : drivers) {
-                    if (z.getTeamName().equals(changeDriver)) {
-                        instructions();
-                        availableDrivers();
+            if (checkTeamAvailability(changeDriver)) {  // Check the availability of the team.
+                for (Formula1Driver driver : drivers) {
+                    if (driver.getTeamName().equals(changeDriver)) {
+                        instructions();     // Displaying the instructions.
+                        availableDrivers(); // Displaying the existing drivers.
                         System.out.print(" >> Enter the preferred new driver's name: ");
                         String newDriver = input.next().toLowerCase();
-                        if (checkDriverUniqueness(newDriver)) {
-                            System.out.println("✔ Team " + z.getTeamName() + "'s driver changed as, " + z.getDriverName() + " to, " + newDriver);
-                            z.setDriverName(newDriver);
+                        if (checkDriverUniqueness(newDriver)) {     // Checking the driver name uniqueness.
+                            System.out.println("✔ Team " + driver.getTeamName() + "'s driver changed as, " + driver.getDriverName() + " to, " + newDriver);
+                            driver.setDriverName(newDriver);
                         } else{
                             System.out.println("⚠️Driver already exist! Please check the input and try again.");
                             menu();
@@ -344,28 +355,31 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             System.out.println("⚠️Invalid input!");
             menu();
         }
+        // If driver entered an invalid input it displays the warning message and going to the menu(calling the menu method).
         System.out.println("-----------------------------------------------------------------------------------");
     }
 
 
     @Override
     public void displayStats() {
+        // Method used to display statistics of a driver.
 
-        availableDrivers();
+        availableDrivers();     // Displaying the existing drivers.
         System.out.print(" >> Enter the Name of the driver, that need to display statistics: ");
         if (input.hasNext()) {
             String statDriver = input.next().toLowerCase();
-            if (checkDriverAvailability(statDriver)) {
-                for (Formula1Driver y : drivers) {
-                    if (y.getDriverName().equals(statDriver)) {
-                        System.out.println("🧘______________ Mr. " + y.getDriverName() + " ___________________🧘");
-                        System.out.println("⛔ Mr. " + y.getDriverName() + "'s location - " + y.getLocation());
-                        System.out.println("⛔ Mr. " + y.getDriverName() + "'s team name - " + y.getTeamName());
-                        System.out.println("⛔ Mr. " + y.getDriverName() + "'s no of 1st places - " + y.getPosition1());
-                        System.out.println("⛔ Mr. " + y.getDriverName() + "'s no of 2nd places - " + y.getPosition2());
-                        System.out.println("⛔ Mr. " + y.getDriverName() + "'s no of 3rd places - " + y.getPosition3());
-                        System.out.println("⛔ Mr. " + y.getDriverName() + "'s no of points - " + y.getPoints());
-                        System.out.println("⛔ Mr. " + y.getDriverName() + "'s no of races - " + y.getNumOfRaces());
+            if (checkDriverAvailability(statDriver)) {  // Checking the availability of the driver.
+                for (Formula1Driver driver : drivers) {
+                    if (driver.getDriverName().equals(statDriver)) {
+                        // Displaying the statistics of the relevant driver.
+                        System.out.println("🧘______________ Mr. " + driver.getDriverName() + " __________________🧘");
+                        System.out.println("⛔ Mr. " + driver.getDriverName() + "'s location - " + driver.getLocation());
+                        System.out.println("⛔ Mr. " + driver.getDriverName() + "'s team name - " + driver.getTeamName());
+                        System.out.println("⛔ Mr. " + driver.getDriverName() + "'s no of 1st places - " + driver.getPosition1());
+                        System.out.println("⛔ Mr. " + driver.getDriverName() + "'s no of 2nd places - " + driver.getPosition2());
+                        System.out.println("⛔ Mr. " + driver.getDriverName() + "'s no of 3rd places - " + driver.getPosition3());
+                        System.out.println("⛔ Mr. " + driver.getDriverName() + "'s no of points - " + driver.getPoints());
+                        System.out.println("⛔ Mr. " + driver.getDriverName() + "'s no of races - " + driver.getNumOfRaces());
                     }
                 }
             } else {
@@ -376,20 +390,25 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             System.out.println("⚠️Invalid input! Please check the driver name and try again.");
             menu();
         }
+        // If driver entered an invalid input it displays the warning message and going to the menu(calling the menu method).
         System.out.println("-----------------------------------------------------------------------------------");
     }
 
 
     @Override
     public void driverTable() {
+        // Method used to display the driver table.
 
-        Collections.sort(drivers);
+        Collections.sort(drivers);  // Sorting the drivers array list according to the points of descending order.
+
+        // Driver table.
         System.out.println(" ---------------------------------------------------------------------------------------------------------------------------------");
         System.out.println("|    Drivers Name    |   Team Name    |    Location      |  No. of Races  |  Points  |  1st places  |  2nd places  |  3rd places  |");
         System.out.println(" ---------------------------------------------------------------------------------------------------------------------------------");
 
-        for (Formula1Driver l : drivers) {
-            System.out.printf("|  %-15s   |  %-10s    |  %-10s      |  %-10s    |  %-6d  |   %-5d      |    %-5d     |  %-8d    |\n", l.getDriverName(), l.getTeamName(), l.getLocation(), l.getNumOfRaces(), l.getPoints(), l.getPosition1(), l.getPosition2(), l.getPosition3());
+        // Filling the table.
+        for (Formula1Driver driver : drivers) {
+            System.out.printf("|  %-15s   |  %-10s    |  %-10s      |  %-10s    |  %-6d  |   %-5d      |    %-5d     |  %-8d    |\n", driver.getDriverName(), driver.getTeamName(), driver.getLocation(), driver.getNumOfRaces(), driver.getPoints(), driver.getPosition1(), driver.getPosition2(), driver.getPosition3());
         }
         System.out.println(" ---------------------------------------------------------------------------------------------------------------------------------");
     }
@@ -397,30 +416,31 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
     @Override
     public void addRace() {
+        // Method used to add statistics of a completed race.
 
-        positionInitializing();
+        positionInitializing();     // Initializing the position array.
         if (drivers.size() > 1) {
             System.out.print(" >> Enter the date of race: (dd/mm/yyyy): ");
             String date = input.next();
-            if (checkDate(date)) {
-                availableDrivers();
-                for (int i = 0; i < drivers.size(); i++) {
+            if (checkDate(date)) {      // Validating the entered date.
+                availableDrivers();     // Displaying the existing drivers.
+                for (int i = 0; i < drivers.size(); i++) {  // Asking the driver's name from the user according to the given position.
                     System.out.print(" >> Enter the driver's name who got the " + (i + 1) + " place of the race: ");
                     if (input.hasNext()) {
                         String place = input.next().toLowerCase();
-                        if (checkDriverAvailability(place)) {
-                            if (placeAvailability(place, positions)) {
+                        if (checkDriverAvailability(place)) {   // Check the availability of the driver.
+                            if (placeAvailability(place, positions)) {  // Check the availability of the place.
                                 positions[i] = place;
-                                for (Formula1Driver r : drivers) {
-                                    if (r.getDriverName().equals(place)) {
-                                        r.setNumOfRaces(1);
-                                        r.setPoints(pointsScheme[i]);
+                                for (Formula1Driver driver : drivers) {
+                                    if (driver.getDriverName().equals(place)) {
+                                        driver.setNumOfRaces(1);     // Adding 1 to the race count of the relevant driver.
+                                        driver.setPoints(pointsScheme[i]);   // Adding points according to the point scheme.
                                         if (i == 0) {
-                                            r.setPosition1(1);
+                                            driver.setPosition1(1);  // Adding 1 to the number of 1st places of the relevant driver.
                                         } else if (i == 1) {
-                                            r.setPosition2(1);
+                                            driver.setPosition2(1);  // Adding 1 to the number of 2nd places of the relevant driver.
                                         } else if (i == 2) {
-                                            r.setPosition3(1);
+                                            driver.setPosition3(1);  // Adding 1 to the number of 3rd places of the relevant driver.
                                         }
                                     }
                                 }
@@ -442,8 +462,9 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                         menu();
                         break;
                     }
+                    // If driver entered an invalid input it displays the warning message and going to the menu(calling the menu method).
                 }
-                races.add(new RaceData(date, positions));
+                races.add(new RaceData(date, positions));   // Passing the race details to the races array list as objects.
                 System.out.println(" ");
                 System.out.println("✔ Race statistics successfully added.");
                 numOfRaces++;
@@ -460,6 +481,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
 
     public void positionInitializing() {
+        // Method used to initialize the positions array.
 
         for (int l=0; l< 20; l++) {
             positions[l] = "No Driver";
@@ -468,12 +490,14 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
 
     public boolean checkDate(String date) {
+        // Method used to validate the entered date.
+        // Referenced from - http://tutorials.jenkov.com/java-internationalization/simpledateformat.html
 
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");   // Created an instance of SimpleDateFormat.
         format.setLenient(false);
         try {
-            Date d = format.parse(date);
-            return true;
+            Date d = format.parse(date);    // Parsing the String date into Java.Util.Date instance.
+            return true;     // If the date can be passed without an error returns true.
         } catch (Exception e) {
             return false;
         }
@@ -481,9 +505,10 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
 
     public boolean placeAvailability(String driver, String[] position) {
+        // Method used to check the availability of the entered place.
 
         for (int n=0; n<position.length; n++){
-            if (driver.equals(position[n])) {
+            if (driver.equals(position[n])) {   // If the driver already has a place it will return false.
                 return false;
             }
         }
@@ -492,28 +517,31 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
 
     public void availableDrivers() {
+        // Method used to display existing drivers.
 
         System.out.println(" ");
         System.out.println("* List of drivers that has been already added.");
-        for (Formula1Driver d : drivers) {
-            System.out.print(" \t 🏎️ " + d.getDriverName());
+        for (Formula1Driver driver : drivers) {
+            System.out.print(" \t 🏎️ " + driver.getDriverName());
         }
         System.out.println(" ");
     }
 
 
     public void availableTeams() {
+        // Method used to display existing teams.
 
         System.out.println(" ");
         System.out.println("* List of teams that has been already added.");
-        for (Formula1Driver d : drivers) {
-            System.out.print("\t 🏎️ " + d.getTeamName());
+        for (Formula1Driver driver : drivers) {
+            System.out.print("\t 🏎️ " + driver.getTeamName());
         }
         System.out.println(" ");
     }
 
 
     public void instructions() {
+        // Method used to display the instructions.
 
         System.out.println(" ");
         System.out.println("\t\t\t\t\t⚠️Instructions   ⚠️");
@@ -524,76 +552,80 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
 
     public void saveData() {
-//      Referenced from - https://samderlust.com/dev-blog/java/write-read-arraylist-object-file-java
+        // Method used to save the race data into the file Championship_Info.
+        // Referenced from - https://samderlust.com/dev-blog/java/write-read-arraylist-object-file-java
 
         try{
-            FileOutputStream data = new FileOutputStream("Championship_Info.ser");
-            ObjectOutputStream write = new ObjectOutputStream(data);
+            FileOutputStream data = new FileOutputStream("Championship_Info.ser");  // Create a file.
+            ObjectOutputStream write = new ObjectOutputStream(data);    // Handles the object to be written into the file.
 
-            write.writeObject(drivers);
-            write.flush();
-            write.close();
+            write.writeObject(drivers); // Writes the drivers array list to the file.
+            write.flush();  // To flush all the data in the stream.
+            write.close();  // Close the stream.
             System.out.println("📂 Data saved to the file(Championship_Info.ser) successfully...");
 
-        }catch (IOException e) {
+        }catch (IOException e) {    // Runs if there is an error while saving data.
             System.out.println("⚠️Error while saving data to the file.");
         }
     }
 
     public void saveRaceData() {
-//      Referenced from - https://samderlust.com/dev-blog/java/write-read-arraylist-object-file-java
+        // Method used to save the race data into the file Race_Info.
+        // Referenced from - https://samderlust.com/dev-blog/java/write-read-arraylist-object-file-java
 
         try{
-            FileOutputStream rdata = new FileOutputStream("Race_Info.ser");
-            ObjectOutputStream write = new ObjectOutputStream(rdata);
+            FileOutputStream rdata = new FileOutputStream("Race_Info.ser");  // Create a file.
+            ObjectOutputStream write = new ObjectOutputStream(rdata);    // Handles the object to be written into the file.
 
-            write.writeObject(races);
-            write.flush();
-            write.close();
+            write.writeObject(races); // Writes the races array list to the file.
+            write.flush();  // To flush all the data in the stream.
+            write.close();  // Close the stream.
             System.out.println("📂 Race data saved to the file(Race_Info.ser) successfully...");
 
-        }catch (IOException e) {
+        }catch (IOException e) {    // Runs if there is an error while saving data.
             System.out.println("⚠️Error while saving race data to the file.");
         }
     }
 
 
     public void loadData() {
-//      Referenced from - https://samderlust.com/dev-blog/java/write-read-arraylist-object-file-java
+        // Method used to load data from the Championship_Info file.
+        // Referenced from - https://samderlust.com/dev-blog/java/write-read-arraylist-object-file-java
 
         try {
-            FileInputStream read = new FileInputStream("Championship_Info.ser");
+            FileInputStream read = new FileInputStream("Championship_Info.ser");  // To read data from the file.
             ObjectInputStream stream = new ObjectInputStream(read);
 
-            drivers = (ArrayList<Formula1Driver>) stream.readObject();
-            stream.close();
+            drivers = (ArrayList<Formula1Driver>) stream.readObject();  // Loading data to the driver's arraylist.
+            stream.close();     // Close the reading stream.
             System.out.println(" ");
             System.out.println("📂 'Championship_Info' file loaded...");
         }
-        catch (FileNotFoundException e) {
+        catch (FileNotFoundException e) {   // Runs if the file not found.
             System.out.println("❌ 'Championship_Info' file not found.");
 
-        }catch (IOException | ClassNotFoundException e) {
+        }catch (IOException | ClassNotFoundException e) {   // Runs if there is an error while loading data from the file.
             System.out.println("Error❗");
         }
     }
 
 
     public void loadRaceData() {
-//      Referenced from - https://samderlust.com/dev-blog/java/write-read-arraylist-object-file-java
+        // Method used to load data from the Race_Info file.
+        // Referenced from - https://samderlust.com/dev-blog/java/write-read-arraylist-object-file-java
 
         try {
-            FileInputStream read = new FileInputStream("Race_Info.ser");
+            FileInputStream read = new FileInputStream("Race_Info.ser");  // To read data from the file.
             ObjectInputStream stream = new ObjectInputStream(read);
 
-            races = (ArrayList<RaceData>) stream.readObject();
-            stream.close();
+            races = (ArrayList<RaceData>) stream.readObject();  // Loading data to the driver's arraylist.
+            stream.close();     // Close the reading stream.
             System.out.println("📂 'Race_Info' file loaded...");
         }
-        catch (FileNotFoundException e) {
+        catch (FileNotFoundException e) {   // Runs if the file not found.
             System.out.println("❌ 'Race_Info' file not found.");
 
-        }catch (IOException | ClassNotFoundException e) {
+        }catch (IOException | ClassNotFoundException e) {   // Runs if there is an error while loading data from the file.
             System.out.println("Error❗");
             e.printStackTrace();
         }
@@ -602,11 +634,12 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
     @Override
     public void exit() {
+        // Method used to exit from the program.
 
         System.out.println("🎇 Thank you for using 'Formula 1 Championship Manager Program 🎇'. \n \t\t\t\t\t Stay safe!");
         System.out.println("🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟");
-        saveData();
-        saveRaceData();
-        System.exit(0);
+        saveData();  // Saving the driver's data.
+        saveRaceData();     // Saving the race data.
+        System.exit(0); // Exiting from the program.
     }
 }

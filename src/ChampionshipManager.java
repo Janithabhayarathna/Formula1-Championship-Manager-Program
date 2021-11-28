@@ -1,3 +1,4 @@
+// Interface
 public interface ChampionshipManager {
 
     public void createDriver();
