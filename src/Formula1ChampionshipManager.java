@@ -120,6 +120,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     public void createDriver() {
         // Method to add a driver.
 
+
         while(true) {
 
             instructions();     // Calling the instructions method to display the instructions that user need to follow.
@@ -235,6 +236,10 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     }
 
 
+    /**
+     * @param name
+     * @return
+     */
     public boolean checkDriverUniqueness(String name) {
         // Method used to check the driver name uniqueness.
 
@@ -247,6 +252,10 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     }
 
 
+    /**
+     * @param name
+     * @return
+     */
     public static boolean checkDriverAvailability(String name) {
         // Method used to check the availability of the entered driver name.
 
@@ -259,6 +268,10 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     }
 
 
+    /**
+     * @param team
+     * @return
+     */
     public boolean checkTeamUniqueness(String team) {
         // Method used to check the driver name uniqueness.
 
@@ -271,6 +284,10 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     }
 
 
+    /**
+     * @param team
+     * @return
+     */
     public boolean checkTeamAvailability(String team) {
         // Method used to check the availability of the entered team name.
 
@@ -283,6 +300,10 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     }
 
 
+    /**
+     * @param position
+     * @return
+     */
     public boolean positionValidator(int position) {
         // Method used to validate the entered position(Whether it is positive(return true) integer or not(return false)).
 
@@ -489,6 +510,10 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     }
 
 
+    /**
+     * @param date
+     * @return
+     */
     public boolean checkDate(String date) {
         // Method used to validate the entered date.
         // Referenced from - http://tutorials.jenkov.com/java-internationalization/simpledateformat.html
@@ -504,6 +529,11 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     }
 
 
+    /**
+     * @param driver
+     * @param position
+     * @return
+     */
     public boolean placeAvailability(String driver, String[] position) {
         // Method used to check the availability of the entered place.
 

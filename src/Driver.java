@@ -1,7 +1,7 @@
 import java.io.Serializable;
 
-public abstract class Driver implements Serializable {
 // Abstract class
+public abstract class Driver implements Serializable {
 
     private String driverName;
     private String location;
@@ -14,11 +14,15 @@ public abstract class Driver implements Serializable {
         this.teamName = teamName;
     }
 
+    // Setters and getters.
+
     public String getDriverName() {
+
         return driverName;
     }
 
     public void setDriverName(String driverName) {
+
         this.driverName = driverName;
     }
 

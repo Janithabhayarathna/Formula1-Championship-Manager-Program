@@ -2,14 +2,21 @@ import java.io.Serializable;
 
 public class RaceData implements Serializable{
 
-    private String dateOfRace;
-    private String[] place;
+    private String dateOfRace;  // Date of the race.
+    private String[] place;  // Used to store places in the race.
 
+    /**
+     * @param dateOfRace
+     * @param place
+     */
     public RaceData(String dateOfRace, String[] place) {
+        // RaceData Constructor.
 
         this.dateOfRace = dateOfRace;
         this.place = place;
     }
+
+    // Setters and getters.
 
     public String[] getPlace() {
 

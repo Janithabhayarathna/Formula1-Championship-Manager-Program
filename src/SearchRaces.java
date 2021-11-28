@@ -3,10 +3,11 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Collections;
 
 public class SearchRaces implements ActionListener {
+    // Class used to search races.
 
+    // Initializing the table, button, textBox and labels.
     JTable table = new JTable();
     JButton button;
     JTextField textBox;
@@ -15,6 +16,7 @@ public class SearchRaces implements ActionListener {
 
     public SearchRaces() {
 
+        // Frame
         JFrame frame = new JFrame(" Formula 1 Championship Manager Program.");
         frame.getContentPane().setBackground(Color.black);
         frame.getContentPane().setForeground(Color.white);
@@ -24,12 +26,14 @@ public class SearchRaces implements ActionListener {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
+        // Label 2
         label2 = new JLabel("  Driver participated race details.");
         frame.getContentPane().add(label2);
         label2.setBounds(20,0,700,50);
         label2.setForeground(Color.white);
         label2.setFont(new Font("Calibre",Font.BOLD,22));
 
+        // Label 3
         label3 = new JLabel(" ");
         frame.getContentPane().add(label3);
         label3.setBounds(560,10,300,50);
@@ -37,17 +41,20 @@ public class SearchRaces implements ActionListener {
         label3.setBackground(Color.black);
         label3.setFont(new Font("Calibre",Font.BOLD,20));
 
+        // TextBox
         textBox = new JTextField(20);
         textBox.setBounds(20,50,350,30);
         textBox.setText("Enter driver name");
         textBox.setToolTipText("Enter the driver's name here.");
         frame.getContentPane().add(textBox);
 
+        // Button
         button = new JButton("🔎 Search");
         button.setBounds(390,50,100,30);
         frame.getContentPane().add(button);
         button.addActionListener(this);
 
+        // Table
         table.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"Date", "Position"}));
         table.setBackground(Color.white);
         table.setForeground(Color.black);
@@ -57,6 +64,7 @@ public class SearchRaces implements ActionListener {
         table.setFont(new Font("Serif", Font.PLAIN, 16));
         table.setRowHeight(25);
 
+        // Scroll pane
         JScrollPane pane = new JScrollPane(table);
         pane.setForeground(Color.RED);
         pane.setBackground(Color.white);
@@ -66,7 +74,7 @@ public class SearchRaces implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) {    // Button actions
 
         if (e.getSource().equals(button)) {
             String name = textBox.getText().toLowerCase();
@@ -76,6 +84,7 @@ public class SearchRaces implements ActionListener {
                         RaceData temp = Formula1ChampionshipManager.races.get(k);
                         for (int y = 0; y < Formula1ChampionshipManager.positions.length; y++) {
                             if((temp.getPlace())[y].equals(name)) {
+                                // Adding content to the table.
                                 ((DefaultTableModel) table.getModel()).addRow(new Object[]{Formula1ChampionshipManager.races.get(k).getDateOfRace(),y+1});
                             }
                         }
@@ -87,6 +96,7 @@ public class SearchRaces implements ActionListener {
                 }
             } else {
                 label3.setText("No race data available❗");
+                new SearchRaces();
             }
         }
     }
