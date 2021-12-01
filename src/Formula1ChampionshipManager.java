@@ -9,7 +9,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     public int noOfCars;
     public static ArrayList<Formula1Driver> drivers = new ArrayList<Formula1Driver>();      // Array list to store driver details as objects.
     public static ArrayList<RaceData> races = new ArrayList<RaceData>();        // Array list to store race details as objects.
-    public static String[] positions = new String[20];      // Array to store positions of each race.
+//    public static String[] positions = new String[drivers.size()];      // Array to store positions of each race.
     public static int[] pointsScheme = {25,18,15,12,10,8,6,4,2,1,0,0,0,0,0,0,0,0,0,0};      // Point scheme of the race according to position.
     public Scanner input = new Scanner(System.in).useDelimiter("\n");       //Created an object for Scanner class. Used 'useDelimiter' to ignore spaces between user inputs.
     String driverName; String location; String teamName; int position1; int position2; int position3; int points; int numOfRaces;
@@ -108,7 +108,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                     exit();     // Calling the changeTeam method.
                     break;
 
-                default:        // Running this part if user enters a wrong input.
+                default:    // Running this part if user enters a wrong input.
                     System.out.println("⚠️Please check the input and try again! Refer the option menu.");
                     System.out.println(" ");
             }
@@ -393,14 +393,15 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 for (Formula1Driver driver : drivers) {
                     if (driver.getDriverName().equals(statDriver)) {
                         // Displaying the statistics of the relevant driver.
+                        System.out.println(" ");
                         System.out.println("🧘______________ Mr. " + driver.getDriverName() + " __________________🧘");
-                        System.out.println("⛔ Mr. " + driver.getDriverName() + "'s location - " + driver.getLocation());
-                        System.out.println("⛔ Mr. " + driver.getDriverName() + "'s team name - " + driver.getTeamName());
-                        System.out.println("⛔ Mr. " + driver.getDriverName() + "'s no of 1st places - " + driver.getPosition1());
-                        System.out.println("⛔ Mr. " + driver.getDriverName() + "'s no of 2nd places - " + driver.getPosition2());
-                        System.out.println("⛔ Mr. " + driver.getDriverName() + "'s no of 3rd places - " + driver.getPosition3());
-                        System.out.println("⛔ Mr. " + driver.getDriverName() + "'s no of points - " + driver.getPoints());
-                        System.out.println("⛔ Mr. " + driver.getDriverName() + "'s no of races - " + driver.getNumOfRaces());
+                        System.out.println("\t⛔ Mr. " + driver.getDriverName() + "'s location - " + driver.getLocation());
+                        System.out.println("\t⛔ Mr. " + driver.getDriverName() + "'s team name - " + driver.getTeamName());
+                        System.out.println("\t⛔ Mr. " + driver.getDriverName() + "'s no of 1st places - " + driver.getPosition1());
+                        System.out.println("\t⛔ Mr. " + driver.getDriverName() + "'s no of 2nd places - " + driver.getPosition2());
+                        System.out.println("\t⛔ Mr. " + driver.getDriverName() + "'s no of 3rd places - " + driver.getPosition3());
+                        System.out.println("\t⛔ Mr. " + driver.getDriverName() + "'s no of points - " + driver.getPoints());
+                        System.out.println("\t⛔ Mr. " + driver.getDriverName() + "'s no of races - " + driver.getNumOfRaces());
                     }
                 }
             } else {
@@ -439,13 +440,15 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     public void addRace() {
         // Method used to add statistics of a completed race.
 
-        positionInitializing();     // Initializing the position array.
+        String[] positions = new String[drivers.size()];      // Array to store positions of each race.
+//        positionInitializing();   // Initializing the position array.
         if (drivers.size() > 1) {
             System.out.print(" >> Enter the date of race: (dd/mm/yyyy): ");
             String date = input.next();
             if (checkDate(date)) {      // Validating the entered date.
                 availableDrivers();     // Displaying the existing drivers.
                 for (int i = 0; i < drivers.size(); i++) {  // Asking the driver's name from the user according to the given position.
+
                     System.out.print(" >> Enter the driver's name who got the " + (i + 1) + " place of the race: ");
                     if (input.hasNext()) {
                         String place = input.next().toLowerCase();
@@ -457,11 +460,14 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                                         driver.setNumOfRaces(1);     // Adding 1 to the race count of the relevant driver.
                                         driver.setPoints(pointsScheme[i]);   // Adding points according to the point scheme.
                                         if (i == 0) {
-                                            driver.setPosition1(1);  // Adding 1 to the number of 1st places of the relevant driver.
+                                            driver.setPosition1(1);  // Adding 1 to the number of 1st places count of the relevant driver.
+
                                         } else if (i == 1) {
-                                            driver.setPosition2(1);  // Adding 1 to the number of 2nd places of the relevant driver.
+                                            driver.setPosition2(1);  // Adding 1 to the number of 2nd places count of the relevant driver.
+
                                         } else if (i == 2) {
-                                            driver.setPosition3(1);  // Adding 1 to the number of 3rd places of the relevant driver.
+                                            driver.setPosition3(1);  // Adding 1 to the number of 3rd places count of the relevant driver.
+
                                         }
                                     }
                                 }
@@ -490,6 +496,12 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 System.out.println("✔ Race statistics successfully added.");
                 numOfRaces++;
                 System.out.println("-----------------------------------------------------------------------------------");
+
+                for (RaceData r : races) {
+                    System.out.println(r.getDateOfRace());
+                    System.out.println(Arrays.toString(r.getPlace()));
+                }
+
                 menu();
             } else {
                 System.out.println("⚠️Invalid date or date format! Please enter a valid input and try again.");
@@ -501,13 +513,13 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     }
 
 
-    public void positionInitializing() {
-        // Method used to initialize the positions array.
-
-        for (int l=0; l< 20; l++) {
-            positions[l] = "No Driver";
-        }
-    }
+//    public void positionInitializing() {
+//        // Method used to initialize the positions array.
+//
+//        for (int l=0; l< positions.length; l++) {
+//            positions[l] = "No Driver";
+//        }
+//    }
 
 
     /**

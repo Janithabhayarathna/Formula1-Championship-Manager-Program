@@ -29,11 +29,11 @@ public class GUI implements ActionListener{
 
     public GUI() {
 
-        // Frame part.
+        // Frame
         JFrame frame = new JFrame(" Formula 1 Championship Manager Program.");
         frame.getContentPane().setBackground(Color.black);
         frame.getContentPane().setForeground(Color.white);
-        frame.setBounds(100, 100, 810, 500);
+        frame.setBounds(100, 100, 850, 500);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().setLayout(null);
         frame.setLocationRelativeTo(null);
@@ -102,7 +102,7 @@ public class GUI implements ActionListener{
         JScrollPane pane = new JScrollPane(table);
         pane.setForeground(Color.RED);
         pane.setBackground(Color.blue);
-        pane.setBounds(5, 190, 780, 570);
+        pane.setBounds(5, 190, 820, 570);
         frame.getContentPane().add(pane);
     }
 
@@ -140,21 +140,21 @@ public class GUI implements ActionListener{
             removeContent();
             Collections.sort(Formula1ChampionshipManager.drivers);
             fillTable(Formula1ChampionshipManager.drivers, table);
-            label.setText("🖥️ Stats of all drivers in descending order of points.");
+            label.setText("📃 Stats of all drivers in descending order of points.");
         }
         // Button 2
         else if (e.getSource().equals(button2)) {
             removeContent();
             Collections.sort(Formula1ChampionshipManager.drivers, Formula1Driver.ascendingOnPoint);
             fillTable(Formula1ChampionshipManager.drivers, table);
-            label.setText("🖥️ Stats of all drivers in ascending order of points.");
+            label.setText("📃 Stats of all drivers in ascending order of points.");
         }
         // Button 3
         else if (e.getSource().equals(button3)) {
             removeContent();
             Collections.sort(Formula1ChampionshipManager.drivers, Formula1Driver.descendingOnPosition1);
             fillTable(Formula1ChampionshipManager.drivers, table);
-            label.setText("🖥️ Stats of all drivers in descending order of no. of 1st places.");
+            label.setText("📃 Stats of all drivers in descending order of no. of 1st places.");
         }
         // Button 4
         else if (e.getSource().equals(button4)) {

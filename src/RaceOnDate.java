@@ -23,22 +23,19 @@ public class RaceOnDate {
     public RaceOnDate() {
         // RaceOnDate constructor.
 
-        for (int m=0; m < Formula1ChampionshipManager.races.size(); m++) {  // Passing all the race dates to a new array list for the purpose of sorting.
-            allDates.add(Formula1ChampionshipManager.races.get(m).getDateOfRace());
-        }
-
-        Collections.sort(allDates, new Comparator<String>() {   // Sorting the dates.
-            // Referenced from - https://www.delftstack.com/howto/java/how-to-sort-objects-in-arraylist-by-date-in-java/#:~:text=sort()%20methods.-,comparable%20Method%20to%20Sort%20Objects%20in%20ArrayList%20by%20Dates%20in,interface%20to%20sort%20the%20array.
+        Comparator<RaceData> raceDetails = new Comparator<RaceData>() {
             DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
             @Override
-            public int compare(String d1, String d2) {
+            public int compare(RaceData r1, RaceData r2) {
                 try {
-                    return format.parse(d1).compareTo(format.parse(d2));
+                    return format.parse(r1.getDateOfRace()).compareTo(format.parse(r2.getDateOfRace()));
                 } catch (ParseException e) {
                     throw new IllegalArgumentException(e);
                 }
             }
-        });
+        };
+
+        Collections.sort(Formula1ChampionshipManager.races, raceDetails);
 
         // Frame
         JFrame frame = new JFrame(" Formula 1 Championship Manager Program.");
@@ -51,7 +48,7 @@ public class RaceOnDate {
         frame.setVisible(true);
 
         // Label
-        label = new JLabel("Race details sorted on date.");
+        label = new JLabel("📆 Race details sorted on date.");
         frame.getContentPane().add(label);
         label.setBounds(20,0,700,50);
         label.setForeground(Color.white);
@@ -60,13 +57,8 @@ public class RaceOnDate {
         // Table
         table.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"Race date", "1st place", "2nd place", "3rd place"})); // Table column names
         // Filling the table
-        for (int h = 0; h < Formula1ChampionshipManager.races.size(); h++) {
-            RaceData temp = Formula1ChampionshipManager.races.get(h);
-            for (int s = 0; s < allDates.size(); s++) {
-                if (allDates.get(s).equals(temp.getDateOfRace())) {
-                    ((DefaultTableModel) table.getModel()).addRow(new Object[]{allDates.get(h), temp.getPlace()[0], temp.getPlace()[1], temp.getPlace()[2]});
-                }
-            }
+        for (RaceData race : Formula1ChampionshipManager.races) {
+            ((DefaultTableModel) table.getModel()).addRow(new Object[]{race.getDateOfRace(), race.getPlace()[0], race.getPlace()[1], race.getPlace()[2]});
         }
         table.setBackground(Color.white);
         table.setForeground(Color.black);

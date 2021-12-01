@@ -1,8 +1,8 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Collections;
+
 
 public class RandomRace {
     // Class of random race.
@@ -36,7 +36,7 @@ public class RandomRace {
         String MM = Integer.toString(randomMonth);
         int randomYear = (int)(Math.random()*(2020 - 2000 + 1) + 2000);
         String yyyy = Integer.toString(randomYear);
-        String date = dd + MM + yyyy;
+        String date = dd + "/" + MM +"/" + yyyy;
 
         // Generating the random positions.
         Collections.shuffle(Formula1ChampionshipManager.drivers);
@@ -66,7 +66,7 @@ public class RandomRace {
         frame.setVisible(true);
 
         // Label
-        label1.setText(" Random race details.");
+        label1.setText("🏁 Random race details.");
         frame.getContentPane().add(label1);
         label1.setBounds(20,0,700,50);
         label1.setForeground(Color.white);
@@ -74,7 +74,7 @@ public class RandomRace {
 
         // Table
         randomTable.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"Race date", "1st place", "2nd place", "3rd place"}));
-        ((DefaultTableModel) randomTable.getModel()).addRow(new Object[]{date, newPositions[0], newPositions[1], newPositions[2]});
+        ((DefaultTableModel) randomTable.getModel()).addRow(new Object[]{date, newPositions[0], newPositions[1], newPositions[2]}); // Filling the table row by row.
         randomTable.setBackground(Color.white);
         randomTable.setForeground(Color.black);
         randomTable.setGridColor(Color.blue);

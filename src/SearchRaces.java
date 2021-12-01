@@ -27,7 +27,7 @@ public class SearchRaces implements ActionListener {
         frame.setVisible(true);
 
         // Label 2
-        label2 = new JLabel("  Driver participated race details.");
+        label2 = new JLabel("🏁 Driver participated race details.");
         frame.getContentPane().add(label2);
         label2.setBounds(20,0,700,50);
         label2.setForeground(Color.white);
@@ -82,7 +82,7 @@ public class SearchRaces implements ActionListener {
                 if (Formula1ChampionshipManager.checkDriverAvailability(name)) {
                     for (int k = 0; k < Formula1ChampionshipManager.races.size(); k++) {
                         RaceData temp = Formula1ChampionshipManager.races.get(k);
-                        for (int y = 0; y < Formula1ChampionshipManager.positions.length; y++) {
+                        for (int y = 0; y < Formula1ChampionshipManager.races.size(); y++) {
                             if((temp.getPlace())[y].equals(name)) {
                                 // Adding content to the table.
                                 ((DefaultTableModel) table.getModel()).addRow(new Object[]{Formula1ChampionshipManager.races.get(k).getDateOfRace(),y+1});
