@@ -2,6 +2,12 @@ import java.io.*;
 import java.util.*;
 import java.text.SimpleDateFormat;
 
+/**
+ * name - Janith Chanaka Abhayarathna.
+ * UoW Id - w1830253
+ * IIT Id - 20200571
+ * OOP Course Work.
+ */
 
 public class Formula1ChampionshipManager implements ChampionshipManager {
 
@@ -9,7 +15,6 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     public int noOfCars;
     public static ArrayList<Formula1Driver> drivers = new ArrayList<Formula1Driver>();      // Array list to store driver details as objects.
     public static ArrayList<RaceData> races = new ArrayList<RaceData>();        // Array list to store race details as objects.
-//    public static String[] positions = new String[drivers.size()];      // Array to store positions of each race.
     public static int[] pointsScheme = {25,18,15,12,10,8,6,4,2,1,0,0,0,0,0,0,0,0,0,0};      // Point scheme of the race according to position.
     public Scanner input = new Scanner(System.in).useDelimiter("\n");       //Created an object for Scanner class. Used 'useDelimiter' to ignore spaces between user inputs.
     String driverName; String location; String teamName; int position1; int position2; int position3; int points; int numOfRaces;
@@ -237,8 +242,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
 
     /**
-     * @param name
-     * @return
+     * @param name - Driver name
      */
     public boolean checkDriverUniqueness(String name) {
         // Method used to check the driver name uniqueness.
@@ -253,8 +257,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
 
     /**
-     * @param name
-     * @return
+     * @param name - Driver name
      */
     public static boolean checkDriverAvailability(String name) {
         // Method used to check the availability of the entered driver name.
@@ -269,8 +272,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
 
     /**
-     * @param team
-     * @return
+     * @param team - Team name
      */
     public boolean checkTeamUniqueness(String team) {
         // Method used to check the driver name uniqueness.
@@ -285,8 +287,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
 
     /**
-     * @param team
-     * @return
+     * @param team - Team name
      */
     public boolean checkTeamAvailability(String team) {
         // Method used to check the availability of the entered team name.
@@ -301,8 +302,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
 
     /**
-     * @param position
-     * @return
+     * @param position - Position of the race
      */
     public boolean positionValidator(int position) {
         // Method used to validate the entered position(Whether it is positive(return true) integer or not(return false)).
@@ -441,7 +441,6 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         // Method used to add statistics of a completed race.
 
         String[] positions = new String[drivers.size()];      // Array to store positions of each race.
-//        positionInitializing();   // Initializing the position array.
         if (drivers.size() > 1) {
             System.out.print(" >> Enter the date of race: (dd/mm/yyyy): ");
             String date = input.next();
@@ -513,18 +512,8 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     }
 
 
-//    public void positionInitializing() {
-//        // Method used to initialize the positions array.
-//
-//        for (int l=0; l< positions.length; l++) {
-//            positions[l] = "No Driver";
-//        }
-//    }
-
-
     /**
-     * @param date
-     * @return
+     * @param date - Race date
      */
     public boolean checkDate(String date) {
         // Method used to validate the entered date.
@@ -542,9 +531,8 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
 
     /**
-     * @param driver
-     * @param position
-     * @return
+     * @param driver - Driver name
+     * @param position - Places of the race
      */
     public boolean placeAvailability(String driver, String[] position) {
         // Method used to check the availability of the entered place.

@@ -6,8 +6,8 @@ public class RaceData implements Serializable{
     private final String[] place;  // Used to store places in the race.
 
     /**
-     * @param dateOfRace
-     * @param place
+     * @param dateOfRace - Date of the race
+     * @param place - Array that contain places of the race
      */
     public RaceData(String dateOfRace, String[] place) {
         // RaceData Constructor.

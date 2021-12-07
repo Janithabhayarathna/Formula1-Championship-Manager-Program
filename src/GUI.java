@@ -73,7 +73,7 @@ public class GUI implements ActionListener{
         button5 = new JButton("Random race on position");
         button5.setBounds(165,120,120,40);
         frame.getContentPane().add(button5);
-//        button5.addActionListener(this);
+        button5.addActionListener(this);
 
         // Button 6
         button6 = new JButton("Display races on date");
@@ -99,7 +99,8 @@ public class GUI implements ActionListener{
         table.setRowHeight(25);
 
         // Pane
-        JScrollPane pane = new JScrollPane(table);
+        JScrollPane pane;
+        pane = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         pane.setForeground(Color.RED);
         pane.setBackground(Color.blue);
         pane.setBounds(5, 190, 820, 570);
@@ -108,8 +109,8 @@ public class GUI implements ActionListener{
 
 
     /**
-     * @param driver
-     * @param table
+     * @param driver - Driver name
+     * @param table - Driver table
      */
     public static void fillTable (ArrayList < Formula1Driver > driver, JTable table){
         // Used to fill the table data row by row.
@@ -133,7 +134,7 @@ public class GUI implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // When user clicked a button this part will work.
+        // When user clicked a button this part will execute.
 
         // Button 1
         if (e.getSource().equals(button1)) {
@@ -161,9 +162,9 @@ public class GUI implements ActionListener{
             new RandomRace();
         }
         // Button 5
-//        else if (e.getSource().equals(button5)) {
-//            new RandomRace();
-//        }
+        else if (e.getSource().equals(button5)) {
+            new RaceProbability();
+        }
         // Button 6
         else if (e.getSource().equals(button6)) {
             new RaceOnDate();

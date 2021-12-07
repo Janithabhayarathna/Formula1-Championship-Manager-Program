@@ -82,7 +82,7 @@ public class SearchRaces implements ActionListener {
                 if (Formula1ChampionshipManager.checkDriverAvailability(name)) {
                     for (int k = 0; k < Formula1ChampionshipManager.races.size(); k++) {
                         RaceData temp = Formula1ChampionshipManager.races.get(k);
-                        for (int y = 0; y < Formula1ChampionshipManager.races.size(); y++) {
+                        for (int y = 0; y < Formula1ChampionshipManager.drivers.size(); y++) {
                             if((temp.getPlace())[y].equals(name)) {
                                 // Adding content to the table.
                                 ((DefaultTableModel) table.getModel()).addRow(new Object[]{Formula1ChampionshipManager.races.get(k).getDateOfRace(),y+1});

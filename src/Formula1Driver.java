@@ -19,12 +19,16 @@ public class Formula1Driver extends Driver implements Comparable<Formula1Driver>
         this.numOfRaces = numOfRaces;
     }
 
+
     // Setters and getters.
 
     public int getPosition1() {
         return position1;
     }
 
+    /**
+     * @param position1 - Driver's position 1
+     */
     public void setPosition1(int position1) {
         this.position1 += position1;
     }
@@ -34,6 +38,9 @@ public class Formula1Driver extends Driver implements Comparable<Formula1Driver>
         return position2;
     }
 
+    /**
+     * @param position2 - Driver's position 2
+     */
     public void setPosition2(int position2) {
 
         this.position2 += position2;
@@ -44,6 +51,9 @@ public class Formula1Driver extends Driver implements Comparable<Formula1Driver>
         return position3;
     }
 
+    /**
+     * @param position3 - Driver's position 3
+     */
     public void setPosition3(int position3) {
 
         this.position3 += position3;
@@ -54,6 +64,9 @@ public class Formula1Driver extends Driver implements Comparable<Formula1Driver>
         return points;
     }
 
+    /**
+     * @param points - Driver's points
+     */
     public void setPoints(int points) {
 
         this.points += points;
@@ -64,6 +77,9 @@ public class Formula1Driver extends Driver implements Comparable<Formula1Driver>
         return numOfRaces;
     }
 
+    /**
+     * @param numOfRaces - Number of races that driver has participated
+     */
     public void setNumOfRaces(int numOfRaces) {
 
         this.numOfRaces += numOfRaces;
@@ -71,8 +87,7 @@ public class Formula1Driver extends Driver implements Comparable<Formula1Driver>
 
 
     /**
-     * @param com
-     * @return
+     * @param com - Points compare
      */
     @Override
     public int compareTo(Formula1Driver com) {  // Used to sort drivers on points in descending order.

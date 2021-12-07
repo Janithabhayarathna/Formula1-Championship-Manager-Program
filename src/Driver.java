@@ -8,11 +8,13 @@ public abstract class Driver implements Serializable {
     private String teamName;
 
     public Driver (String driverName, String location, String teamName) {
+        // Driver class constructor.
 
         this.driverName = driverName;
         this.location = location;
         this.teamName = teamName;
     }
+
 
     // Setters and getters.
 
@@ -38,7 +40,4 @@ public abstract class Driver implements Serializable {
         return teamName;
     }
 
-    public void setTeamName(String teamName) {
-        this.teamName = teamName;
-    }
 }

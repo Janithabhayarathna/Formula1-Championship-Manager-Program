@@ -84,7 +84,7 @@ public class RandomRace {
         randomTable.setRowHeight(25);
 
         // Scroll pane
-        JScrollPane pane = new JScrollPane(randomTable);
+        JScrollPane pane = new JScrollPane(randomTable, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         pane.setForeground(Color.RED);
         pane.setBackground(Color.white);
         pane.setBounds(5, 60, 780, 570);

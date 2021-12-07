@@ -12,7 +12,7 @@ public class RaceOnDate {
 
     /**
      * Referenced from - https://m.youtube.com/watch?v=pybU3E-eKfw
-     *                 - - https://www.youtube.com/watch?v=X1JPFGR3I7k&list=PLSob6gvlzsCPWqLcSuuA7_vmRU9v2jVIn
+     *                 - https://www.youtube.com/watch?v=X1JPFGR3I7k&list=PLSob6gvlzsCPWqLcSuuA7_vmRU9v2jVIn
      */
 
     // Initialized the label and table.
@@ -69,7 +69,8 @@ public class RaceOnDate {
         table.setRowHeight(25);
 
         // Scroll pane
-        JScrollPane pane = new JScrollPane(table);
+        JScrollPane pane;
+        pane = new JScrollPane(table,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         pane.setForeground(Color.RED);
         pane.setBackground(Color.white);
         pane.setBounds(5, 100, 780, 570);
