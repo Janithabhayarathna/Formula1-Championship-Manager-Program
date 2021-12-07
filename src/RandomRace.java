@@ -34,9 +34,8 @@ public class RandomRace {
         String dd = Integer.toString(randomDate);
         int randomMonth = (int)(Math.random()*(11 - 1 + 1) + 1);
         String MM = Integer.toString(randomMonth);
-        int randomYear = (int)(Math.random()*(2020 - 2000 + 1) + 2000);
-        String yyyy = Integer.toString(randomYear);
-        String date = dd + "/" + MM +"/" + yyyy;
+
+        String date = dd + "/" + MM +"/" + "2021";
 
         // Generating the random positions.
         Collections.shuffle(Formula1ChampionshipManager.drivers);

@@ -46,44 +46,44 @@ public class GUI implements ActionListener{
         label.setFont(new Font("Calibre",Font.BOLD,22));
 
         // Button 1
-        button1 = new JButton("Points on desc");
-        button1.setBounds(80,60,120,40);
+        button1 = new JButton("🏁 Points on desc");
+        button1.setBounds(80,60,130,40);
         frame.getContentPane().add(button1);
         button1.addActionListener(this);
 
         // Button 2
-        button2 = new JButton("Points on asc");
-        button2.setBounds(250,60,120,40);
+        button2 = new JButton("🏁 Points on asc");
+        button2.setBounds(250,60,130,40);
         frame.getContentPane().add(button2);
         button2.addActionListener(this);
 
         // Button 3
-        button3 = new JButton("1st positions desc");
-        button3.setBounds(420,60,120,40);
+        button3 = new JButton("🏁 Desc on 1st pos");
+        button3.setBounds(420,60,140,40);
         frame.getContentPane().add(button3);
         button3.addActionListener(this);
 
         // Button 4
-        button4 = new JButton("Random race");
-        button4.setBounds(590,60,120,40);
+        button4 = new JButton("🏁 Random race");
+        button4.setBounds(590,60,130,40);
         frame.getContentPane().add(button4);
         button4.addActionListener(this);
 
         // Button 5
-        button5 = new JButton("Random race on position");
-        button5.setBounds(165,120,120,40);
+        button5 = new JButton("🏁 Probability Race");
+        button5.setBounds(165,120,130,40);
         frame.getContentPane().add(button5);
         button5.addActionListener(this);
 
         // Button 6
-        button6 = new JButton("Display races on date");
-        button6.setBounds(335,120,120,40);
+        button6 = new JButton("🏁 Display races");
+        button6.setBounds(335,120,130,40);
         frame.getContentPane().add(button6);
         button6.addActionListener(this);
 
         // Button 7
-        button7 = new JButton("Driver races");
-        button7.setBounds(505,120,120,40);
+        button7 = new JButton("🏁 Driver races");
+        button7.setBounds(505,120,130,40);
         frame.getContentPane().add(button7);
         button7.addActionListener(this);
 
@@ -99,8 +99,8 @@ public class GUI implements ActionListener{
         table.setRowHeight(25);
 
         // Pane
-        JScrollPane pane;
-        pane = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        JScrollPane pane = new JScrollPane(table);
+//        pane = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         pane.setForeground(Color.RED);
         pane.setBackground(Color.blue);
         pane.setBounds(5, 190, 820, 570);

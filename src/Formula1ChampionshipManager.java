@@ -141,7 +141,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 }
                 System.out.println(" ");
                 System.out.print(" >> Enter the team name of the driver: ");
-                teamName = input.next().toLowerCase();
+                teamName = input.next().toUpperCase();
                 if (checkTeamUniqueness(teamName)) {    // Check whether the given driver name is unique or not.
                     System.out.print(" >> Enter the driver's location: ");
                     location = input.next();
@@ -442,7 +442,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
         String[] positions = new String[drivers.size()];      // Array to store positions of each race.
         if (drivers.size() > 1) {
-            System.out.print(" >> Enter the date of race: (dd/mm/yyyy): ");
+            System.out.print(" >> Enter the date of race: (DD/MM/2021): ");
             String date = input.next();
             if (checkDate(date)) {      // Validating the entered date.
                 availableDrivers();     // Displaying the existing drivers.
@@ -490,18 +490,14 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                     }
                     // If driver entered an invalid input it displays the warning message and going to the menu(calling the menu method).
                 }
+
                 races.add(new RaceData(date, positions));   // Passing the race details to the races array list as objects.
                 System.out.println(" ");
                 System.out.println("✔ Race statistics successfully added.");
                 numOfRaces++;
                 System.out.println("-----------------------------------------------------------------------------------");
-
-                for (RaceData r : races) {
-                    System.out.println(r.getDateOfRace());
-                    System.out.println(Arrays.toString(r.getPlace()));
-                }
-
                 menu();
+
             } else {
                 System.out.println("⚠️Invalid date or date format! Please enter a valid input and try again.");
             }
