@@ -350,7 +350,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         availableTeams();   // Displaying the existing teams.
         System.out.print(" >> Enter the Team name that need to change the driver : ");
         if (input.hasNext()) {
-            String changeDriver = input.next().toLowerCase();
+            String changeDriver = input.next().toUpperCase();
             if (checkTeamAvailability(changeDriver)) {  // Check the availability of the team.
                 for (Formula1Driver driver : drivers) {
                     if (driver.getTeamName().equals(changeDriver)) {
@@ -394,7 +394,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                     if (driver.getDriverName().equals(statDriver)) {
                         // Displaying the statistics of the relevant driver.
                         System.out.println(" ");
-                        System.out.println("🧘______________ Mr. " + driver.getDriverName() + " __________________🧘");
+                        System.out.println("🧘______________ Mr. " + driver.getDriverName().toUpperCase() + " __________________🧘");
                         System.out.println("\t⛔ Mr. " + driver.getDriverName() + "'s location - " + driver.getLocation());
                         System.out.println("\t⛔ Mr. " + driver.getDriverName() + "'s team name - " + driver.getTeamName());
                         System.out.println("\t⛔ Mr. " + driver.getDriverName() + "'s no of 1st places - " + driver.getPosition1());

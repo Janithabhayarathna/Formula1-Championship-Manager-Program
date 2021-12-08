@@ -41,19 +41,19 @@ public class GUI implements ActionListener{
 
         // Label
         frame.getContentPane().add(label);
-        label.setBounds(20,0,700,50);
+        label.setBounds(260,0,700,50);
         label.setForeground(Color.white);
-        label.setFont(new Font("Calibre",Font.BOLD,22));
+        label.setFont(new Font("Calibre",Font.BOLD,26));
 
         // Button 1
         button1 = new JButton("🏁 Points on desc");
-        button1.setBounds(80,60,130,40);
+        button1.setBounds(80,60,140,40);
         frame.getContentPane().add(button1);
         button1.addActionListener(this);
 
         // Button 2
         button2 = new JButton("🏁 Points on asc");
-        button2.setBounds(250,60,130,40);
+        button2.setBounds(250,60,140,40);
         frame.getContentPane().add(button2);
         button2.addActionListener(this);
 
@@ -65,25 +65,25 @@ public class GUI implements ActionListener{
 
         // Button 4
         button4 = new JButton("🏁 Random race");
-        button4.setBounds(590,60,130,40);
+        button4.setBounds(590,60,140,40);
         frame.getContentPane().add(button4);
         button4.addActionListener(this);
 
         // Button 5
         button5 = new JButton("🏁 Probability Race");
-        button5.setBounds(165,120,130,40);
+        button5.setBounds(165,120,140,40);
         frame.getContentPane().add(button5);
         button5.addActionListener(this);
 
         // Button 6
         button6 = new JButton("🏁 Display races");
-        button6.setBounds(335,120,130,40);
+        button6.setBounds(335,120,140,40);
         frame.getContentPane().add(button6);
         button6.addActionListener(this);
 
         // Button 7
         button7 = new JButton("🏁 Driver races");
-        button7.setBounds(505,120,130,40);
+        button7.setBounds(505,120,140,40);
         frame.getContentPane().add(button7);
         button7.addActionListener(this);
 

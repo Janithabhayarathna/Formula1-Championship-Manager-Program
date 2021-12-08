@@ -10,6 +10,7 @@ public class RaceProbability {
     ArrayList<Integer> startingPositions = new ArrayList<Integer>();
     ArrayList<Formula1Driver> driversDuplicate = new ArrayList<Formula1Driver>();
     String date;
+    JLabel label1;
 
     public RaceProbability() {
 
@@ -23,11 +24,14 @@ public class RaceProbability {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
+//        label1.setText("🏁 Random Probability race details.");
+//        frame.getContentPane().add(label1);
+//        label1.setBounds(20,0,700,50);
+//        label1.setForeground(Color.white);
+//        label1.setFont(new Font("Calibre",Font.BOLD,22));
+
         // Table
         probabilityTable.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"Race date", "1st place", "2nd place", "3rd place"}));  // Table heading.
-
-
-          // Filling the table.
         probabilityTable.setBackground(Color.white);
         probabilityTable.setForeground(Color.black);
         probabilityTable.setGridColor(Color.blue);
@@ -53,12 +57,12 @@ public class RaceProbability {
         date = dd + "/" + MM + "/" + "2021";
 
         driversDuplicate.addAll(Formula1ChampionshipManager.drivers);
-        String[] positionsStorage = new String[10];
+        String[] positionsStorage = new String[Formula1ChampionshipManager.drivers.size()];
+        int startingPosition;
 
         for (Formula1Driver driver : Formula1ChampionshipManager.drivers) {
 
-            int startingPosition;
-            while (true) {
+            while (true){
                 while (true) {
                     startingPosition = (int) (Math.random() * Formula1ChampionshipManager.drivers.size()) + 1;
                     if (!startingPositions.contains(startingPosition)) {
@@ -76,49 +80,51 @@ public class RaceProbability {
                        driversDuplicate.remove(driver);
 
                         Collections.shuffle(driversDuplicate);
-                        for (int c=1; c < 10; c++) {
+                        for (int c=1; c < driversDuplicate.size(); c++) {
 
                             if (c == 1) {
-                                positionsStorage[1] = driver.getDriverName();
+                                positionsStorage[1] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(18);
                                 driver.setPosition2(1);
 
                             } else if (c == 2) {
-                                positionsStorage[2] = driver.getDriverName();
+                                positionsStorage[2] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(15);
                                 driver.setPosition3(1);
 
                             }else if (c == 3) {
-                                positionsStorage[3] = driver.getDriverName();
+                                positionsStorage[3] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(12);
 
                             }else if (c == 4) {
-                                positionsStorage[4] = driver.getDriverName();
+                                positionsStorage[4] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(10);
 
                             }else if (c == 5) {
-                                positionsStorage[5] = driver.getDriverName();
+                                positionsStorage[5] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(8);
 
                             }else if (c == 6) {
-                                positionsStorage[6] = driver.getDriverName();
+                                positionsStorage[6] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(6);
 
                             }else if (c == 7) {
-                                positionsStorage[7] = driver.getDriverName();
+                                positionsStorage[7] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(4);
 
                             }else if (c == 8) {
-                                positionsStorage[8] = driver.getDriverName();
+                                positionsStorage[8] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(2);
 
                             }else {
-                                positionsStorage[9] = driver.getDriverName();
+                                positionsStorage[9] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(1);
+                                break;
                             }
                         }
                        break;
                     }
+                    break;
                 }else if (startingPosition == 2) {
                     if (randomNumber > 39 && randomNumber < 71) {
                         positionsStorage[0] = driver.getDriverName();
@@ -126,50 +132,53 @@ public class RaceProbability {
                         driver.setPosition1(1);
                         driver.setNumOfRaces(1);
                         driversDuplicate.remove(driver);
+
                         Collections.shuffle(driversDuplicate);
-                        for (int c=1; c < 10; c++) {
+                        for (int c=1; c < driversDuplicate.size(); c++) {
 
                             if (c == 1) {
-                                positionsStorage[1] = driver.getDriverName();
+                                positionsStorage[1] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(18);
                                 driver.setPosition2(1);
 
                             } else if (c == 2) {
-                                positionsStorage[2] = driver.getDriverName();
+                                positionsStorage[2] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(15);
                                 driver.setPosition3(1);
 
                             }else if (c == 3) {
-                                positionsStorage[3] = driver.getDriverName();
+                                positionsStorage[3] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(12);
 
                             }else if (c == 4) {
-                                positionsStorage[4] = driver.getDriverName();
+                                positionsStorage[4] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(10);
 
                             }else if (c == 5) {
-                                positionsStorage[5] = driver.getDriverName();
+                                positionsStorage[5] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(8);
 
                             }else if (c == 6) {
-                                positionsStorage[6] = driver.getDriverName();
+                                positionsStorage[6] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(6);
 
                             }else if (c == 7) {
-                                positionsStorage[7] = driver.getDriverName();
+                                positionsStorage[7] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(4);
 
                             }else if (c == 8) {
-                                positionsStorage[8] = driver.getDriverName();
+                                positionsStorage[8] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(2);
 
                             }else {
-                                positionsStorage[9] = driver.getDriverName();
+                                positionsStorage[9] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(1);
+                                break;
                             }
                         }
                         break;
                     }
+                    break;
                 }else if (startingPosition == 3) {
                     if (randomNumber > 69 && randomNumber < 81) {
                         positionsStorage[0] = driver.getDriverName();
@@ -177,50 +186,53 @@ public class RaceProbability {
                         driver.setPosition1(1);
                         driver.setNumOfRaces(1);
                         driversDuplicate.remove(driver);
+
                         Collections.shuffle(driversDuplicate);
-                        for (int c=1; c < 10; c++) {
+                        for (int c=1; c < driversDuplicate.size(); c++) {
 
                             if (c == 1) {
-                                positionsStorage[1] = driver.getDriverName();
+                                positionsStorage[1] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(18);
                                 driver.setPosition2(1);
 
                             } else if (c == 2) {
-                                positionsStorage[2] = driver.getDriverName();
+                                positionsStorage[2] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(15);
                                 driver.setPosition3(1);
 
                             }else if (c == 3) {
-                                positionsStorage[3] = driver.getDriverName();
+                                positionsStorage[3] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(12);
 
                             }else if (c == 4) {
-                                positionsStorage[4] = driver.getDriverName();
+                                positionsStorage[4] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(10);
 
                             }else if (c == 5) {
-                                positionsStorage[5] = driver.getDriverName();
+                                positionsStorage[5] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(8);
 
                             }else if (c == 6) {
-                                positionsStorage[6] = driver.getDriverName();
+                                positionsStorage[6] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(6);
 
                             }else if (c == 7) {
-                                positionsStorage[7] = driver.getDriverName();
+                                positionsStorage[7] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(4);
 
                             }else if (c == 8) {
-                                positionsStorage[8] = driver.getDriverName();
+                                positionsStorage[8] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(2);
 
                             }else {
-                                positionsStorage[9] = driver.getDriverName();
+                                positionsStorage[9] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(1);
+                                break;
                             }
                         }
                         break;
                     }
+                    break;
                 }else if (startingPosition == 4) {
                     if (randomNumber > 79 && randomNumber < 91) {
                         positionsStorage[0] = driver.getDriverName();
@@ -228,50 +240,53 @@ public class RaceProbability {
                         driver.setPosition1(1);
                         driver.setNumOfRaces(1);
                         driversDuplicate.remove(driver);
+
                         Collections.shuffle(driversDuplicate);
-                        for (int c=1; c < 10; c++) {
+                        for (int c=1; c < driversDuplicate.size(); c++) {
 
                             if (c == 1) {
-                                positionsStorage[1] = driver.getDriverName();
+                                positionsStorage[1] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(18);
                                 driver.setPosition2(1);
 
                             } else if (c == 2) {
-                                positionsStorage[2] = driver.getDriverName();
+                                positionsStorage[2] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(15);
                                 driver.setPosition3(1);
 
                             }else if (c == 3) {
-                                positionsStorage[3] = driver.getDriverName();
+                                positionsStorage[3] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(12);
 
                             }else if (c == 4) {
-                                positionsStorage[4] = driver.getDriverName();
+                                positionsStorage[4] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(10);
 
                             }else if (c == 5) {
-                                positionsStorage[5] = driver.getDriverName();
+                                positionsStorage[5] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(8);
 
                             }else if (c == 6) {
-                                positionsStorage[6] = driver.getDriverName();
+                                positionsStorage[6] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(6);
 
                             }else if (c == 7) {
-                                positionsStorage[7] = driver.getDriverName();
+                                positionsStorage[7] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(4);
 
                             }else if (c == 8) {
-                                positionsStorage[8] = driver.getDriverName();
+                                positionsStorage[8] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(2);
 
                             }else {
-                                positionsStorage[9] = driver.getDriverName();
+                                positionsStorage[9] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(1);
+                                break;
                             }
                         }
                         break;
                     }
+                    break;
                 }else if (startingPosition > 4 && startingPosition < 10 ) {
                     if (randomNumber > 89 && randomNumber < 93) {
                         positionsStorage[0] = driver.getDriverName();
@@ -279,97 +294,101 @@ public class RaceProbability {
                         driver.setPosition1(1);
                         driver.setNumOfRaces(1);
                         driversDuplicate.remove(driver);
+
                         Collections.shuffle(driversDuplicate);
-                        for (int c=1; c < 10; c++) {
+                        for (int c=1; c < driversDuplicate.size(); c++) {
 
                             if (c == 1) {
-                                positionsStorage[1] = driver.getDriverName();
+                                positionsStorage[1] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(18);
                                 driver.setPosition2(1);
 
                             } else if (c == 2) {
-                                positionsStorage[2] = driver.getDriverName();
+                                positionsStorage[2] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(15);
                                 driver.setPosition3(1);
 
                             }else if (c == 3) {
-                                positionsStorage[3] = driver.getDriverName();
+                                positionsStorage[3] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(12);
 
                             }else if (c == 4) {
-                                positionsStorage[4] = driver.getDriverName();
+                                positionsStorage[4] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(10);
 
                             }else if (c == 5) {
-                                positionsStorage[5] = driver.getDriverName();
+                                positionsStorage[5] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(8);
 
                             }else if (c == 6) {
-                                positionsStorage[6] = driver.getDriverName();
+                                positionsStorage[6] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(6);
 
                             }else if (c == 7) {
-                                positionsStorage[7] = driver.getDriverName();
+                                positionsStorage[7] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(4);
 
                             }else if (c == 8) {
-                                positionsStorage[8] = driver.getDriverName();
+                                positionsStorage[8] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(2);
 
                             }else {
-                                positionsStorage[9] = driver.getDriverName();
+                                positionsStorage[9] = driversDuplicate.get(c).getDriverName();
                                 driver.setPoints(1);
+                                break;
                             }
                         }
                         break;
                     }
+                    break;
                 }else {
                     driver.setNumOfRaces(1);
+
                     Collections.shuffle(driversDuplicate);
-                    for (int c=1; c < 10; c++) {
+                    for (int c=1; c < driversDuplicate.size(); c++) {
 
                         if (c == 1) {
-                            positionsStorage[1] = driver.getDriverName();
+                            positionsStorage[1] = driversDuplicate.get(c).getDriverName();
                             driver.setPoints(18);
                             driver.setPosition2(1);
 
                         } else if (c == 2) {
-                            positionsStorage[2] = driver.getDriverName();
+                            positionsStorage[2] = driversDuplicate.get(c).getDriverName();
                             driver.setPoints(15);
                             driver.setPosition3(1);
 
                         }else if (c == 3) {
-                            positionsStorage[3] = driver.getDriverName();
+                            positionsStorage[3] = driversDuplicate.get(c).getDriverName();
                             driver.setPoints(12);
 
                         }else if (c == 4) {
-                            positionsStorage[4] = driver.getDriverName();
+                            positionsStorage[4] = driversDuplicate.get(c).getDriverName();
                             driver.setPoints(10);
 
                         }else if (c == 5) {
-                            positionsStorage[5] = driver.getDriverName();
+                            positionsStorage[5] = driversDuplicate.get(c).getDriverName();
                             driver.setPoints(8);
 
                         }else if (c == 6) {
-                            positionsStorage[6] = driver.getDriverName();
+                            positionsStorage[6] = driversDuplicate.get(c).getDriverName();
                             driver.setPoints(6);
 
                         }else if (c == 7) {
-                            positionsStorage[7] = driver.getDriverName();
+                            positionsStorage[7] = driversDuplicate.get(c).getDriverName();
                             driver.setPoints(4);
 
                         }else if (c == 8) {
-                            positionsStorage[8] = driver.getDriverName();
+                            positionsStorage[8] = driversDuplicate.get(c).getDriverName();
                             driver.setPoints(2);
 
                         }else {
-                            positionsStorage[9] = driver.getDriverName();
+                            positionsStorage[9] = driversDuplicate.get(c).getDriverName();
                             driver.setPoints(1);
+                            break;
                         }
                     }
                     break;
                 }
-                break;
             }
         }
         Formula1ChampionshipManager.races.add(new RaceData(date, positionsStorage));
