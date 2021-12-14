@@ -78,7 +78,7 @@ public class Formula1Driver extends Driver implements Comparable<Formula1Driver>
     }
 
     /**
-     * @param numOfRaces - Number of races that driver has participated
+     * @param numOfRaces - Number of races that driver has been participated
      */
     public void setNumOfRaces(int numOfRaces) {
 

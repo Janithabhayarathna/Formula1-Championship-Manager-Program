@@ -25,6 +25,8 @@ public class SearchRaces implements ActionListener {
         frame.getContentPane().setLayout(null);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        frame.setResizable(false);
+        frame.setAlwaysOnTop(true);
 
         // Label 2
         label2 = new JLabel("🏁 Driver participated race details.");
@@ -56,21 +58,22 @@ public class SearchRaces implements ActionListener {
 
         // Table
         table.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"Date", "Position"}));
-        table.setBackground(Color.white);
-        table.setForeground(Color.black);
-        table.setGridColor(Color.blue);
+        table.setBackground(Color.decode("#505050"));
+        table.setForeground(Color.white);
+        table.setOpaque(true);
+        table.setFillsViewportHeight(true);
+        table.setGridColor(Color.black);
         table.setSelectionBackground(Color.LIGHT_GRAY);
         table.setSelectionForeground(Color.BLUE);
         table.setFont(new Font("Serif", Font.PLAIN, 16));
         table.setRowHeight(25);
 
         // Scroll pane
-        JScrollPane pane = new JScrollPane(table);
+        JScrollPane pane = new JScrollPane(table,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         pane.setForeground(Color.RED);
         pane.setBackground(Color.white);
-        pane.setBounds(5, 100, 780, 570);
+        pane.setBounds(5, 100, 780, 280);
         frame.getContentPane().add(pane);
-
     }
 
     @Override
@@ -92,11 +95,9 @@ public class SearchRaces implements ActionListener {
                 }
                 else {
                     label3.setText("Driver not found❗");
-                    new SearchRaces();
                 }
             } else {
                 label3.setText("No race data available❗");
-                new SearchRaces();
             }
         }
     }

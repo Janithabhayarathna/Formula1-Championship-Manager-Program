@@ -11,18 +11,17 @@ import java.text.SimpleDateFormat;
 
 public class Formula1ChampionshipManager implements ChampionshipManager {
 
-    public int noOfDrivers;
-    public int noOfCars;
+
     public static ArrayList<Formula1Driver> drivers = new ArrayList<Formula1Driver>();      // Array list to store driver details as objects.
     public static ArrayList<RaceData> races = new ArrayList<RaceData>();        // Array list to store race details as objects.
-    public static int[] pointsScheme = {25,18,15,12,10,8,6,4,2,1,0,0,0,0,0,0,0,0,0,0};      // Point scheme of the race according to position.
-    public Scanner input = new Scanner(System.in).useDelimiter("\n");       //Created an object for Scanner class. Used 'useDelimiter' to ignore spaces between user inputs.
+    public static int[] pointsScheme = {25,18,15,12,10,8,6,4,2,1,0,0,0,0,0,0,0,0,0,0};      // Point scheme of the race according to positions.
+    public Scanner input = new Scanner(System.in).useDelimiter("\n");       //Created an object for Scanner class.
     String driverName; String location; String teamName; int position1; int position2; int position3; int points; int numOfRaces;
 
 
     public static void main(String[] args) {
 
-        Formula1ChampionshipManager obj = new Formula1ChampionshipManager();  // Created an object for Formula1Championship manager.
+        Formula1ChampionshipManager obj = new Formula1ChampionshipManager();  // Created an object for Formula1ChampionshipManager.
         obj.loadData();     // Calling the loadData method to load data at the beginning of the program.
         obj.loadRaceData();     // Calling the loadRaceData method to load race data at the beginning of the program.
         System.out.println(" ");
@@ -142,7 +141,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 System.out.println(" ");
                 System.out.print(" >> Enter the team name of the driver: ");
                 teamName = input.next().toUpperCase();
-                if (checkTeamUniqueness(teamName)) {    // Check whether the given driver name is unique or not.
+                if (checkTeamUniqueness(teamName)) {    // Check whether the given tam name is unique or not.
                     System.out.print(" >> Enter the driver's location: ");
                     location = input.next();
                     System.out.print(" >> Enter the number of 1st positions achieved by the driver: ");
@@ -236,8 +235,6 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         System.out.println("✔ Driver " + driverName + " of team " + teamName + " successfully added.");
         System.out.println("-----------------------------------------------------------------------------------");
         drivers.add(new Formula1Driver(driverName, location, teamName, position1, position2, position3, points, numOfRaces)); // Passing the driver details to the drivers array list as objects.
-        noOfDrivers++;
-        noOfCars++;
     }
 
 
@@ -278,7 +275,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         // Method used to check the driver name uniqueness.
 
         for (Formula1Driver y : drivers) {
-            if (y.getTeamName().equals(team)) {
+            if (y.getTeamName().equals(team)) {     // If there is a team which has the same name with entered name this method returns false.
                 return false;
             }
         }
@@ -337,8 +334,6 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         else {
             System.out.println("⚠️Please enter a valid driver name.");
         }
-        noOfDrivers--;
-        noOfCars--;
         System.out.println("-----------------------------------------------------------------------------------");
     }
 

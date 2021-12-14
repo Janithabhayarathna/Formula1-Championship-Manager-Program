@@ -26,22 +26,24 @@ public class GUI implements ActionListener{
     JLabel label = new JLabel("🎇 Welcome to the GUI 🎇");
     JTable table = new JTable();
 
-
     public GUI() {
+
 
         // Frame
         JFrame frame = new JFrame(" Formula 1 Championship Manager Program.");
         frame.getContentPane().setBackground(Color.black);
         frame.getContentPane().setForeground(Color.white);
-        frame.setBounds(100, 100, 850, 500);
+        frame.setBounds(100, 100, 830, 400);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().setLayout(null);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        frame.setResizable(false);
+        frame.setAlwaysOnTop(true);
 
         // Label
         frame.getContentPane().add(label);
-        label.setBounds(260,0,700,50);
+        label.setBounds(40,0,790,50);
         label.setForeground(Color.white);
         label.setFont(new Font("Calibre",Font.BOLD,26));
 
@@ -90,20 +92,21 @@ public class GUI implements ActionListener{
         // Table
         table.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"Driver's Name", "Team Name", "Location", "No. of Races", "Points", "1st places", "2nd places", "3rd places"}));  // Table heading.
         fillTable(Formula1ChampionshipManager.drivers, table);  // Filling the table.
-        table.setBackground(Color.white);
-        table.setForeground(Color.black);
-        table.setGridColor(Color.blue);
+        table.setBackground(Color.decode("#505050"));
+        table.setForeground(Color.white);
+        table.setOpaque(true);
+        table.setFillsViewportHeight(true);
+        table.setGridColor(Color.black);
         table.setSelectionBackground(Color.blue);
         table.setSelectionForeground(Color.white);
         table.setFont(new Font("Serif", Font.PLAIN, 16));
         table.setRowHeight(25);
 
         // Pane
-        JScrollPane pane = new JScrollPane(table);
-//        pane = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        JScrollPane pane = new JScrollPane(table,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         pane.setForeground(Color.RED);
         pane.setBackground(Color.blue);
-        pane.setBounds(5, 190, 820, 570);
+        pane.setBounds(5, 190, 800, 160);
         frame.getContentPane().add(pane);
     }
 

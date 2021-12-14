@@ -4,7 +4,6 @@ import java.awt.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -18,11 +17,11 @@ public class RaceOnDate {
     // Initialized the label and table.
     JLabel label;
     JTable table = new JTable();
-    ArrayList<String> allDates = new ArrayList<String>();   //  Used to store all the race dates.
 
     public RaceOnDate() {
         // RaceOnDate constructor.
 
+        // Date comparator
         Comparator<RaceData> raceDetails = new Comparator<RaceData>() {
             DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
             @Override
@@ -35,17 +34,19 @@ public class RaceOnDate {
             }
         };
 
-        Collections.sort(Formula1ChampionshipManager.races, raceDetails);
+        Collections.sort(Formula1ChampionshipManager.races, raceDetails);   // Sorting the races arraylist according to date.
 
         // Frame
         JFrame frame = new JFrame(" Formula 1 Championship Manager Program.");
         frame.getContentPane().setBackground(Color.black);
         frame.getContentPane().setForeground(Color.white);
-        frame.setBounds(100, 100, 810, 400);
+        frame.setBounds(100, 100, 810, 340);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().setLayout(null);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        frame.setResizable(false);
+        frame.setAlwaysOnTop(true);
 
         // Label
         label = new JLabel("📆 Race details sorted on date.");
@@ -60,9 +61,11 @@ public class RaceOnDate {
         for (RaceData race : Formula1ChampionshipManager.races) {
             ((DefaultTableModel) table.getModel()).addRow(new Object[]{race.getDateOfRace(), race.getPlace()[0], race.getPlace()[1], race.getPlace()[2]});
         }
-        table.setBackground(Color.white);
-        table.setForeground(Color.black);
-        table.setGridColor(Color.blue);
+        table.setBackground(Color.decode("#505050"));
+        table.setForeground(Color.white);
+        table.setOpaque(true);
+        table.setFillsViewportHeight(true);
+        table.setGridColor(Color.black);
         table.setSelectionBackground(Color.LIGHT_GRAY);
         table.setSelectionForeground(Color.BLUE);
         table.setFont(new Font("Serif", Font.PLAIN, 16));
@@ -73,7 +76,7 @@ public class RaceOnDate {
         pane = new JScrollPane(table,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         pane.setForeground(Color.RED);
         pane.setBackground(Color.white);
-        pane.setBounds(5, 100, 780, 570);
+        pane.setBounds(5, 100, 780, 180);
         frame.getContentPane().add(pane);
 
     }
