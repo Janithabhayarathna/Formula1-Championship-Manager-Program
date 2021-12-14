@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.*;
 import java.text.SimpleDateFormat;
+import java.util.concurrent.TimeUnit;
 
 /**
  * name - Janith Chanaka Abhayarathna.
@@ -36,9 +37,9 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
             //Option menu.
             System.out.println(" ");
-            System.out.println("\t -----------------------------------------------------");
+            System.out.println("\t+-----------------------------------------------------+");
             System.out.println("\t|******************** Option Menu ********************|");
-            System.out.println("\t -----------------------------------------------------");
+            System.out.println("\t+-----------------------------------------------------+");
             System.out.println("\t|   1 or CND: Create a New Driver.                    |");
             System.out.println("\t|   2 or DAD: Delete a Driver.                        |");
             System.out.println("\t|   3 or CDT: Change the Driver of a Team.            |");
@@ -46,8 +47,8 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             System.out.println("\t|   5 or DDT: Display the Driver Table.               |");
             System.out.println("\t|   6 or ASR: Add Statistics of a completed Race.     |");
             System.out.println("\t|   7 or GUI: open the GUI.                           |");
-            System.out.println("\t|   8 or EXT: EXiT from the program.                  |");
-            System.out.println("\t -----------------------------------------------------");
+            System.out.println("\t|   8 or EXT: Save and EXiT from the program.         |");
+            System.out.println("\t+-----------------------------------------------------+");
             System.out.println("\t 🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️");
 
             System.out.println(" ");
@@ -60,7 +61,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 case "1":
                 case "CND":
                     System.out.println(" ");
-                    System.out.println("\t\t\t 🏎️ _ Create a new driver option _ 🏎️");
+                    System.out.println("\t\t\t\t\t\t\t 🏎️ _ Create a new driver option _ 🏎️");
                     createDriver();     // Calling the createDriver method.
                     break;
 
@@ -74,14 +75,14 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 case "3":
                 case "CDT":
                     System.out.println(" ");
-                    System.out.println("\t\t 🏎️ _ Change the driver of a team option _ 🏎️");
+                    System.out.println("\t\t\t\t\t\t\t 🏎️ _ Change the driver of a team option _ 🏎️");
                     changeTeam();       // Calling the changeTeam method.
                     break;
 
                 case "4":
                 case "DSD":
                     System.out.println(" ");
-                    System.out.println("\t\t 🏎️ _ Display statistics of a driver option _ 🏎️");
+                    System.out.println("\t\t\t 🏎️ _ Display statistics of a driver option _ 🏎️");
                     displayStats();     // Calling the displayStats method.
                     break;
 
@@ -123,7 +124,6 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     @Override
     public void createDriver() {
         // Method to add a driver.
-
 
         while(true) {
 
@@ -316,14 +316,15 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         // Method used to delete an existing driver.
 
         availableDrivers();     // Displaying the existing drivers.
+        System.out.println(" ");
         System.out.print(" >> Enter the name of the driver that you want to delete: ");
         if (input.hasNext()) {
             String delDriverName = input.next().toLowerCase();
             if (checkDriverAvailability(delDriverName)) {   // Checking the availability of the given driver name.
                 for (int i =0; i<drivers.size(); i++) {
                     if(drivers.get(i).getDriverName().equals(delDriverName)) {
-                        System.out.println("✔ Driver " + drivers.get(i).getDriverName() + " successfully removed.");
-                        System.out.println("✔ Team " + drivers.get(i).getTeamName() + " also successfully removed.");
+                        System.out.println(" ");
+                        System.out.println("✔ Driver " + drivers.get(i).getDriverName() + " and team " + drivers.get(i).getTeamName() + " successfully removed.");
                         drivers.remove(i);
                     }
                 }
@@ -343,6 +344,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         // Method used to change the driver of a team.
 
         availableTeams();   // Displaying the existing teams.
+        System.out.println(" ");
         System.out.print(" >> Enter the Team name that need to change the driver : ");
         if (input.hasNext()) {
             String changeDriver = input.next().toUpperCase();
@@ -351,9 +353,11 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                     if (driver.getTeamName().equals(changeDriver)) {
                         instructions();     // Displaying the instructions.
                         availableDrivers(); // Displaying the existing drivers.
+                        System.out.println(" ");
                         System.out.print(" >> Enter the preferred new driver's name: ");
                         String newDriver = input.next().toLowerCase();
                         if (checkDriverUniqueness(newDriver)) {     // Checking the driver name uniqueness.
+                            System.out.println(" ");
                             System.out.println("✔ Team " + driver.getTeamName() + "'s driver changed as, " + driver.getDriverName() + " to, " + newDriver);
                             driver.setDriverName(newDriver);
                         } else{
@@ -381,6 +385,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         // Method used to display statistics of a driver.
 
         availableDrivers();     // Displaying the existing drivers.
+        System.out.println(" ");
         System.out.print(" >> Enter the Name of the driver, that need to display statistics: ");
         if (input.hasNext()) {
             String statDriver = input.next().toLowerCase();
@@ -389,14 +394,15 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                     if (driver.getDriverName().equals(statDriver)) {
                         // Displaying the statistics of the relevant driver.
                         System.out.println(" ");
-                        System.out.println("🧘______________ Mr. " + driver.getDriverName().toUpperCase() + " __________________🧘");
-                        System.out.println("\t⛔ Mr. " + driver.getDriverName() + "'s location - " + driver.getLocation());
-                        System.out.println("\t⛔ Mr. " + driver.getDriverName() + "'s team name - " + driver.getTeamName());
-                        System.out.println("\t⛔ Mr. " + driver.getDriverName() + "'s no of 1st places - " + driver.getPosition1());
-                        System.out.println("\t⛔ Mr. " + driver.getDriverName() + "'s no of 2nd places - " + driver.getPosition2());
-                        System.out.println("\t⛔ Mr. " + driver.getDriverName() + "'s no of 3rd places - " + driver.getPosition3());
-                        System.out.println("\t⛔ Mr. " + driver.getDriverName() + "'s no of points - " + driver.getPoints());
-                        System.out.println("\t⛔ Mr. " + driver.getDriverName() + "'s no of races - " + driver.getNumOfRaces());
+                        System.out.println("\t🧘________________ Mr. " + driver.getDriverName().toUpperCase() + " __________________🧘");
+                        System.out.println(" ");
+                        System.out.println("\t\t ⛔ Mr. " + driver.getDriverName() + "'s location         - " + driver.getLocation());
+                        System.out.println("\t\t ⛔ Mr. " + driver.getDriverName() + "'s team name        - " + driver.getTeamName());
+                        System.out.println("\t\t ⛔ Mr. " + driver.getDriverName() + "'s no of 1st places - " + driver.getPosition1());
+                        System.out.println("\t\t ⛔ Mr. " + driver.getDriverName() + "'s no of 2nd places - " + driver.getPosition2());
+                        System.out.println("\t\t ⛔ Mr. " + driver.getDriverName() + "'s no of 3rd places - " + driver.getPosition3());
+                        System.out.println("\t\t ⛔ Mr. " + driver.getDriverName() + "'s no of points     - " + driver.getPoints());
+                        System.out.println("\t\t ⛔ Mr. " + driver.getDriverName() + "'s no of races      - " + driver.getNumOfRaces());
                     }
                 }
             } else {
@@ -408,7 +414,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
             menu();
         }
         // If driver entered an invalid input it displays the warning message and going to the menu(calling the menu method).
-        System.out.println("-----------------------------------------------------------------------------------");
+        System.out.println("\t+---------------------------------------------------+");
     }
 
 
@@ -437,12 +443,13 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
         String[] positions = new String[drivers.size()];      // Array to store positions of each race.
         if (drivers.size() > 1) {
+            System.out.println(" ");
             System.out.print(" >> Enter the date of race: (DD/MM/2021): ");
             String date = input.next();
             if (checkDate(date)) {      // Validating the entered date.
                 availableDrivers();     // Displaying the existing drivers.
+                System.out.println(" ");
                 for (int i = 0; i < drivers.size(); i++) {  // Asking the driver's name from the user according to the given position.
-
                     System.out.print(" >> Enter the driver's name who got the " + (i + 1) + " place of the race: ");
                     if (input.hasNext()) {
                         String place = input.next().toLowerCase();
@@ -455,13 +462,10 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                                         driver.setPoints(pointsScheme[i]);   // Adding points according to the point scheme.
                                         if (i == 0) {
                                             driver.setPosition1(1);  // Adding 1 to the number of 1st places count of the relevant driver.
-
                                         } else if (i == 1) {
                                             driver.setPosition2(1);  // Adding 1 to the number of 2nd places count of the relevant driver.
-
                                         } else if (i == 2) {
                                             driver.setPosition3(1);  // Adding 1 to the number of 3rd places count of the relevant driver.
-
                                         }
                                     }
                                 }
@@ -497,7 +501,7 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
                 System.out.println("⚠️Invalid date or date format! Please enter a valid input and try again.");
             }
         } else {
-            System.out.println("⚠️Invalid number of drivers/cars/constructors. (Only " + drivers.size() + " teams are added.) Please add at least 2 drivers to use this function.");
+            System.out.println("⚠️Invalid number of drivers/teams. (Only " + drivers.size() + " teams are added.) Please add at least 2 drivers to use this function.");
         }
 
     }
@@ -565,9 +569,9 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
         // Method used to display the instructions.
 
         System.out.println(" ");
-        System.out.println("\t\t\t\t\t⚠️Instructions   ⚠️");
+        System.out.println("\t\t\t\t\t\t\t\t\t ⚠️Instructions   ⚠️");
         System.out.println(" ");
-        System.out.println("* Driver's should be unique to teams. (One driver can only be in a one team. One team can only have a one driver.)");
+        System.out.println("* Drivers should be unique to teams. (One driver can only be in a one team. One team can only have a one driver.)");
         System.out.println("* Enter a name which not in the below list.");
     }
 
@@ -657,10 +661,12 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
     public void exit() {
         // Method used to exit from the program.
 
-        System.out.println("🎇 Thank you for using 'Formula 1 Championship Manager Program 🎇'. \n \t\t\t\t\t Stay safe!");
-        System.out.println("🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟");
         saveData();  // Saving the driver's data.
         saveRaceData();     // Saving the race data.
+        System.out.println(" ");
+        System.out.println("\t 🎇 Thank you for using 'Formula 1 Championship Manager Program 🎇'. \n \t\t\t\t\t Stay safe!");
+        System.out.println("🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟");
+
         System.exit(0); // Exiting from the program.
     }
 }

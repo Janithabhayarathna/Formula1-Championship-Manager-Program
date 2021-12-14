@@ -64,7 +64,7 @@ public class RandomRace {
         // Table
         randomTable.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"Race date", "1st place", "2nd place", "3rd place"}));
         ((DefaultTableModel) randomTable.getModel()).addRow(new Object[]{date, newPositions[0], newPositions[1], newPositions[2]}); // Filling the table row by row.
-        randomTable.setBackground(Color.decode("#505050"));
+        randomTable.setBackground(Color.darkGray);
         randomTable.setForeground(Color.white);
         randomTable.setOpaque(true);
         randomTable.setFillsViewportHeight(true);

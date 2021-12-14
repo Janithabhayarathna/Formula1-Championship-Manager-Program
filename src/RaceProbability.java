@@ -198,6 +198,7 @@ public class RaceProbability {
         // Adding data to the table.
         ((DefaultTableModel) probabilityTable.getModel()).addRow(new Object[]{date, positionsStorage[0], positionsStorage[1],positionsStorage[2]});
 
+        // Label
         label5.setText("Starting Position of Mr." + positionsStorage[0] + " - " + startingPosition);
         frame.getContentPane().add(label5);
         label5.setBounds(20,50,700,50);
@@ -206,7 +207,7 @@ public class RaceProbability {
     }
 
     public void randomPlaces() {
-        // Method used to assign the other places.
+        // Method used to assign the other places(2-10) randomly.
 
         Collections.shuffle(driversDuplicate);  // Shuffling the driverDuplicate arraylist.
 

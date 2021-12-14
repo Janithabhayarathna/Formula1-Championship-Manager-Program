@@ -72,7 +72,7 @@ public class SearchRaces implements ActionListener {
         JScrollPane pane = new JScrollPane(table,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         pane.setForeground(Color.RED);
         pane.setBackground(Color.white);
-        pane.setBounds(5, 100, 780, 280);
+        pane.setBounds(5, 100, 780, 250);
         frame.getContentPane().add(pane);
     }
 
