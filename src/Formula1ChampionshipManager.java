@@ -102,9 +102,21 @@ public class Formula1ChampionshipManager implements ChampionshipManager {
 
                 case "7":
                 case "GUI":
-                    System.out.println(" ");
-                    System.out.println("\t 🖥️ Graphical User Interface opened...");
-                    new GUI();      // Calling the GUI constructor.
+                    if (drivers.size() > 0) {
+                        if (drivers.size() < 3) {
+                            System.out.println("⛔You must atleast add 3 drivers to get the full functionality of the GUI⛔");
+                            System.out.println(" ");
+                            System.out.println("\t 🖥️ Graphical User Interface opened...");
+                            new GUI();
+                            break;
+                        }
+                        System.out.println(" ");
+                        System.out.println("\t 🖥️ Graphical User Interface opened...");
+                        new GUI();
+                    } else {
+                        System.out.println(" ");
+                        System.out.println("\tAdd atleast 1 driver to open the GUI❗");
+                    }
                     break;
 
                 case "8":
